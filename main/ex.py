@@ -28,6 +28,7 @@ def main():
    srf02_mesure(pi, h)
    dist=srf02_read(pi, h)
    pi.i2c_close(h)
+   print(dist)
    return dist
 """
 while True:
