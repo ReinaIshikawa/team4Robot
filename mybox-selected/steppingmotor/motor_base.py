@@ -5,21 +5,24 @@ import wiringpi as wp
 import time
 import struct
 
-L6470_SPI_CHANNEL       = 0
+L6470_SPI_CHANNEL       = 1
 L6470_SPI_SPEED         = 1000000
 
 def L6470_write(data):
-        data = struct.pack("B", data)
-        wp.wiringPiSPIDataRW(L6470_SPI_CHANNEL, data)
+   #     data = struct.pack("B", data)
+        print("b1")
+        print(data)
+        wp.wiringPiSPIDataRW(L6470_SPI_CHANNEL,data)
+        print("b2")
 
 def L6470_init():
+
         # MAX_SPEED設定。
         # レジスタアドレス。
         L6470_write(0x07)
         # 最大回転スピード値(10bit) 初期値は 0x41
         L6470_write(0x00)
-        L6470_write(0x41)
-
+        L6470_write(0x25)
         # KVAL_HOLD設定。
         # レジスタアドレス。
         L6470_write(0x09)
@@ -43,20 +46,33 @@ def L6470_init():
         L6470_write(0x0C)
         # モータ減速中の電圧設定(8bit) 初期値は 0x8A
         L6470_write(0x40)
-
+     
         # OCD_TH設定。
         # レジスタアドレス。
         L6470_write(0x13)
         # オーバーカレントスレッショルド設定(4bit)
         L6470_write(0x0F)
-
         # STALL_TH設定。
         # レジスタアドレス。
         L6470_write(0x14)
+        
         # ストール電流スレッショルド設定(4bit)
         L6470_write(0x7F)
+        
+#start slopeデフォルト
+     #   /// レジスタアドレス。
+        L6470_write(0x0e)
+        L6470_write(0x00)
+        
+        
+	#	//デセラレーション設定
+        #/// レジスタアドレス。
+       	L6470_write(0x10)
+       	L6470_write(0x29)
+        
 
 def L6470_run(speed):
+        print('runboth {}'.format(speed))
         # 方向検出。
         if (speed < 0):
                 dir = 0x50
@@ -77,6 +93,13 @@ def L6470_run(speed):
         L6470_write(spd_m)
         L6470_write(spd_l)
 
+def L6470_run_both(speed):
+        #print('runboth {}'.format(speed))
+        L6470_SPI_CHANNEL = 0
+        L6470_run(speed)
+        L6470_SPI_CHANNEL = 1
+        L6470_run(-1*speed)
+        
 def L6470_softstop():
         print("***** SoftStop. *****")
         dir = 0xB0
@@ -92,28 +115,26 @@ def L6470_softhiz():
         time.sleep(1)
 
 if __name__=="__main__":
-        speed = 0
+        #speed = 0
+        speed = 1000
 
         print("***** start spi test program *****")
 
         # SPI channel 0 を 1MHz で開始。
         #wp.wiringPiSetupGpio()
-        wp.wiringPiSPISetup (L6470_SPI_CHANNEL, L6470_SPI_SPEED)
-
-        # L6470の初期化。
+        if  (wp.wiringPiSPISetup(0, L6470_SPI_SPEED)<0):
+                print('spi 0 setup failed')
+        if  (wp.wiringPiSPISetup(1, L6470_SPI_SPEED)<0):
+                print('spi 1 setup failed')
+        # L6470の初期化
+        L6470_SPI_CHANNEL=1
         L6470_init()
 
         while True:
-                for i in range(0, 10):
-                        speed = speed + 2000 # 30000 位まで
-                        L6470_run(speed)
-                        print("*** Speed %d ***" % speed)
-                        time.sleep(1)
-
-                for i in range(0, 10):
-                        speed = speed - 2000
-                        L6470_run(speed)
-                        print("*** Speed %d ***" % speed)
+		for i in range(0, 20):
+			#speed = speed + 2000 # 30000 位まで
+        		L6470_run(speed)
+                        #print("*** Speed %d ***" % speed)
                         time.sleep(1)
 
                 L6470_softstop()
