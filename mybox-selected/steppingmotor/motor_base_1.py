@@ -91,7 +91,22 @@ def L6470_run_both(speed):
     print('runboth {}'.format(speed))
     L6470_run(speed, 0)
     L6470_run(-1*speed, 1)
-    
+
+def L6470_run_back(speed):
+    print('runboth {}'.format(speed))
+    L6470_run(-1*speed, 0)
+    L6470_run(speed, 1)
+
+def L6470_turn_right(speed):
+    print('runboth {}'.format(speed))
+    L6470_run(speed, 0)
+    L6470_run(0, 1)    
+
+def L6470_turn_left(speed):
+    print('runboth {}'.format(speed))
+    L6470_run(0, 0)
+    L6470_run(-1*speed, 1)
+
 def L6470_softstop():
     print("***** SoftStop. *****")
     dir = 0xB0
@@ -124,13 +139,35 @@ if __name__=="__main__":
     L6470_init(1)
 
     while True:
-        for i in range(0, 20):
+        for i in range(0, 10):
             #speed = speed + 2000 # 30000 位まで
-            print("hoge")
+            #print("hoge")
             # L6470_run(speed)
             L6470_run_both(speed)
             #print("*** Speed %d ***" % speed)
             time.sleep(1)
+        for j in range(0, 10):
+            #speed = speed + 2000 # 30000 位まで
+            #print("hoge")
+            # L6470_run(speed)
+            L6470_run_back(speed)
+            #print("*** Speed %d ***" % speed)
+            time.sleep(1)
+        for k in range(0, 10):
+            #speed = speed + 2000 # 30000 位まで
+            #print("hoge")
+            # L6470_run(speed)
+            L6470_turn_right(speed)
+            #print("*** Speed %d ***" % speed)
+            time.sleep(1)
+        for l in range(0, 10):
+            #speed = speed + 2000 # 30000 位まで
+            #print("hoge")
+            # L6470_run(speed)
+            L6470_turn_left(speed)
+            #print("*** Speed %d ***" % speed)
+            time.sleep(1)
+        
 
         L6470_softstop()
         L6470_softhiz()
