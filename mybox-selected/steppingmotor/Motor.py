@@ -1,19 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#コンストラクタでspeedとspi_idを指定
 
 import wiringpi as wp
 import time
 import struct
+import ex
 class Motor():
-
+    
     def Write(self,data, spi_id):
         data = struct.pack("B", data)
         print("b1")
         print(data)
         wp.wiringPiSPIDataRW(spi_id, data)
         print("b2")
+    
 
-    def __init__(self,spi_id):
+    def __init__(self,spi_id,spd):
+        self.speed=spd
         self.id=spi_id
         L6470_SPI_SPEED     = 1000000
         print("***** start spi test program *****")
@@ -69,20 +73,20 @@ class Motor():
         self.Write(0x29, spi_id)
         
 
-    def Run_setting(self,speed, spi_id):
-        print('runboth {}'.format(speed))
+    def Run_setting(self,tmpspd,spi_id):
+        #print('runboth {}'.format(tmpspd))
         # 方向検出。
-        if (speed < 0):
+        if (tmpspd < 0):
             dir = 0x50
-            spd = -1 * speed
+            setspd = -1 * tmpspd
         else:
             dir = 0x51
-            spd = speed
+            setspd = tmpspd
 
         # 送信バイトデータ生成。
-        spd_h   =  (0x0F0000 & spd) >> 16
-        spd_m   =  (0x00FF00 & spd) >> 8
-        spd_l   =  (0x00FF & spd)
+        spd_h   =  (0x0F0000 & setspd) >> 16
+        spd_m   =  (0x00FF00 & setspd) >> 8
+        spd_l   =  (0x00FF & setspd)
 
         # コマンド（レジスタアドレス）送信。
         self.Write(dir, spi_id)
@@ -91,33 +95,36 @@ class Motor():
         self.Write(spd_m, spi_id)
         self.Write(spd_l, spi_id)
 
-    def Run_forward(self,speed):
-        print('runboth {}'.format(speed))
+    def Run_forward(self):
+        print('runboth {}'.format(self.speed))
         if self.id==0:
-            self.Run_setting(speed, 0)
+            self.Run_setting(self.speed,0)
         else:
-            self.Run_setting(-1*speed, 1)
+            tmpspd=(-1)*self.speed
+            self.Run_setting(tmpspd, 1)
 
-    def Run_back(self,speed):
-        print('runboth {}'.format(speed))
+    def Run_back(self):
+        print('runboth {}'.format(self.speed))
         if self.id==0:
-            self.Run_setting(-1*speed, 0)
+            tmpspd=(-1)*self.speed
+            self.Run_setting(tmpspd, 0)
         else:
-            self.Run_setting(speed, 1)
+            self.Run_setting(self.speed, 1)
 
-    def Turn_right(self,speed):
-        print('runboth {}'.format(speed))
+    def Turn_right(self):
+        print('runboth {}'.format(self.speed))
         if self.id==0:
-            self.Run_setting(speed, 0)
+            self.Run_setting(self.speed, 0)
         else:
             self.Run_setting(0, 1)    
 
-    def Turn_left(self,speed):
-        print('runboth {}'.format(speed))
+    def Turn_left(self):
+        print('runboth {}'.format(self.speed))
         if self.id==0:
             self.Run_setting(0, 0)
         else:
-            self.Run_setting(-1*speed, 1)
+            tmpspd=(-1)*self.speed
+            self.Run_setting(tmpspd, 1)
 
     def Softstop(self):
         print("***** SoftStop. *****")

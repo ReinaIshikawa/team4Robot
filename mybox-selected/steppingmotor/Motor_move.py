@@ -1,0 +1,17 @@
+#センサからの距離情報によって動きを決定する
+
+import wiringpi as wp
+import time
+import struct
+import Motor as Motor
+import ex #距離センサ
+
+class Motor_move(Motor):
+    dis=ex.main() #距離センサ
+    def Motormove(self):
+        if self.dis>safe:
+            self.Run_forward()
+        else :
+            self.Run_back()
+        
+        
