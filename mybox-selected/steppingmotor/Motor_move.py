@@ -9,6 +9,7 @@ import ex #距離センサ
 class Motor_move(Motor):
     dis=ex.main() #距離センサ
     def Motormove(self):
+        safe=30
         if self.dis>safe:
             self.Run_forward()
         else :
