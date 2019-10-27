@@ -5,7 +5,7 @@ import Motor
 import Motor_move as Mmove
 
 if __name__=="__main__":
-    speed = 0
+    speed = 2000
 
     print("***** start spi test program *****")
 
@@ -18,9 +18,9 @@ if __name__=="__main__":
             right.motormove()
             left.motormove()
             time.sleep(1)
-        right_Softstop()
+        right.Softstop()
         left.Softstop()
-        right_Softhiz()
+        right.Softhiz()
         left.Softthiz()
         quit()
     quit()
