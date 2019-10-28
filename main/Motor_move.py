@@ -26,6 +26,7 @@ class Motor_move(Motor.Motor):
         p=KP*self.diff(1)
         i=KI*self.integral
         d=KD*(self.diff(1)-self.diff(0))/self.delta
+        print("ohayou")
         if p+i+d>30000:
             return 30000
         elif p+i+d<-30000:

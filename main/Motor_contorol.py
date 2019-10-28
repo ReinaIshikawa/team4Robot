@@ -15,8 +15,8 @@ if __name__=="__main__":
     while True:
         for i in range(10):
             #speed = speed + 2000 # 30000 位まで
-            right.motormove()
-            left.motormove()
+            right.PID()
+            left.PID()
             time.sleep(1)
         right.Softstop()
         left.Softstop()
