@@ -13,11 +13,11 @@ if __name__=="__main__":
     left= Mmove.Motor_move(1,speed)
 
     while True:
-        for i in range(10):
-            #speed = speed + 2000 # 30000 位まで
-            right.PID()
-            left.PID()
-            time.sleep(1)
+        #speed = speed + 2000 # 30000 位まで
+        right.Angle()
+        left.Angle()
+        right.PID()
+        left.PID()
         right.Softstop()
         left.Softstop()
         right.Softhiz()

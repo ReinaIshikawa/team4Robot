@@ -17,7 +17,9 @@ class Motor():
 
     def __init__(self,spi_id,spd):
         self.diff=[0 for _ in range (2)]
-        self.integral=0
+        self.angl=0
+        self.integrald=0
+        self.integrala=0
         self.delta=0.001 #時間差
         self.speed=spd
         self.id=spi_id
