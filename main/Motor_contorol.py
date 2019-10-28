@@ -5,7 +5,7 @@ import Motor
 import Motor_move as Mmove
 
 if __name__=="__main__":
-    speed = 0
+    speed = 2000
 
     print("***** start spi test program *****")
 
