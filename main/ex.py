@@ -22,14 +22,25 @@ def srf02_mesure(pi, h):
 
 
 def main():
-   pi=pigpio.pi()
+   pi1=pigpio.pi()
    t1=time.time()
-   h=pi.i2c_open(1,0x70)
-   srf02_mesure(pi, h)
-   dist=srf02_read(pi, h)
-   pi.i2c_close(h)
-   print(dist)
-   return dist
+   h1=pi1.i2c_open(1,0x71)
+   srf02_mesure(pi1, h1)
+   time.sleep(0.4)
+   dist1=srf02_read(pi1, h1)
+   pi1.i2c_close(h1)
+   
+   pi2=pigpio.pi()
+   h2=pi2.i2c_open(1,0x73)
+   srf02_mesure(pi2, h2)
+   
+   time.sleep(0.4)
+   dist2=srf02_read(pi2, h2)
+   pi2.i2c_close(h2)
+   
+   print(dist2-dist1)
+   return dist1
+
 """
 while True:
       t=int(input())

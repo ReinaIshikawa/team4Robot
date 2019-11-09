@@ -9,6 +9,7 @@ import Camera
 def e():
     while True:
         ex.main()
+        time.sleep(1.0)
 def s():
     servo
 def mc():
@@ -17,7 +18,7 @@ def c():
     Camera.get_image()
 if __name__=="__main__":
     
-        command=input()
+       # command=input()
         if command=='a':
             th1=threading.Thread(target=e,name="th1",args=())
             th1.start()

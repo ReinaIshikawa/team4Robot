@@ -30,7 +30,6 @@ class servo_Class:
 if __name__ == '__main__':
     #今回はサーボモーターが3つあります
     Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
-
     try:
         #テストでそれぞれのサーボモーターを45度,90度と繰り返し動かしてみます。
         while True:

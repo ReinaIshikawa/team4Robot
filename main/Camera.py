@@ -16,12 +16,10 @@ def get_image():
         
         #time.sleep(3)
         ret,frame=cap.read()
-        frame=fd.face-detection(frame)
+        frame=fd.face_detection(frame)
         cv2.imshow(window_name,frame)
-        print("a")
         if cv2.waitKey(delay)&0xFF==ord('q'):
             break
 
     cv2.destroyWindow(window_name)
 
-get_image()
