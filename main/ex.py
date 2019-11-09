@@ -38,7 +38,7 @@ def main():
    dist2=srf02_read(pi2, h2)
    pi2.i2c_close(h2)
    
-   if abs(dist2-dist1)<30
+   if abs(dist2-dist1)<30:
       return dist1
 
 """

@@ -27,8 +27,9 @@ class servo_Class:
         self.pwm.set_pwm(self.Channel, 0,pulse)
 
 """制御を行うメインの部分です"""
-if __name__ == '__main__':
-    #今回はサーボモーターが3つあります
+#if __name__ == '__main__':
+def main():
+#今回はサーボモーターが3つあります
     Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
     try:
         #テストでそれぞれのサーボモーターを45度,90度と繰り返し動かしてみます。
@@ -55,3 +56,5 @@ if __name__ == '__main__':
         print("\nCtl+C")
     except Exception as e:
         print(str(e))
+
+main()
