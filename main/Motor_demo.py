@@ -6,7 +6,7 @@ from Motor_move import Motor_move
 #import ex
 
 if __name__=="__main__":
-    speed = 2000
+    speed = 20000
 
     print("***** start demo program *****")
 
@@ -38,10 +38,12 @@ if __name__=="__main__":
                     right.Run_back()
                     left.Run_back()
                     time.sleep(1)
+                right.Softstop()
+                left.Softstop()
+                right.Softhiz()
+                left.Softthiz()
             time.sleep(1)
-        self.Softstop()
-        self.Softthiz()
-    elif:
+    else:
         print("w:forward d:right s:back a:left q:stop")
         while True:
             tmp=input()
@@ -62,6 +64,8 @@ if __name__=="__main__":
                 left.Turn_left()
                 time.sleep(1)
             else:
-                self.Softstop()
-                self.Softthiz()
+                right.Softstop()
+                left.Softstop()
+                right.Softthiz()
+                left.Softhiz()
                 break
