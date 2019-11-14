@@ -85,6 +85,7 @@ class Motor():
         else:
             dir = 0x51
             setspd = tmpspd
+        setspd=round(setspd)
 
         # 送信バイトデータ生成。
         spd_h   =  (0x0F0000 & setspd) >> 16

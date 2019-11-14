@@ -29,7 +29,7 @@ class CameraThread(threading.Thread):
             self.log.communication("msg.{}".format(msg))
             if not (msg["x"]  == -1):
                 response = {"x":msg["x"],"y":msg["y"]}
-            jsn = json.dumps({"response": response},{"request": request})
+            jsn = json.dumps({"response": response, "request": request})
             self.log.communication('recieved')
             self.app.stdin.write((jsn + '\n').encode('utf-8'))
             self.app.stdin.flush()

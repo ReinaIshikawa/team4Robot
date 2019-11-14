@@ -32,12 +32,9 @@ class Motor_move(Motor):
                 spd=-(p+i+d)
         self.Run_setting(spd,self.id)
 
-    def Angle(self):
+    def Angle(self, x, y):
         ox=640
         oy=320
-        dis=MultiStickSSD()
-        x=dis(1)
-        y=dis(2)
         KP=500
         KI=10
         KD=10

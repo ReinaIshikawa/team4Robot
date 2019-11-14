@@ -27,7 +27,7 @@ def pursuit_listener1(response):
 def pursuit_listener2(response):
     x = response['x']
     y = response['y']
-    log.communication("pursuit angle"+x+", "+y)
+    log.communication("pursuit angle"+str(x)+", "+str(y))
     if x>0:
         client.motor_angle_check(x,y)
     # 再帰的に(繰り返し)処理をするため
