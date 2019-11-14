@@ -26,7 +26,7 @@ def pursuit_listener2(response):
         #print("--------")
         log.communication("app_yamada_listener2")
         client.motor_angle_check(x,y)
-        client.get_angle(pursuit_listener2)
+        #client.get_angle(pursuit_listener2)
 
 def PythonNotify(message, *args):
     # 諸々の設定
@@ -41,13 +41,16 @@ def PythonNotify(message, *args):
     else:
         # 画像
         files = {"imageFile": open("example.jpg", "rb")}
+        #files=arg
         requests.post(line_notify_api, data=payload, headers=headers, files=files)
 
 def picture():
     log.communication("picture")
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
-    frame=cv2.imread('example.jpg')
+    cv2.imwrite("example.jpg",frame)
+    cv2.destroyAllWindows()
+    #frame=cv2.imread('example.jpg')
     message="ok"
     PythonNotify(message, frame)
 

@@ -4,6 +4,7 @@ import wiringpi as wp
 import time
 import struct
 from .Motor import Motor
+#import Motor
 import math
 
 class Motor_move(Motor):

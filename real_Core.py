@@ -35,8 +35,8 @@ app_cmd= [['python3', '-u', './app/dist_motor_app.py'],# 0
 ['python3', '-u', './app/voice_motor_app.py'],# 1
 ['python3', '-u', './app/Pursuit.py'],# 2
 ['python3', '-u', './app/music_app.py'],# 3
-          ['python3', '-u', './app/attack.py'],#4
-          ['python3', '-u', './app/application_yamada.py']]# 5
+['python3', '-u', './app/attack.py'],#4
+['python3', '-u', './app/application_yamada.py']]# 5
 
 print("1")
 

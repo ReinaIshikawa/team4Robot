@@ -4,7 +4,7 @@ import struct
 import Motor
 import Motor_move as Mmove
 
-if __name__=="__main__":
+def test(self):
     speed = 2000
 
     print("***** start spi test program *****")
@@ -23,3 +23,5 @@ if __name__=="__main__":
         left.Softthiz()
         quit()
     quit()
+
+self.test()

@@ -43,8 +43,8 @@ for i in range(10):
     else:
         break
     
-windowWidth = 640
-windowHeight = 320
+windowWidth = 1280
+windowHeight = 640
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, windowWidth)
 cam.set(cv2.CAP_PROP_FRAME_HEIGHT, windowHeight)
 
@@ -106,17 +106,17 @@ def camThread():
         if flag!=0:
             response = {"x":sumbox[0],"y":sumbox[1],"img":img.tolist()}
             jsn = json.dumps({"response": response})
-            #print(jsn,flush=True)
+            print(jsn,flush=True)
             log.communication('Human found!')
-            #self.camera.stdin.write(jsn + '\n')
-            #self.camera.stdin.flush()
+            # self.camera.stdin.write(jsn + '\n')
+            # self.camera.stdin.flush()
         else:
             response = {"x":-1,"y":-1,"img":img.tolist()}
             # jsn = json.dumps({"response": response, 'request': request})
             jsn = json.dumps({"response": response})
-            #print(jsn,flush=True)
-            #self.camera.stdin.write(jsn + '\n')
-            #self.camera.stdin.flush()
+            print(jsn,flush=True)
+            # self.camera.stdin.write(jsn + '\n')
+            # self.camera.stdin.flush()
             log.communication('Human not found!')
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         h, w = img.shape[:2]
@@ -149,7 +149,7 @@ def camThread():
 
 def inferencer(results, lock, frameBuffer, handle):
     failure = 0
-    time.sleep(3)
+    #time.sleep(3)
     while failure < 100:
         lock.acquire()
         if len(frameBuffer) == 0:

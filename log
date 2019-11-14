@@ -1,0 +1,20 @@
+[COMMUNICATION][2019/11/14 16:24:26] Start
+[COMMUNICATION][2019/11/14 16:24:32] Init complete
+[COMMUNICATION][2019/11/14 16:24:32] [0] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 16:24:32] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2019/11/14 16:24:35] [CameraThread] jsn 
+[COMMUNICATION][2019/11/14 16:24:29] finishgetangle
+[COMMUNICATION][2019/11/14 16:24:29] picture
+[COMMUNICATION][2019/11/14 16:24:42] Start
+[COMMUNICATION][2019/11/14 16:24:48] Init complete
+[COMMUNICATION][2019/11/14 16:24:48] [0] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 16:24:48] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2019/11/14 16:24:44] finishgetangle
+[COMMUNICATION][2019/11/14 16:24:44] picture
+[COMMUNICATION][2019/11/14 16:27:14] Start
+[COMMUNICATION][2019/11/14 16:27:20] Init complete
+[COMMUNICATION][2019/11/14 16:27:20] [0] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 16:27:20] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2019/11/14 16:27:22] [CameraThread] jsn 
+[COMMUNICATION][2019/11/14 16:27:16] finishgetangle
+[COMMUNICATION][2019/11/14 16:27:16] picture
