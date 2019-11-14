@@ -5,11 +5,13 @@ import time
 import sys
 import json
 from .  import servo
+import threading
+
 
 class ServoThread(threading.Thread):
-    def __init__(self, servo, app):
+    def __init__(self, app):
         super(ServoThread, self).__init__()
-        self.servo = servo
+       # self.servo = servo
         self.app = app
 
     def run(self, request=None):
@@ -41,7 +43,8 @@ class ServoThread(threading.Thread):
         # 無限ループここまで
 
         # attack.pyからの処理
-        if(self.request['cmd'] == 'swing')
+        if(self.request['cmd'] == 'swing'):
+            print("[servo_thread] swing")
             servo0.rotate(self.request['s_angle'], self.request['g_angle'])
             #time.sleep(1)
 

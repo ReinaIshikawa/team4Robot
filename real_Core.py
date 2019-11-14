@@ -9,8 +9,9 @@ from library import log
 
 log.communication('Start')
 argv = sys.argv
-if len(argv) > 1:
-    is_test = argv[1] == 'test'
+app_num = 0
+if len(argv) > 1 and argv[1]=='test':
+    is_test = True
     from Sensor.dist_stub import SensorStub as SensorThread
     from Motor.motor_stub import MotorStub as MotorThread
     from Motor.servo_stub import ServoStub as ServoThread
@@ -19,6 +20,7 @@ if len(argv) > 1:
     print('-------- Runing in test mode --------')
 else:
     is_test = False
+    app_num = int(argv[1])
     from Sensor.dist_thread import DistThread as SensorThread
     from Motor.motor_thread import MotorThread
     from Motor.servo_thread import ServoThread as ServoThread
@@ -26,7 +28,6 @@ else:
     from Camera.camera_thread import CameraThread as CameraThread
 proc = {}
 
-app_num = 0
 if len(argv) > 2:
     app_num = int(argv[2])
     print("app_num", app_num)
@@ -34,7 +35,8 @@ app_cmd= [['python3', '-u', './app/dist_motor_app.py'],# 0
 ['python3', '-u', './app/voice_motor_app.py'],# 1
 ['python3', '-u', './app/Pursuit.py'],# 2
 ['python3', '-u', './app/music_app.py'],# 3
-['python3', '-u', './app/attack.py']]# 4
+          ['python3', '-u', './app/attack.py'],#4
+          ['python3', '-u', './app/application_yamada.py']]# 5
 
 print("1")
 
@@ -121,6 +123,7 @@ def func_voice(request):
 
 
 def func_camera(request):
+    print("------------",request,"-----------")
     threads['camera'].run(request=request)
 
 

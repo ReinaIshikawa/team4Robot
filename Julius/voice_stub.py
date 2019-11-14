@@ -60,4 +60,3 @@ class VoiceStub(threading.Thread):
         if self.num == 11:# 終了はとりあえずなし(動作は確認済み)
             self.num = 0
         time.sleep(2)
->>>>>>> 9359bc1e59c2077b635cbdb9d4ff25ac0baa0337

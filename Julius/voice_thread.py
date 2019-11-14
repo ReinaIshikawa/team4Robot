@@ -11,11 +11,12 @@ port = 10500   #julisuサーバーモードのポート
 
 class VoiceThread(threading.Thread):
 
-    def __init__(self, app, voice, exitCore):
+    def __init__(self, app, voice, exitCore, changeApp):
         super(VoiceThread, self).__init__()
         self.app = app
         self.voice = voice
         self.exitCore = exitCore
+        self.changeApp = changeApp
         self.cnt = 0
 
 
