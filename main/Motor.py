@@ -20,7 +20,7 @@ class Motor():
         self.angl=0
         self.integrald=0
         self.integrala=0
-        self.delta=0.001 #時間差
+        self.delta=1 #時間差
         self.speed=spd
         self.id=spi_id
         L6470_SPI_SPEED     = 1000000

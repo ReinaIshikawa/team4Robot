@@ -13,9 +13,9 @@ class Motor_move(Motor.Motor):
     #PID制御
     #目標までの距離を受け取り速度を出力する
     def PID(self):
-        KP=3
-        KI=1
-        KD=1
+        KP=200
+        KI=10
+        KD=10
         self.diff.insert(0,self.diff(1))
         self.diff.insert(1,self.dis)
         self.integrald+=(self.diff(0)+self.diff(1))/2.0*self.delta
