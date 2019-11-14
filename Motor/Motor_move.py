@@ -8,6 +8,8 @@ from .Motor import Motor
 import math
 
 class Motor_move(Motor):
+    def __init__(self,spi_id,spd):
+        super().__init__(spi_id,spd)
     #PID制御
     #目標までの距離を受け取り速度を出力す
     diffnew=0

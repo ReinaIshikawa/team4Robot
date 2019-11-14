@@ -1,10 +1,10 @@
 import wiringpi as wp
 import time
 import struct
-import Motor
+#import Motor
 import Motor_move as Mmove
 
-def test(self):
+def test():
     speed = 2000
 
     print("***** start spi test program *****")
@@ -24,4 +24,4 @@ def test(self):
         quit()
     quit()
 
-self.test()
+test()

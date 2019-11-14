@@ -5,10 +5,10 @@ import json
 
 
 class VoiceStub(threading.Thread):
-    def __init__(self, app, voice, exitCore, changeApp):
+    def __init__(self, app,exitCore, changeApp):
         super(VoiceStub, self).__init__()
         self.app = app
-        self.voice = voice
+        # self.voice = voice
         self.exitCore = exitCore
         self.changeApp = changeApp
         self.num = 0

@@ -7,6 +7,7 @@ import subprocess
 import threading
 import cv2
 import numpy as np
+import time
 
 class CameraThread(threading.Thread):
     def __init__(self, app, camera, log):
@@ -20,14 +21,18 @@ class CameraThread(threading.Thread):
             return
         response={}
         if(request["cmd"] == "check_angle"):
-            self.log.communication('[CameraThread] cmd recv {}'.format(request['cmd']))
+            #self.log.communication('[CameraThread] cmd recv {}{}'.format(request["x"],format["y"]))
+            time.sleep(3)
+            
             jsn_msg = self.camera.stdout.readline().decode('utf-8')
-            self.log.communication('[CameraThread] jsn {}'.format(jsn_msg))
+            if not jsn_msg:
+                self.log.communication("jsn is empty")
+            #self.log.communication('[CameraThread] jsn {}'.format(jsn_msg))
             msg = json.loads(jsn_msg)
-            self.log.communication('[CameraThread] dump {}'.format(msg))
+            #self.log.communication('[CameraThread] dump {}'.format(msg))
             # print(msg)
             msg=msg['response']
-            self.log.communication("msg.{}".format(msg))
+            #self.log.communication("msg.{}".format(msg))
             #response={"x":-1,"y":-1}
             #if not (msg["x"]  == -1):
             response = {"x":msg["x"],"y":msg["y"]}
@@ -37,11 +42,11 @@ class CameraThread(threading.Thread):
             self.app.stdin.write((jsn + '\n').encode('utf-8'))
             self.app.stdin.flush()
         if(request["cmd"] == "taking_picture"):
-            self.log.communication('[CameraThread] cmd recv {}'.format(request['cmd']))
+            #self.log.communication('[CameraThread] cmd recv {}'.format(request['cmd']))
             jsn_msg = self.camera.stdout.readline().decode('utf-8')
-            self.log.communication('[CameraThread] jsn {}'.format(jsn_msg))
+            #self.log.communication('[CameraThread] jsn {}'.format(jsn_msg))
             msg = json.loads(jsn_msg)
-            self.log.communication('[CameraThread] dump {}'.format(msg))
+            #self.log.communication('[CameraThread] dump {}'.format(msg))
             # print(msg)
             msg=msg['response']
 #           self.log.communication("msg.{}".format(msg))
