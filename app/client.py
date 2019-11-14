@@ -120,15 +120,18 @@ def motor_move(direction):
 def camera_SSD():
     request = {
         'module' : "camera",
-        "cmd" : "detect"
+        'cmd' : 'detect'
     }
     print(json.dumps(request), flush=True)
 
-def voice_use():
+def voice_cmd(callback, cmd):
     request = {
-        'module': 'voice'
+        'module': 'voice',
+        'cmd': cmd
     }
     print(json.dumps(request), flush=True)
+    log.communication("client.py->app" + str(request))
+    listeners['voice'].append(callback)
 
 def get_voice(callback):
     request = {
