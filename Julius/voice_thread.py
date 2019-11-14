@@ -46,7 +46,7 @@ class VoiceThread(threading.Thread):
         print('voice_thread bind socket')
         data =""
         # killword = ""
-        while(1):
+        while(1)
             if '</RECOGOUT>\n.' in data:
                 #data = data + sock.recv(1024)
                 strTemp = ""
