@@ -4,19 +4,19 @@ import sys
 import time
 import wiringpi as wp
 import struct
-import Motor_move
+from .Motor_move import Motor_move
 import threading
 
 # Processは使わず，threadのみで完結させる
 # Motor_MoveはMotorを継承
 
 class MotorThread(threading.Thread):
-    def _init_(self, app):
-        super(MotorThread, self)._init_()
+    def __init__(self, app):
+        super(MotorThread, self).__init__()
         self.speed = 20000
         self.app = app
-        self.right = Motor_move(0, speed)
-        self.left = Motor_move(1, speed)
+        self.right = Motor_move(0, self.speed)
+        self.left = Motor_move(1, self.speed)
         self.cnt = 0
 
 
@@ -49,7 +49,7 @@ class MotorThread(threading.Thread):
         if (request['cmd'] == 'check_dist'):
             self.right.PID(request['dist'])
             self.left.PID(request['dist'])
-        elif request['cmd'] == 'check_angle'):
+        elif (request['cmd'] == 'check_angle'):
             self.right.Angle(request['x'], request['y'])
             self.left.Angle(request['x'], request['y'])
         elif (request['cmd'] == 'move'):

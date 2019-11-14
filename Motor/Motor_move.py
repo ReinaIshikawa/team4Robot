@@ -3,11 +3,10 @@
 import wiringpi as wp
 import time
 import struct
-import Motor as Motor
+from .Motor import Motor
 import math
-import ex #距離センサ
 
-class Motor_move(Motor.Motor):
+class Motor_move(Motor):
     #PID制御
     #目標までの距離を受け取り速度を出力する
     def PID(self, dis):
