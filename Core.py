@@ -17,18 +17,18 @@ argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
     from Sensor.dist_stub import SensorStub as SensorThread
-    print("a")
     from Motor.motor_stub import MotorStub as MotorThread
-    from  Julius.voice_thread import VoiceThread as VoiceThread
+    # from  Julius.voice_thread import VoiceThread as VoiceThread
+    # from Camera.MultiThread import MultiThread as MultiThread
+    # from Camera.camera_thread import CameraThread as CameraThread
     print('Runing in test mode')
 else:
     is_test = False
     from Sensor.dist_thread import DistThread as SensorThread
-    print("b")
     from Motor.motor_thread import MotorThread
-    print("b")
-    from  Julius.voice_thread import VoiceThread as VoiceThread
-print("a")
+    #from  Julius.voice_thread import VoiceThread as VoiceThread
+    from Camera.MultiThread import MultiThread as MultiThread
+    from Camera.camera_thread import CameraThread as CameraThread
 proc = {}
 
 # request = {
@@ -41,10 +41,11 @@ proc = {}
 
 # アプリの実行と終了
 nullFile = open('/dev/null', 'w')
-
+print("1")
 proc['app'] = subprocess.Popen(
     #['python3', '-u', './app/dist_motor_app.py'],
-    ['python3', '-u', './app/voice_cmd_app.py'],
+    #['python3', '-u', './app/voice_cmd_app.py'],
+    ['python3', '-u', './app/Pursuit.py'],
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
     # encoding='utf8'
@@ -61,30 +62,34 @@ def exitCore():  # voice_threadで使用
     app.terminate()
     sys.exit()
 
+    '''
 if not is_test:
-    # proc['julius'] = subprocess.Popen(
-    # 	['~/work/julius/julius-4.4.2/julius/julius', '-C', '~/work/julius-4.4.2/julius-kit/dictation-kit-v4.4.2-linux/word.jconf', '-module'],
-    # 	stdout=nullFile
-    # )
-
     proc['voice'] = subprocess.Popen(
-    	["./Julius/julius_start.sh"],
-    	stdout=subprocess.PIPE,
-    	shell=True
+        ['~/work/julius/julius-4.4.2/julius/julius', '-C', '~/work/julius-4.4.2/julius-kit/dictation-kit-v4.4.2-linux/word.jconf', '-module'],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE
     )
 
-# #Camera
-# if is_test:#単純にカメラを立ち上げる
-# 	camera_cmd = ['python3', '-u', './Camera/Camera.py']
-# else:#カメラで画像認識をしたりする
-# 	camera_cmd = ['python3', '-u', './Camera/camera_thread.py']#とりあえず一緒
-# proc['camera'] = subprocess.Popen(
-# 	camera_cmd,
-# 	stdin = subprocess.PIPE,
-# 	stdout = subprocess.PIPE
-# )
+    # proc['voice'] = subprocess.Popen(
+    #	["./Julius/julius_start.sh"],
+    #	stdout=subprocess.PIPE,
+    #	shell=True
+    # )
+    '''
+print("2")    
+#Camera
+if is_test:#単純にカメラを立ち上げる
+    camera_cmd = ['python3', '-u', './Camera/camera_proc.py']
+else:#カメラで画像認識をしたりする
+    camera_cmd = ['python3', '-u', './Camera/camera_proc.py']#とりあえず一緒
+    proc['camera'] = subprocess.Popen(
+        camera_cmd,
+        stdin = subprocess.PIPE,
+        stdout = subprocess.PIPE
+    )
 
-
+print("3")
+print("app:", proc['app'], "camera:", proc['camera'])
 # Main Motor
 if is_test:
     # 自動で前後左右動く
@@ -133,9 +138,11 @@ proc['sensor'] = subprocess.Popen(
 # ---- BEGIN request handler definition ----
 
 threads = {}
-# threads['sensor'] = SensorThread(proc['app'])
-# threads['motor'] = MotorThread(proc['app'])
-threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore)
+threads['sensor'] = SensorThread(proc['app'])
+threads['motor'] = MotorThread(proc['app'])
+# threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore)
+threads['camera'] = CameraThread(proc['app'], proc['camera'])
+threads['multi'] = MultiThread(proc['camera'])
 
 # Initialize
 __result = [t.start() for t in threads.values()]
@@ -145,13 +152,9 @@ print(__result)
 def func_voice(request):
     threads['voice'].run(request=request)
 
-# def func_camera(request):
-# 	threads['camera'] = camera_thread.CameraThread(
-# 		request,
-# 		proc['camera']
-# 	)
-# 	threads['camera'].start()
-
+def func_camera(request):
+    threads['camera'].run(request=request)
+    threads['multi'].run()
 
 def func_motor(request):
     threads['motor'].run(request=request)
@@ -159,7 +162,7 @@ def func_motor(request):
 
 def func_sensor(request):
     threads['sensor'].run(request=request)
-
+print("4")
 
 # ---- END request handler definition ----
 # アプリケーション作成時に，proc[app]に書き込まれたものを読み込んで実行
@@ -167,6 +170,7 @@ cnt = 0
 print("a")
 while True:
     proc['app'].stdout.flush()
+    log.communication('pre req:')
     raw_request = proc['app'].stdout.readline().decode("utf-8")
     try:
         request = json.loads(raw_request)
@@ -190,12 +194,13 @@ while True:
     # request['motor_cmd'] = voice_rep['motor_cmd']
     # motorに送る
     # proc['motor'].stdout.write(json.dumps(request))
+    print("5")
 
     if request['module'] == 'camera':
-        continue
-        # func_camera(request)
+        func_camera(request)
     elif request['module'] == 'voice':
-        func_voice(request)
+        continue
+        #func_voice(request)
     elif request['module'] == 'motor':
         #print("a")
         func_motor(request)

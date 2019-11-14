@@ -1,1 +1,14 @@
-[COMMUNICATION][2019/11/14 18:38:30] app_request:{'module': 'voice'}
+[COMMUNICATION][2019/11/14 22:23:01] client_req abgle check:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2019/11/14 22:24:22] client_req abgle check:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 22:27:25] pre req:
+[COMMUNICATION][2019/11/14 22:27:25] app_request:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 22:27:25] client_req abgle check:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2019/11/14 16:13:06] pre req:
+[COMMUNICATION][2019/11/14 16:13:06] app_request:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2019/11/14 16:13:06] client_req abgle check:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2019/11/14 16:13:38] pre req:
+[COMMUNICATION][2019/11/14 16:13:38] app_request:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 16:13:38] client_req abgle check:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 16:18:17] pre req:
+[COMMUNICATION][2019/11/14 16:18:17] app_request:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2019/11/14 16:18:17] client_req abgle check:{'cmd': 'check_angle', 'module': 'camera'}

@@ -67,6 +67,7 @@ def get_dist(callback):
         'module': 'sensor',
         'cmd': 'check_dist'
     }
+    log.communication('client_req abgle check:' + str(request))
     # json.dumpsはpipeにstdin.writeしているのと同じこと．
     print(json.dumps(request), flush=True)
     # lisnersの'sensor'のリストにcallback関数(アプリケーションファイルに書かれている)を追加する
@@ -80,6 +81,7 @@ def get_angle(callback):
     }
     print(json.dumps(request), flush=True)
     listeners['camera'].append(callback)
+    log.communication('client_req abgle check:' + str(request))
 
 # main motorを動かす
 # 1. 障害物との距離を渡し，速度を変更させる(制御は向こう)
@@ -94,7 +96,7 @@ def motor_dist_check(dist):
 
 
 # 2. 座標を渡し，角度を変更させる
-def motor_angle_check(x, y, callback):
+def motor_angle_check(x, y):
     request = {
         'module': 'motor',
         'cmd': 'check_angle',
@@ -102,7 +104,7 @@ def motor_angle_check(x, y, callback):
         'y': y
     }
     print(json.dumps(request), flush=True)
-    # callbacckはとりあえずなし
+    # callbackはとりあえずなし
 
 
 # 3. コマンドとして前後左右を指定し愚直に移動させる
@@ -113,7 +115,7 @@ def motor_move(direction):
         'direction': direction
     }
     print(json.dumps(request), flush=True)
-    # callbacckはとりあえずなし
+    # callbackはとりあえずなし
 
 def camera_SSD():
     request = {
