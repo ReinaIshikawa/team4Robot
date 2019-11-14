@@ -17,15 +17,18 @@ argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
     from Sensor.dist_stub import SensorStub as SensorThread
+    print("a")
     from Motor.motor_stub import MotorStub as MotorThread
-    from  Voice.voice_thread import VoiceThread as VoiceThread
+    from  Julius.voice_thread import VoiceThread as VoiceThread
     print('Runing in test mode')
 else:
     is_test = False
     from Sensor.dist_thread import DistThread as SensorThread
+    print("b")
     from Motor.motor_thread import MotorThread
-    from  Voice.voice_thread import VoiceThread as VoiceThread
-
+    print("b")
+    from  Julius.voice_thread import VoiceThread as VoiceThread
+print("a")
 proc = {}
 
 # request = {
@@ -130,8 +133,8 @@ proc['sensor'] = subprocess.Popen(
 # ---- BEGIN request handler definition ----
 
 threads = {}
-threads['sensor'] = SensorThread(proc['app'])
-threads['motor'] = MotorThread(proc['app'])
+# threads['sensor'] = SensorThread(proc['app'])
+# threads['motor'] = MotorThread(proc['app'])
 threads['voice'] = VoiceThread(proc['app'], exitCore)
 
 # Initialize
@@ -161,6 +164,7 @@ def func_sensor(request):
 # ---- END request handler definition ----
 # アプリケーション作成時に，proc[app]に書き込まれたものを読み込んで実行
 cnt = 0
+print("a")
 while True:
     proc['app'].stdout.flush()
     raw_request = proc['app'].stdout.readline().decode("utf-8")
@@ -192,6 +196,7 @@ while True:
     elif request['module'] == 'voice':
         func_voice(request)
     elif request['module'] == 'motor':
+        #print("a")
         func_motor(request)
     elif request['module'] == 'sensor':
         func_sensor(request)
