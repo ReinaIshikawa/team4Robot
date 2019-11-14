@@ -135,7 +135,7 @@ proc['sensor'] = subprocess.Popen(
 threads = {}
 # threads['sensor'] = SensorThread(proc['app'])
 # threads['motor'] = MotorThread(proc['app'])
-threads['voice'] = VoiceThread(proc['app'], exitCore)
+threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore)
 
 # Initialize
 __result = [t.start() for t in threads.values()]
@@ -171,6 +171,7 @@ while True:
     try:
         request = json.loads(raw_request)
         print('[{}] REQUEST:{}'.format(cnt, request))
+        log.communication('app_request:' + str(request))
         cnt += 1
     except ValueError:
         print('[{}] VALUE ERROR')

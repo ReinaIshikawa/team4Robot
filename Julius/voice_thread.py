@@ -2,16 +2,20 @@ import threading
 import json
 import time
 import socket
+from library import log
 
 #change host and port number
-host=1
-port=1
+host = '127.0.0.1' #localhost
+port = 10500   #julisuサーバーモードのポート
+
 class VoiceThread(threading.Thread):
 
-    def __init__(self, app, exitCore):
+    def __init__(self, app, voice, exitCore):
         super(VoiceThread, self).__init__()
         self.app = app
+        self.voice = voice
         self.exitCore = exitCore
+        self.cnt = 0
 
     def run(self, request=None):
         if not request:
@@ -127,6 +131,7 @@ class VoiceThread(threading.Thread):
                         data = ""
 
                         jsn = json.dumps({"response":response, "request":request})
+                        log.communication('voice_thread:' + str(response))
                         self.app.stdin.write((jsn + '\n').encode('utf-8'))
                         self.app.stdin.flush()
                         print('voice_thread->app: {}:{}'.format(response, request))
