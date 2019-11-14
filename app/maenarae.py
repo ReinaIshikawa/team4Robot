@@ -1,14 +1,9 @@
 import threading
 import client
+import Pursuit as import pu
+import time
 
-def face_listener(response):
-    # メインモータースレッドに距離を渡す
-    # 速度は向こうで制御してくれる
-    dist = response['dist']
-    client.motor_dist_check(dist)
-    # 再帰的に(繰り返し)処理をするため
-    # runの方にwhile文で書いてもいいかも
-    client.get_dist(dist_listener)
+
 
 
 class MainThread(threading.Thread):
@@ -16,8 +11,13 @@ class MainThread(threading.Thread):
         super(MainThread, self).__init__()
 
     def run(self):
-        client.get_dist(dist_listener)
-        client.get_dist(dist_)
+        pursuit=pu.MainThread()
+        pursuit.run()
+        print("Maenarae!")
+        client.get_attack(0,90)
+        print("Naore!")
+        time.sleep(3)
+        client.get_attack(90,0)
 
 
 # 実行
