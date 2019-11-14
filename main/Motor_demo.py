@@ -41,7 +41,7 @@ if __name__=="__main__":
                 right.Softstop()
                 left.Softstop()
                 right.Softhiz()
-                left.Softthiz()
+                left.Softhiz()
             time.sleep(1)
     else:
         print("w:forward d:right s:back a:left q:stop")
@@ -66,6 +66,6 @@ if __name__=="__main__":
             else:
                 right.Softstop()
                 left.Softstop()
-                right.Softthiz()
+                right.Softhiz()
                 left.Softhiz()
                 break
