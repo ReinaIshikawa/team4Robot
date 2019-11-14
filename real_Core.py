@@ -76,15 +76,17 @@ def exitCore():  # voice_thread
 # voice
 if is_test:
     voice_cmd = ['python3', '-u', './Julius/Voice_empty.py']
-if not is_test:
-    voice_cmd = ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-module']
-proc['voice'] = subprocess.Popen(
-    #["./Julius/julius_start.sh"],
-    voice_cmd,
-    stdout = subprocess.PIPE,
-    stdin = subprocess.PIPE,
-    # shell=True
+    proc['voice'] = subprocess.Popen(
+        #["./Julius/julius_start.sh"],
+        voice_cmd,
+        stdout = subprocess.PIPE,
+        stdin = subprocess.PIPE,
+        # shell=True
     )
+if not is_test:
+    pass
+    # voice_cmd = ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-input mic', '-module']
+    # proc['voice'] = subprocess.Popen(voice_cmd)
 
 # Camera
 if is_test:
@@ -106,7 +108,7 @@ time.sleep(5)
 # ---- BEGIN request handler definition ----
 
 threads = {}
-threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore, changeApp)
+threads['voice'] = VoiceThread(proc['app'], exitCore, changeApp)
 threads['camera'] = CameraThread(proc['app'], proc['camera'], log)
 threads['motor'] = MotorThread(proc['app'])
 threads['servo'] = ServoThread(proc['app'])
