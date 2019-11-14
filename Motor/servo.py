@@ -57,4 +57,19 @@ def main():
     except Exception as e:
         print(str(e))
 
+
+def rotate(start, end):
+    Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
+    
+    try:
+        if start > 0:
+            while True:
+                Servo0.SetPos(start)
+                Servo0.SetPos(end)
+    except KeyboardInterrupt:
+        print("\nCtl+C")
+    except Exception as e:
+        print(str(e))
+    
+
 main()
