@@ -6,7 +6,6 @@ import wiringpi as wp
 import time
 import struct
 class Motor():
-
     def Write(self,data, spi_id):
         data = struct.pack("B", data)
         print("b1")

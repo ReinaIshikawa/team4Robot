@@ -281,4 +281,4 @@ def MultiStick():
 
     glutMainLoop()
     
-MultiStick()
+#MultiStick()

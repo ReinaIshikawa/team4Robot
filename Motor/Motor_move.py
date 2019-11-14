@@ -5,6 +5,8 @@ import time
 import struct
 from .Motor import Motor
 import math
+from Camera import MultiStickSSD 
+
 
 class Motor_move(Motor):
     #PID制御
@@ -28,9 +30,12 @@ class Motor_move(Motor):
         else:
             return p+i+d
 
-    def Angle(self,x,y):
+    def Angle(self):
         ox=640
         oy=320
+        dis=MultiStickSSD()
+        x=dis(1)
+        y=dis(2)
         KP=500
         KI=10
         KD=10
@@ -52,3 +57,6 @@ class Motor_move(Motor):
                 return ans
             else:
                 return - 1 * ans
+
+
+#self.Angle()
