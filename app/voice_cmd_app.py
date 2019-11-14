@@ -6,7 +6,7 @@ class MainThread(threading.Thread):
         super(MainThread, self).__init__()
 
     def run(self):
-        client.voice_use()
+        client.voice_cmd()
 
 # 実行
 thread = MainThread()

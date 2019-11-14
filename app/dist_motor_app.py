@@ -27,7 +27,6 @@ class MainThread(threading.Thread):
 
     def run(self):
         client.get_dist(dist_listener)
-        client.get_dist(dist_)
 
 
 # 実行
