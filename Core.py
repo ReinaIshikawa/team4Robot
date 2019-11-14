@@ -12,7 +12,7 @@ from library import log
 # from Julius import voice_thread
 # from Sensor import dist_thread
 
-
+log.communication('Start')
 argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
@@ -76,20 +76,19 @@ if not is_test:
     #	shell=True
     # )
     '''
-print("2")    
 #Camera
 if is_test:#単純にカメラを立ち上げる
     camera_cmd = ['python3', '-u', './Camera/camera_proc.py']
 else:#カメラで画像認識をしたりする
-    camera_cmd = ['python3', '-u', './Camera/camera_proc.py']#とりあえず一緒
+    camera_cmd = ['python3', '-u', './Camera/Camera.py']#とりあえず一緒
     proc['camera'] = subprocess.Popen(
         camera_cmd,
         stdin = subprocess.PIPE,
         stdout = subprocess.PIPE
     )
 
-print("3")
-print("app:", proc['app'], "camera:", proc['camera'])
+log.communication('app: {}, camera: {}'.format(proc['app'], proc['camera']))
+
 # Main Motor
 if is_test:
     # 自動で前後左右動く
@@ -132,7 +131,8 @@ proc['sensor'] = subprocess.Popen(
     # encoding='utf8'
 )
 """
-# ---- END thread initialization ----
+time.sleep(5)
+# ---- END process initialization ----
 
 
 # ---- BEGIN request handler definition ----
@@ -141,9 +141,7 @@ threads = {}
 threads['sensor'] = SensorThread(proc['app'])
 threads['motor'] = MotorThread(proc['app'])
 # threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore)
-threads['camera'] = CameraThread(proc['app'], proc['camera'])
-threads['multi'] = MultiThread(proc['camera'])
-
+threads['camera'] = CameraThread(proc['app'], proc['camera'], log)
 # Initialize
 __result = [t.start() for t in threads.values()]
 print(__result)
@@ -154,7 +152,6 @@ def func_voice(request):
 
 def func_camera(request):
     threads['camera'].run(request=request)
-    threads['multi'].run()
 
 def func_motor(request):
     threads['motor'].run(request=request)
@@ -162,23 +159,22 @@ def func_motor(request):
 
 def func_sensor(request):
     threads['sensor'].run(request=request)
-print("4")
 
 # ---- END request handler definition ----
 # アプリケーション作成時に，proc[app]に書き込まれたものを読み込んで実行
 cnt = 0
-print("a")
+log.communication('Init complete')
 while True:
+    log.communication('While')
     proc['app'].stdout.flush()
     log.communication('pre req:')
     raw_request = proc['app'].stdout.readline().decode("utf-8")
     try:
         request = json.loads(raw_request)
-        print('[{}] REQUEST:{}'.format(cnt, request))
-        log.communication('app_request:' + str(request))
+        log.communication('[{}] REQUEST:{}'.format(cnt, request))
         cnt += 1
     except ValueError:
-        print('[{}] VALUE ERROR')
+        log.communication('[{}] VALUE ERROR')
         continue
 
     # センサーから毎秒距離を取得する
@@ -202,7 +198,6 @@ while True:
         continue
         #func_voice(request)
     elif request['module'] == 'motor':
-        #print("a")
         func_motor(request)
     elif request['module'] == 'sensor':
         func_sensor(request)

@@ -81,7 +81,7 @@ def get_angle(callback):
     }
     print(json.dumps(request), flush=True)
     listeners['camera'].append(callback)
-    log.communication('client_req abgle check:' + str(request))
+    log.communication('client_req angle check:' + str(request))
 
 # main motorを動かす
 # 1. 障害物との距離を渡し，速度を変更させる(制御は向こう)

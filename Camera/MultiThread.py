@@ -11,6 +11,7 @@ import cv2
 import queue
 from OpenGL.GLUT import *
 from OpenGL.GL import *
+import numpy as np
 
 class MultiThread(threading.Thread):
     def __init__(self, camera):
@@ -108,13 +109,13 @@ class MultiThread(threading.Thread):
                 if flag!=0:
                     response = {"x":sumbox[0],"y":sumbox[1]}
                     jsn = json.dumps({"response": response})
-                    self.app.stdin.write((jsn + '\n').encode('utf-8'))
-                    self.app.stdin.flush()
+                    self.camera.stdin.write(jsn + '\n')
+                    self.camera.stdin.flush()
                 else:
-                    response = {"x":-1,"y":sumbox-1}
+                    response = {"x":-1,"y":-1}
                     jsn = json.dumps({"response": response, 'request': request})
-                    self.app.stdin.write((jsn + '\n').encode('utf-8'))
-                    self.app.stdin.flush()
+                    self.camera.stdin.write(jsn + '\n')
+                    self.camera.stdin.flush()
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 h, w = img.shape[:2]
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
@@ -193,7 +194,7 @@ class MultiThread(threading.Thread):
                         not np.isfinite(object_info[base_index + 5]) or
                         not np.isfinite(object_info[base_index + 6])):
                         continue
-
+    
                     x1 = max(0, int(object_info[base_index + 3] * img_cp.shape[0]))
                     y1 = max(0, int(object_info[base_index + 4] * img_cp.shape[1]))
                     x2 = min(img_cp.shape[0], int(object_info[base_index + 5] * img_cp.shape[0]))
