@@ -200,3 +200,19 @@
 [COMMUNICATION][2019/11/14 18:17:40] dist_thread:52
 [COMMUNICATION][2019/11/14 18:17:41] dist_thread:52
 [COMMUNICATION][2019/11/14 18:17:42] dist_thread:52
+[COMMUNICATION][2019/11/14 19:01:33] client_data:{'response': {'dist': 26}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:33] client_data:{'response': {'dist': 28}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:34] client_data:{'response': {'dist': 28}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:35] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:36] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:37] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:37] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:38] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:33] dist_thread:26
+[COMMUNICATION][2019/11/14 19:01:33] dist_thread:28
+[COMMUNICATION][2019/11/14 19:01:34] dist_thread:28
+[COMMUNICATION][2019/11/14 19:01:35] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:36] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:37] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:37] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:38] dist_thread:27
