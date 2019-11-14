@@ -104,15 +104,16 @@ def camThread():
         res = results.get(False)
         flag,img,sumbox = overlay_on_image(img, res)
         if flag!=0:
-            response = {"x":sumbox[0],"y":sumbox[1]}
+            response = {"x":sumbox[0],"y":sumbox[1],"img":img.tolist()}
             jsn = json.dumps({"response": response})
             print(jsn,flush=True)
             log.communication('Human found!')
             # self.camera.stdin.write(jsn + '\n')
             # self.camera.stdin.flush()
         else:
-            response = {"x":-1,"y":-1}
-            jsn = json.dumps({"response": response, 'request': request})
+            response = {"x":-1,"y":-1,"img":img.tolist()}
+            # jsn = json.dumps({"response": response, 'request': request})
+            jsn = json.dumps({"response": response})
             print(jsn,flush=True)
             # self.camera.stdin.write(jsn + '\n')
             # self.camera.stdin.flush()

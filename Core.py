@@ -33,8 +33,8 @@ proc['app'] = subprocess.Popen(
     #['python3', '-u', './app/dist_motor_app.py'],
     #['python3', '-u', './app/voice_cmd_app.py'],
     #['python3', '-u', './app/Pursuit.py'],
-    #['python3', '-u', './app/music_app.py'],
-    ['python3', '-u', './app/voice_motor_app.py'],
+    ['python3', '-u', './app/music_app.py'],
+    #['python3', '-u', './app/voice_motor_app.py'],
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
     # encoding='utf8'

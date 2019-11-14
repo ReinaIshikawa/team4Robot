@@ -43,7 +43,7 @@ class MainThread(threading.Thread):
         super(MainThread, self).__init__()
         
     def run(self):
-        client.get_voice(voice_listener)
+        client.voice_cmd(voice_listener,'voice_to_music')
 
 thread = MainThread()
 client.startListener(thread)
