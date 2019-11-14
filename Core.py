@@ -40,7 +40,8 @@ proc = {}
 nullFile = open('/dev/null', 'w')
 
 proc['app'] = subprocess.Popen(
-    ['python3', '-u', './app/dist_motor_app.py'],
+    #['python3', '-u', './app/dist_motor_app.py'],
+    ['python3', '-u', './app/voice_cmd_app.py'],
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
     # encoding='utf8'
