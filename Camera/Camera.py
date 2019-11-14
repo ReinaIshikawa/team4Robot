@@ -32,7 +32,6 @@ for devnum in range(len(devices)):
     graphHandle.append(devHandle[devnum].AllocateGraph(graph))
     graphHandle[devnum].SetGraphOption(mvnc.GraphOption.ITERATIONS, 1)
     iterations = graphHandle[devnum].GetGraphOption(mvnc.GraphOption.ITERATIONS)
-
 log.communication("\nLoaded Graphs!!!")
 
 for i in range(10):
@@ -122,6 +121,7 @@ def camThread():
         h, w = img.shape[:2]
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
         lastresults = res
+        time.sleep(1)
     else:
         imdraw = overlay_on_image(img, lastresults)
         imdraw = cv2.cvtColor(imdraw, cv2.COLOR_BGR2RGB)

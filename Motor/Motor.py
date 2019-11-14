@@ -134,12 +134,12 @@ class Motor():
         print("***** SoftStop. *****")
         dir = 0xB0
         # コマンド（レジスタアドレス）送信。
-        self.Write(dir, spi_id)
+        self.Write(dir, self.id)
         time.sleep(1)
 
     def Softhiz(self):
         print("***** Softhiz. *****")
         dir = 0xA8
         # コマンド（レジスタアドレス）送信。
-        self.Write(dir, spi_id)
+        self.Write(dir, self.id)
         time.sleep(1)

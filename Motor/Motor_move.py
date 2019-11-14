@@ -47,13 +47,16 @@ class Motor_move(Motor):
         i=KI*self.integrald
         d=KD*sinx
         ans=20*(-p-i+d)
-        if p+i+d>30000:
-            spd=30000
-        elif p+i+d<-30000:
-            spd=-30000
+        if x>ox+50:
+            spd=2000
+            self.Run_setting(spd,self.id)
+            time.sleep(1)
+            self.Softstop()
+        elif x<ox-50:
+            spd=-2000
+            self.Run_setting(spd,self.id)
+            time.sleep(1)
+            self.Softstop()
         else:
-            if self.id==0:
-                spd=ans
-            else:
-                spd=- 1 * ans
-        self.Run_setting(spd,self.id)
+            self.Softstop()
+        time.sleep(1)
