@@ -8,17 +8,19 @@ import math
 
 class Motor_move(Motor):
     #PID制御
-    #目標までの距離を受け取り速度を出力する
+    #目標までの距離を受け取り速度を出力す
+    diffnew=0
+    
     def PID(self, dis):
         KP=200
         KI=10
         KD=10
-        self.diff.insert(0,self.diff(1))
-        self.diff.insert(1,dis)
-        self.integrald+=(self.diff(0)+self.diff(1))/2.0*self.delta
-        p=KP*self.diff(1)
+        self.diffold=self.diffnew
+        self.diffnew=dis
+        self.integrald+=(self.diffold+self.diffnew)/2.0*self.delta
+        p=KP*self.diffnew
         i=KI*self.integrald
-        d=KD*(self.diff(1)-self.diff(0))/self.delta
+        d=KD*(self.diffnew-self.diffold)/self.delta
         if p+i+d>30000:
             return 30000
         elif p+i+d<-30000:
@@ -34,10 +36,10 @@ class Motor_move(Motor):
         KD=10
         sinx=(x-ox)/math.sqrt((x-ox)*(x-ox)+(y-oy)*(y-oy))
         cosx=(x-ox)/math.sqrt((x-ox)*(x-ox)+(y-oy)*(y-oy))
-        self.diff.insert(0,self.diff(1))
-        self.diff.insert(1,cosx)
+        self.diffold=self.diffnew
+        self.diffnew=cosx
         self.integrald+=sinx
-        p=KP*self.diff(1)
+        p=KP*self.diffnew
         i=KI*self.integrald
         d=KD*sinx
         ans=20*(-p-i+d)

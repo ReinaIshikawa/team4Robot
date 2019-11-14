@@ -4,6 +4,7 @@ import subprocess
 import time
 import json
 import sys
+from library import log
 # from Sensor import dist_stub
 # from Camera import camera_thread
 # from Motor import motor_thread

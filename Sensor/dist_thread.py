@@ -4,6 +4,7 @@ import time
 import pigpio
 from Sensor.dist import main as dm
 import threading
+from library import log
 
 class DistThread(threading.Thread):
     def __init__(self, app):
@@ -13,6 +14,12 @@ class DistThread(threading.Thread):
     def run(self, request=None):
         if not request:
             return
-        response = {"dist" : dm}
-        print('motor_thread->motor: {}:{}'.format(response, request))
+        if(request['cmd'] == 'check_dist'):
+            distance = dm()
+            response = {"dist" : distance}
+            log.communication('dist_thread:' + str(distance))
+            jsn = json.dumps({"response": response, 'request': request})
+            self.app.stdin.write((jsn + '\n').encode('utf-8'))
+            self.app.stdin.flush()
+            print('dist_thread->dist: {}:{}'.format(response, request))
         #コールバック
