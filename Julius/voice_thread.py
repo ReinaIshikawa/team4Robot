@@ -17,6 +17,7 @@ class VoiceThread(threading.Thread):
         self.exitCore = exitCore
         self.cnt = 0
 
+        
     def send_response(response, request):
         jsn = json.dumps({"response":response, "request":request})
         log.communication('voice_thread:' + str(response))
@@ -25,6 +26,7 @@ class VoiceThread(threading.Thread):
         self.app.stdin.flush()
         print('voice_thread->app: {}:{}'.format(response, request))            
 
+        
     def run(self, request=None):
         if not request:
             return
