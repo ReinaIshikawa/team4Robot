@@ -126,7 +126,8 @@ class VoiceThread(threading.Thread):
                             time.sleep(15)
                             pygame.mixer.music.stop()
                             break
-
+                    
+                    """
                     elif strTemp == '洋楽':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
@@ -140,14 +141,15 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.music.stop()
                             break
 
+                    """
+
                     elif strTemp == '嵐':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'arashi'
                             self.send_response(response, request)
-
                             pygame.mixer.init()
-                            pygame.mixer.music.load("zankoku.mp3")
+                            pygame.mixer.music.load("arashi.mp3")
                             pygame.mixer.music.play(1)
                             time.sleep(15)
                             pygame.mixer.music.stop()
