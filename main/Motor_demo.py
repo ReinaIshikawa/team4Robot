@@ -38,11 +38,11 @@ if __name__=="__main__":
                     right.Run_back()
                     left.Run_back()
                     time.sleep(1)
-                self.Softstop()
-                self.Softthiz()
+                right.Softstop()
+                left.Softstop()
+                right.Softhiz()
+                left.Softthiz()
             time.sleep(1)
-        self.Softstop()
-        self.Softthiz()
     else:
         print("w:forward d:right s:back a:left q:stop")
         while True:
@@ -64,6 +64,8 @@ if __name__=="__main__":
                 left.Turn_left()
                 time.sleep(1)
             else:
-                self.Softstop()
-                self.Softthiz()
+                right.Softstop()
+                left.Softstop()
+                right.Softthiz()
+                left.Softhiz()
                 break

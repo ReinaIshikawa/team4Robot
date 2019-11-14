@@ -40,6 +40,8 @@ def main():
    
    if abs(dist2-dist1)<30:
       return dist1
+   else:
+      return 0
 
 """
 while True:

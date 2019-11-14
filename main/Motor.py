@@ -9,10 +9,10 @@ class Motor():
     
     def Write(self,data, spi_id):
         data = struct.pack("B", data)
-        print("b1")
-        print(data)
+        #print("b1")
+        #print(data)
         wp.wiringPiSPIDataRW(spi_id, data)
-        print("b2")
+        #print("b2")
     
 
     def __init__(self,spi_id,spd):
@@ -20,7 +20,7 @@ class Motor():
         self.angl=0
         self.integrald=0
         self.integrala=0
-        self.delta=0.001 #時間差
+        self.delta=1 #時間差
         self.speed=spd
         self.id=spi_id
         L6470_SPI_SPEED     = 1000000
@@ -100,7 +100,7 @@ class Motor():
         self.Write(spd_l, spi_id)
 
     def Run_forward(self):
-        print('runboth {}'.format(self.speed))
+        #print('runboth {}'.format(self.speed))
         if self.id==0:
             self.Run_setting(self.speed,0)
         else:
@@ -108,7 +108,7 @@ class Motor():
             self.Run_setting(tmpspd, 1)
 
     def Run_back(self):
-        print('runboth {}'.format(self.speed))
+        #print('runboth {}'.format(self.speed))
         if self.id==0:
             tmpspd=(-1)*self.speed
             self.Run_setting(tmpspd, 0)
@@ -116,14 +116,14 @@ class Motor():
             self.Run_setting(self.speed, 1)
 
     def Turn_right(self):
-        print('runboth {}'.format(self.speed))
+        #print('runboth {}'.format(self.speed))
         if self.id==0:
             self.Run_setting(self.speed, 0)
         else:
             self.Run_setting(0, 1)    
 
     def Turn_left(self):
-        print('runboth {}'.format(self.speed))
+        #print('runboth {}'.format(self.speed))
         if self.id==0:
             self.Run_setting(0, 0)
         else:
