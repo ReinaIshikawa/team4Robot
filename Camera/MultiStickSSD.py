@@ -1,3 +1,4 @@
+"""
 import sys
 graph_folder="./"
 if sys.version_info.major < 3 or sys.version_info.minor < 4:
@@ -149,7 +150,7 @@ def MultiStick():
 
     def inferencer(results, lock, frameBuffer, handle):
         failure = 0
-        sleep(5)
+        #sleep(5)
         while failure < 100:
 
             lock.acquire()
@@ -219,7 +220,7 @@ def MultiStick():
                   #   'Confidence: ' + str(object_info[base_index + 2]*100) + '%  ' +
                  #     'Top Left: (' + x1_ + ', ' + y1_ + ')  Bottom Right: (' + x2_ + ', ' + y2_ + ')')
 
-                object_info_overlay = object_info[base_index:base_index + 7]
+"""                object_info_overlay = object_info[base_index:base_index + 7]
 
                 min_score_percent = 10
                 source_image_width = img_cp.shape[1]
@@ -252,7 +253,7 @@ def MultiStick():
                 label_right = label_left + label_size[0]
                 label_bottom = label_top + label_size[1]
                 cv2.rectangle(img_cp, (label_left - 1, label_top - 1), (label_right + 1, label_bottom + 1), label_background_color, -1)
-                cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)
+                cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)"""
         if sumbox==[0,0]:
             return 0,img_cp
         else:
@@ -282,3 +283,4 @@ def MultiStick():
     glutMainLoop()
     
 MultiStick()
+"""

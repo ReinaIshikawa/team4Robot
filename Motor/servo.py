@@ -30,11 +30,12 @@ class servo_Class:
         self.pwm.set_pwm(self.Channel,0,pulse)
 
 
-    def rotate(start, end):
+    def rotate(self, start, end):
         # Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
         try:
             if start > 0:
                 while True:
+                    print("in rotate")
                     self.SetPos(start)
                     time.sleep(2)
                     self.SetPos(end)

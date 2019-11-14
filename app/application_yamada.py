@@ -1,6 +1,8 @@
 import threading
 import client
 from library import log
+import cv2
+import requests
 
 def pursuit_listener1(response):
     # メインモータースレッドに距離を渡す
@@ -21,6 +23,7 @@ def pursuit_listener2(response):
     log.communication("test_yamada")
     log.communication(str(x)+":"+str(y))
     if x>0:
+        #print("--------")
         log.communication("app_yamada_listener2")
         client.motor_angle_check(x,y)
         client.get_angle(pursuit_listener2)
@@ -37,25 +40,29 @@ def PythonNotify(message, *args):
         requests.post(line_notify_api, data=payload, headers=headers)
     else:
         # 画像
-        files = {"imageFile": open(args[0], "rb")}
+        files = {"imageFile": open("example.jpg", "rb")}
         requests.post(line_notify_api, data=payload, headers=headers, files=files)
 
 def picture():
+    log.communication("picture")
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
-    #cv2.imwrite("LennaG.png",img)
+    frame=cv2.imread('example.jpg')
+    message="ok"
     PythonNotify(message, frame)
 
 
 class MainThread(threading.Thread):
     def __init__(self):
         super(MainThread, self).__init__()
-
     def run(self):
         client.get_angle(pursuit_listener2)
+        #print("-----")
+        log.communication("finishgetangle")
         #client.get_dist(dist_listener1)
         #picture()
         client.app_yamada()
+        picture()
 
 
 # 実行

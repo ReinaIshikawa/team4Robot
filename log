@@ -1,4 +1,0 @@
-[COMMUNICATION][2019/11/14 18:37:55] Start
-[COMMUNICATION][2019/11/14 18:38:12] Start
-[COMMUNICATION][2019/11/14 18:38:18] Init complete
-[COMMUNICATION][2019/11/14 18:38:18] [0] REQUEST:{'cmd': 'swing', 'g_angle': 160, 's_angle': 20, 'module': 'servo'}

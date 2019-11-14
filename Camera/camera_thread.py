@@ -31,7 +31,7 @@ class CameraThread(threading.Thread):
             #response={"x":-1,"y":-1}
             #if not (msg["x"]  == -1):
             response = {"x":msg["x"],"y":msg["y"]}
-#            self.log.communication(response)
+#           self.log.communication(response)
             jsn = json.dumps({"response": response, "request": request})
             self.log.communication('recieved')
             self.app.stdin.write((jsn + '\n').encode('utf-8'))
@@ -44,9 +44,9 @@ class CameraThread(threading.Thread):
             self.log.communication('[CameraThread] dump {}'.format(msg))
             # print(msg)
             msg=msg['response']
-#            self.log.communication("msg.{}".format(msg))
+#           self.log.communication("msg.{}".format(msg))
+            self.communication("here here here hrere")
             cv2.imwrite("example.jpg",np.array(msg["img"]))
-          #  if not (msg["x"]  == -1):
             response = {"x":msg["x"],"y":msg["y"]}
             
             jsn = json.dumps({"response": response, "request": request})

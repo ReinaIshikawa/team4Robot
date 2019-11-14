@@ -43,8 +43,8 @@ for i in range(10):
     else:
         break
     
-windowWidth = 1280
-windowHeight = 640
+windowWidth = 640
+windowHeight = 320
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, windowWidth)
 cam.set(cv2.CAP_PROP_FRAME_HEIGHT, windowHeight)
 
@@ -106,17 +106,17 @@ def camThread():
         if flag!=0:
             response = {"x":sumbox[0],"y":sumbox[1],"img":img.tolist()}
             jsn = json.dumps({"response": response})
-            print(jsn,flush=True)
+            #print(jsn,flush=True)
             log.communication('Human found!')
-            # self.camera.stdin.write(jsn + '\n')
-            # self.camera.stdin.flush()
+            #self.camera.stdin.write(jsn + '\n')
+            #self.camera.stdin.flush()
         else:
             response = {"x":-1,"y":-1,"img":img.tolist()}
             # jsn = json.dumps({"response": response, 'request': request})
             jsn = json.dumps({"response": response})
-            print(jsn,flush=True)
-            # self.camera.stdin.write(jsn + '\n')
-            # self.camera.stdin.flush()
+            #print(jsn,flush=True)
+            #self.camera.stdin.write(jsn + '\n')
+            #self.camera.stdin.flush()
             log.communication('Human not found!')
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         h, w = img.shape[:2]
@@ -149,7 +149,7 @@ def camThread():
 
 def inferencer(results, lock, frameBuffer, handle):
     failure = 0
-    time.sleep(5)
+    time.sleep(3)
     while failure < 100:
         lock.acquire()
         if len(frameBuffer) == 0:
@@ -212,8 +212,7 @@ def overlay_on_image(display_image, object_info):
         # log.communication('box at index: ' + str(box_index) + ' : ClassID: ' + LABELS[int(object_info[base_index + 1])] + '  '
             #   'Confidence: ' + str(object_info[base_index + 2]*100) + '%  ' +
             #     'Top Left: (' + x1_ + ', ' + y1_ + ')  Bottom Right: (' + x2_ + ', ' + y2_ + ')')
-
-            object_info_overlay = object_info[base_index:base_index + 7]
+            """object_info_overlay = object_info[base_index:base_index + 7]
 
             min_score_percent = 10
             source_image_width = img_cp.shape[1]
@@ -246,7 +245,7 @@ def overlay_on_image(display_image, object_info):
             label_right = label_left + label_size[0]
             label_bottom = label_top + label_size[1]
             cv2.rectangle(img_cp, (label_left - 1, label_top - 1), (label_right + 1, label_bottom + 1), label_background_color, -1)
-            cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)
+            cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)"""
     if sumbox==[0,0]:
         return 0,img_cp,sumbox
     else:
