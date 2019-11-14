@@ -36,7 +36,7 @@ def main():
         while True:
             print('45')
             Servo0.SetPos(45)
-            """            
+            """
             time.sleep(2)
             Servo1.SetPos(45)
             time.sleep(2)
