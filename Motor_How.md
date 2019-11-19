@@ -13,7 +13,7 @@
 ここでは主にラズパイとモータの直接的なやり取りを担当  
 できるだけいじりたくないパラメータについてもここに置いている．
 ~~いじる気を無くすのが目的~~  
-``` Python: Motor.py
+``` Python:Motor.py
     def Run_setting(self,tmpspd,spi_id):
         #print('runboth {}'.format(tmpspd))
         # 方向検出。
