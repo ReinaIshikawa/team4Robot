@@ -1,18 +1,20 @@
-import requests
+# import requests
 import json
 import sys
 import time
 import wiringpi as wp
 import struct
-from Motor import Motor
+import Motor
 import Motor_move as Mmove
+import threading
 
 class MotorThread(threading.Thread):
-	def _init_(self, request, motor):
+	def _init_(self, request, motor, app):
 		super(MotorThread, self)._init_()
 		self.request = request
 		self.motor = motor
 		self.speed = 20000
+		self.app = app
 
 	def run(self):
 		right = Motor_move(0, speed)
@@ -44,7 +46,6 @@ class MotorThread(threading.Thread):
 				left.Softstop()
 				right.Softhiz()
 				left.Softhiz()
-				self.request['cmd'] = 'stay':
 
 			elif self.request['cmd'] == 'stay':
 				continue
