@@ -15,8 +15,8 @@ class DistThread(threading.Thread):
 	def run(self):
 		while True:
 			#コールバック
-			#response = {"dist" : dist.main()}
-			response = {"dist" :100}
+			response = {"dist" : dist.main()}
+			# response = {"dist" :100}
 			self.app.stdin.write(json.dumps({
 				"response": response, "request": self.request
 			}) + '\n')

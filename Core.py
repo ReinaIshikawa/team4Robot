@@ -4,6 +4,7 @@ import subprocess
 import time
 import json
 import sys
+import struct
 
 # from Camera import camera_thread
 # from Motor import motor_thread
@@ -21,21 +22,29 @@ else:
 
 proc = {}
 
-proc['app'] = subprocess.Popen(
-    ['python', '-u', './app/dist_motor_app.py'],
-    stdin = subprocess.PIPE,
-    stdout = subprocess.PIPE
-)
+# request = {
+# 	'module':'sensor',
+# 	'cmd':'check_dist'
+# }
+# #json.dumpsはpipeにstdin.writeしているのと同じこと．
+# print (json.dumps(request))
+
 
 #アプリの実行と終了
 nullFile = open('/dev/null', 'w')
 
+proc['app'] = subprocess.Popen(
+	['python3', '-u', './app/dist_motor_app.py'],
+	stdin = subprocess.PIPE,
+	stdout=subprocess.PIPE
+)
+
 def exitCore():#voice_threadで使用
-    app = proc.pop('app')
-    for process in proc.values():
-        process.terminate()
-    app.terminate()
-    sys.exit()
+	app = proc.pop('app')
+	for process in proc.values():
+		process.terminate()
+	app.terminate()
+	sys.exit()
 
 # if not is_test:
 	# proc['julius'] = subprocess.Popen(
@@ -65,22 +74,22 @@ def exitCore():#voice_threadで使用
 if (is_test):
 	#自動で前後左右動く
 	motor_cmd = ['python3', '-u', './Motor/motor_stub.py']
-else:
-	#音声入力に応じて実行させたりする
-	motor_cmd = ['python3', '-u', './Motor/motor_thread.py']
+# else:
+# 	#音声入力に応じて実行させたりする
+# 	motor_cmd = ['python3', '-u', './Motor/motor_thread.py']
 proc['motor'] = subprocess.Popen(
 	motor_cmd,
 	stdin = subprocess.PIPE,
-	stdout = subprocess.PIPE
+	stdout=subprocess.PIPE
 )
 
 # #Servo Motor
 # if is_test:#自動でくるくる動く
 # 	servo_cmd = ['python3', '-u', './Motor/servo.py']
 # else:#指示を受けて動く
-# 	motor_cmd = ['python3', '-u', './Motor/servo_thread.py']
+# 	servo_cmd = ['python3', '-u', './Motor/servo_thread.py']
 # proc['servo'] = subprocess.Popen(
-# 	motor_cmd,
+# 	servo_cmd,
 # 	stdin = subprocess.PIPE,
 # 	stdout = subprocess.PIPE
 # )
@@ -88,20 +97,22 @@ proc['motor'] = subprocess.Popen(
 #Distance Sensor
 if is_test:
 	#自動で距離を測って出力
-	servo_cmd = ['python3', '-u', './Sensor/dist_stub.py']
-else:
-	#motorとかと連動
-	motor_cmd = ['python3', '-u', './Sensor/dist_thread.py']
+	sensor_cmd = ['python3', '-u', './Sensor/dist_stub.py']
+# else:
+# 	#motorとかと連動
+# 	motor_cmd = ['python3', '-u', './Sensor/dist_thread.py']
 proc['dist'] = subprocess.Popen(
-	motor_cmd,
+	sensor_cmd,
 	stdin = subprocess.PIPE,
-	stdout = subprocess.PIPE
+	stdout=subprocess.PIPE
 )
+
+
 
 #他のファイルからの呼び出し?
 threads = {}
 
-#複数のスレッドを実行する時には，
+# 複数のスレッドを実行する時には，
 # threads['']=...
 # threads[''].start()
 
@@ -122,16 +133,16 @@ threads = {}
 # 	)
 # 	threads['camera'].start()
 
-def func_motor(request):
-	motor_cmd == request["cmd"]
-	if motor_cmd == "front" or motor_cmd == "back" or motor_cmd == "right" or motor_cmd == "left":
-		proc["motor"].stdin.write(motor_cmd + '\n')
-	thread = motor_thread.MotorThread(
-		request,
-		#コマンドを渡す用の辞書(参照渡し)
-		proc['motor']
-	)
-	threads['mortor'].start()
+# def func_motor(request):
+# 	motor_cmd == request["cmd"]
+# 	if motor_cmd == "front" or motor_cmd == "back" or motor_cmd == "right" or motor_cmd == "left":
+# 		proc["motor"].stdin.write(motor_cmd + '\n')
+# 	thread = motor_thread.MotorThread(
+# 		request,
+# 		#コマンドを渡す用の辞書(参照渡し)
+# 		proc['motor']
+# 	)
+# 	threads['mortor'].start()
 
 # def func_servo(request):
 # 	threads['servo'] = servo_thread.ServoThread(
@@ -139,13 +150,13 @@ def func_motor(request):
 # 		request['servo']
 # 	)
 
-def func_sensor(request):
-	threads['sensor'] = dist_thread.DistThread(
-		request,
-		#センサの値を書き込んでく辞書
-		proc['sensor']
-	)
-	threads['sensor'].start()
+# def func_sensor(request):
+# 	threads['sensor'] = dist_thread.DistThread(
+# 		request,
+# 		#センサの値を書き込んでく辞書
+# 		proc['sensor']
+# 	)
+# 	threads['sensor'].start()
 
 #voice threadの呼び出し
 #fnuc_voice()

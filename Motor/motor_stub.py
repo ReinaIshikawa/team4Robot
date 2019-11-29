@@ -6,7 +6,7 @@ import time
 import struct
 # from Motor import Motor
 # import Motor_move as Mmove
-import threading
+# import threading
 
 
 #テスト用ファイル
@@ -69,16 +69,21 @@ def Move(direction):
 	elif (direction == 'stay'):
 		time.sleep(1)
 
+
 while True:
-	request = json.load(input())
-	cmd = request['cmd']
-	if (cmd == 'check_dist'):
-		dist = PID(request['dist'])
-	elif (cmd == 'check_angle'):
-		angle = Angle(request['x'], reequest['y'])
-	elif (cmd == 'move'):
-		Move(request['direction'])
-	time.sleep(1)
+	try:
+		request = json.loads(input())
+		cmd = request['cmd']
+		if (cmd == 'check_dist'):
+			dist = PID(request['dist'])
+		elif (cmd == 'check_angle'):
+			angle = Angle(request['x'], reequest['y'])
+		elif (cmd == 'move'):
+			Move(request['direction'])
+	except EOFError:
+		pass
+	# time.sleep(0.1)
+
 
 
 

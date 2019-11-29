@@ -1,5 +1,9 @@
 import threading
 import client
+import json
+import sys
+# from signal import signal, SIGPIPE, SIG_DFL
+# signal(SIGPIPE,SIG_DFL)
 #distスレッドから距離をとって，
 #近すぎたらモータースレッドにストップの指示をだすapplication
 
