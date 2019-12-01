@@ -82,7 +82,7 @@ while True:
 			Move(request['direction'])
 	except EOFError:
 		pass
-	# time.sleep(0.1)
+	time.sleep(0.1)
 
 
 

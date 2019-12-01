@@ -4,8 +4,6 @@ import subprocess
 import time
 import json
 import sys
-import struct
-
 # from Camera import camera_thread
 # from Motor import motor_thread
 # from Motor import servo_thread
@@ -16,6 +14,7 @@ import struct
 argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
+    print('Runing in test mode')
 else:
     is_test = False
 
@@ -35,7 +34,8 @@ nullFile = open('/dev/null', 'w')
 proc['app'] = subprocess.Popen(
     ['python3', '-u', './app/dist_motor_app.py'],
     stdin=subprocess.PIPE,
-    stdout=subprocess.PIPE
+    stdout=subprocess.PIPE,
+    encoding='utf8'
 )
 
 
@@ -74,15 +74,16 @@ def exitCore():  # voice_threadで使用
 # Main Motor
 if is_test:
     # 自動で前後左右動く
-    motor_cmd = ['python3', '-u', './Motor/motor_stub.py']
-# else:
-# 	#音声入力に応じて実行させたりする
-# 	motor_cmd = ['python3', '-u', './Motor/motor_thread.py']
-    proc['motor'] = subprocess.Popen(
-        motor_cmd,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE
-    )
+    motor = ['python3', '-u', './Motor/motor_stub.py']
+else:
+    # 音声入力に応じて実行させたりする
+    motor = ['python3', '-u', './Motor/motor_thread.py']
+proc['motor'] = subprocess.Popen(
+    motor,
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    encoding='utf8'
+)
 
 # #Servo Motor
 # if is_test:#自動でくるくる動く
@@ -98,17 +99,21 @@ if is_test:
 # Distance Sensor
 if is_test:
     # 自動で距離を測って出力
-    sensor_cmd = ['python3', '-u', './Sensor/dist_stub.py']
-# else:
-# 	#motorとかと連動
-# 	motor_cmd = ['python3', '-u', './Sensor/dist_thread.py']
-    proc['dist'] = subprocess.Popen(
-        sensor_cmd,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE
-    )
+    sensor = ['python3', '-u', './Sensor/dist_stub.py']
+else:
+    # motorとかと連動
+    sensor = ['python3', '-u', './Sensor/dist_thread.py']
+proc['sensor'] = subprocess.Popen(
+    sensor,
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    encoding='utf8'
+)
+
+# ---- END thread initialization ----
 
 
+# ---- BEGIN request handler definition ----
 # 他のファイルからの呼び出し?
 threads = {}
 
@@ -133,66 +138,73 @@ threads = {}
 # 	)
 # 	threads['camera'].start()
 
-# def func_motor(request):
-# 	motor_cmd == request["cmd"]
-# 	if motor_cmd == "front" or motor_cmd == "back" or motor_cmd == "right" or motor_cmd == "left":
-# 		proc["motor"].stdin.write(motor_cmd + '\n')
-# 	thread = motor_thread.MotorThread(
-# 		request,
-# 		#コマンドを渡す用の辞書(参照渡し)
-# 		proc['motor']
-# 	)
-# 	threads['mortor'].start()
 
+def func_motor(request):
+    '''Sends motor command to the motor subprocess.'''
+    request = json.dumps(request)
+    print('Sending {}'.format(request))
+
+    motor_cmd = request["cmd"]
+    proc['motor'].stdin.write(motor_cmd + '\n')
+    proc['motor'].stdin.flush()
+
+
+def func_sensor(request):
+    request = json.dumps(request)
+    print('Sending {}'.format(request))
+    proc['sensor'].stdin.write(request + '\n')
+    proc['sensor'].stdin.flush()
+    print('Done')
 # def func_servo(request):
 # 	threads['servo'] = servo_thread.ServoThread(
 # 		request,
 # 		request['servo']
 # 	)
 
-# def func_sensor(request):
-# 	threads['sensor'] = dist_thread.DistThread(
-# 		request,
-# 		#センサの値を書き込んでく辞書
-# 		proc['sensor']
-# 	)
-# 	threads['sensor'].start()
 
 # voice threadの呼び出し
 # fnuc_voice()
+# ---- END request handler definition ----
+
 
 # アプリケーション作成時に，proc[app]に書き込まれたものを読み込んで実行
-'''
+cnt = 0
 while True:
+    proc['app'].stdout.flush()
     raw_request = proc['app'].stdout.readline()
     try:
-    	request = json.loads(raw_request)
+        request = json.loads(raw_request)
+        print('[{}] REQUEST:{}'.format(cnt, request))
+        cnt += 1
     except ValueError:
-    continue
-    
-    センサーから毎秒距離を取得する
-    音声からは毎秒コマンドを
-    →Motorに送る
-    
-    #センサーからは数字のみを渡す
-    sensor_rep = json.loads(proc['sensor'].stdout.readline())
-    request['dist'] = sensor_rep['dist']
-    #voiceからはいろんなコマンドが送られる
+        print('[{}] VALUE ERROR')
+        continue
+
+    # センサーから毎秒距離を取得する
+    # 音声からは毎秒コマンドを
+    # →Motorに送る
+
+    # センサーからは数字のみを渡す
+    # sensor_rep = json.loads(proc['sensor'].stdout.readline())
+    # request['dist'] = sensor_rep['dist']
+    # voiceからはいろんなコマンドが送られる
     # →requestと同じ辞書形式で(コピーを渡してそこに書き込み,)jsonに書き込み
-    voice_rep = json.loads(proc['voice'].stdout.readline())
-    request['motor_cmd'] = voice_rep['motor_cmd']
-    #motorに送る
-    proc['motor'].stdout.write(json.dumps(request))
-    
+    # voice_rep = json.loads(proc['voice'].stdout.readline())
+    # request['motor_cmd'] = voice_rep['motor_cmd']
+    # motorに送る
+    # proc['motor'].stdout.write(json.dumps(request))
+
     if request['module'] == 'camera':
-    	func_camera(request)
+        continue
+        # func_camera(request)
     elif request['module'] == 'voice':
-    	func_voice(request)
+        continue
+        # func_voice(request)
     elif request['module'] == 'motor':
-    	func_motor(request)
+        func_motor(request)
     elif request['module'] == 'sensor':
-    	func_sensor(request)
+        func_sensor(request)
     elif request['module'] == 'quit':
-	time.sleep(3)
-	break
-'''
+        # TODO: call destructor
+        time.sleep(3)
+        exitCore()

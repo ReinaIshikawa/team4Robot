@@ -9,8 +9,6 @@ import client
 
 # callback関数
 # responseはdistからのresponseが入る
-
-
 def dist_listener(response):
     # メインモータースレッドに距離を渡す
     # 速度は向こうで制御してくれる
