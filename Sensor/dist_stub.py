@@ -9,13 +9,13 @@ class SensorStub(threading.Thread):
         self.app = app
         self.cnt = 0
 
-    def run(self, request):
+    def run(self, request=None):
         if not request:
             return
-        request = json.loads(request)
         response = {'dist': str(self.cnt)}
         self.cnt += 1
         if(request['cmd'] == 'check_dist'):
-            self.app.stdin.write(
-                json.dumps({"response": response, 'request': request}) + '\n'
-            )
+            jsn = json.dumps({"response": response, 'request': request})
+            self.app.stdin.write(jsn + '\n')
+            self.app.stdin.flush()
+            print('sensor_thread->app: {}'.format(jsn))

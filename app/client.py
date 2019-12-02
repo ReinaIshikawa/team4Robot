@@ -1,6 +1,5 @@
 import json
 import threading
-import sys
 
 # 全ての動作の上に君臨するスクリプト
 # applicationから呼び出され，pipe.stdinを通してsubprocessに命令をだす
@@ -96,7 +95,7 @@ def motor_angle_check(x, y, callback):
 
 
 # 3. コマンドとして前後左右を指定し愚直に移動させる
-def motor_move(direction, callback):
+def motor_move(direction):
     request = {
         'module': 'motor',
         'cmd': 'move',

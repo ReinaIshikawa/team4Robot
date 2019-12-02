@@ -1,4 +1,3 @@
-import json
 import threading
 # import time
 
@@ -10,8 +9,8 @@ class MotorStub(threading.Thread):
         self.app = app
         self.cnt = 0
 
-    def run(self, request):
+    def run(self, request=None):
         if not request:
             return
-        print('{}:{}'.format(self.cnt, request))
+        print('motor_thread->motor: {}:{}'.format(self.cnt, request))
         self.cnt += 1

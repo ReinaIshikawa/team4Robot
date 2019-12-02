@@ -121,12 +121,12 @@ proc['sensor'] = subprocess.Popen(
 # ---- BEGIN request handler definition ----
 # 他のファイルからの呼び出し?
 threads = {}
-threads['sensor'] = SensorThread(proc['app']).start()
-threads['motor'] = MotorThread(proc['app']).start()
+threads['sensor'] = SensorThread(proc['app'])
+threads['motor'] = MotorThread(proc['app'])
 
 # Initialize
-# __result = [t.start() for t in threads.values()]
-# print(__result)
+__result = [t.start() for t in threads.values()]
+print(__result)
 
 # とりあえず
 
