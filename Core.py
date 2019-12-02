@@ -4,6 +4,7 @@ import subprocess
 import time
 import json
 import sys
+# from Sensor import dist_stub
 # from Camera import camera_thread
 # from Motor import motor_thread
 # from Motor import servo_thread
@@ -14,9 +15,13 @@ import sys
 argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
+    from Sensor.dist_stub import SensorStub as SensorThread
+    from Motor.motor_stub import MotorStub as MotorThread
     print('Runing in test mode')
 else:
     is_test = False
+    from Sensor.sensor_thread import SensorThread
+    from Motor.motor_thread import MotorThread
 
 proc = {}
 
@@ -116,10 +121,12 @@ proc['sensor'] = subprocess.Popen(
 # ---- BEGIN request handler definition ----
 # 他のファイルからの呼び出し?
 threads = {}
+threads['sensor'] = SensorThread(proc['app']).start()
+threads['motor'] = MotorThread(proc['app']).start()
 
-# 複数のスレッドを実行する時には，
-# threads['']=...
-# threads[''].start()
+# Initialize
+# __result = [t.start() for t in threads.values()]
+# print(__result)
 
 # とりあえず
 
@@ -140,33 +147,14 @@ threads = {}
 
 
 def func_motor(request):
-    '''Sends motor command to the motor subprocess.'''
-    request = json.dumps(request)
-    print('Sending {}'.format(request))
-
-    motor_cmd = request["cmd"]
-    proc['motor'].stdin.write(motor_cmd + '\n')
-    proc['motor'].stdin.flush()
+    threads['motor'].run(request=request)
 
 
 def func_sensor(request):
-    request = json.dumps(request)
-    print('Sending {}'.format(request))
-    proc['sensor'].stdin.write(request + '\n')
-    proc['sensor'].stdin.flush()
-    print('Done')
-# def func_servo(request):
-# 	threads['servo'] = servo_thread.ServoThread(
-# 		request,
-# 		request['servo']
-# 	)
+    threads['sensor'].run(request=request)
 
 
-# voice threadの呼び出し
-# fnuc_voice()
 # ---- END request handler definition ----
-
-
 # アプリケーション作成時に，proc[app]に書き込まれたものを読み込んで実行
 cnt = 0
 while True:
