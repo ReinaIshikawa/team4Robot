@@ -11,7 +11,7 @@ import sys
 # from Julius import voice_thread
 # from Sensor import dist_thread
 
-# コマンドライン入力で引数でtestと入力すると，testモードになってstubが自動実行される
+
 argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
