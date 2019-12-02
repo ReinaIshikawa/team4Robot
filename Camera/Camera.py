@@ -5,7 +5,7 @@ import face_detection as fd
 
 
 def get_image():
-    camera_id=0
+    camera_id=1
     delay=1
     window_name='frame'
 
@@ -15,10 +15,8 @@ def get_image():
         sys.exit()
 
     while True:
-
-        #time.sleep(3)
         ret,frame=cap.read()
-        frame=fd.face_detection(frame)
+        #frame=fd.face_detection(frame)
         cv2.imshow(window_name,frame)
         if cv2.waitKey(delay)&0xFF==ord('q'):
             break
