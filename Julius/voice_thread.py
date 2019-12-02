@@ -53,7 +53,7 @@ class VoiceThread(threading.Thread):
 								if killword != "前":
 								print("Result: " + strTemp
 								#request['module'] = 'motor'
-								request['cmd'] = 'front'
+								request['motor_cmd'] = 'front'
 								print ("<<<please speak>>>")
 								killword = "前"
 
@@ -61,7 +61,7 @@ class VoiceThread(threading.Thread):
 							if killword != "後ろ":
 								print("Result: " + strTemp)
 								#request['module'] = 'motor'
-								request['cmd'] = 'back'
+								request['motor_cmd'] = 'back'
 								print("<<<please speak>>>")
 								killword = "後ろ"
 
@@ -69,7 +69,7 @@ class VoiceThread(threading.Thread):
 							if killword != "右":
 								print("Result: " + strTemp)
 								#request['module'] = 'motor'
-								request['cmd'] = 'right'
+								request['motor_cmd'] = 'right'
 								print ("<<<please speak>>>")
 								killword = "右"
 
@@ -77,21 +77,21 @@ class VoiceThread(threading.Thread):
 							if killword != "左":
 								print("Result: " + strTemp)
 								#request['module'] = 'motor'
-								request['cmd'] = 'left'
+								request['motor_cmd'] = 'left'
 								print ("<<<please speak>>>")
 								killword = "左"
 
 						elif strTemp == 'とまれ':
 							if killword != "とまれ":
 								print("Result: " + strTemp)
-								request['cmd'] = 'stop'
+								request['motor_cmd'] = 'stop'
 								print ("<<<please speak>>>")
 								killword = "とまれ"
 
 						elif strTemp == 'ストップ':
 							if killword != "ストップ":
 								print("Result: " + strTemp)
-								request['cmd'] = 'stop'
+								request['motor_cmd'] = 'stop'
 								print ("<<<please speak>>>")
 								killword = "ストップ"
 
@@ -123,6 +123,8 @@ class VoiceThread(threading.Thread):
 
 							print ("<<<please speak>>>")
 						data = ""
+
+						self.voice.stdin.write(json.dumps({"motor_cmd":request['motor_cmd'], "module":request['module']}))
 
 				else:
 					data += str(sock.recv(1024).decode('utf-8'))
