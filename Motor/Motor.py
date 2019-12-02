@@ -6,14 +6,14 @@ import wiringpi as wp
 import time
 import struct
 class Motor():
-    
+
     def Write(self,data, spi_id):
         data = struct.pack("B", data)
         print("b1")
         print(data)
         wp.wiringPiSPIDataRW(spi_id, data)
         print("b2")
-    
+
 
     def __init__(self,spi_id,spd):
         self.diff=[0 for _ in range (2)]
@@ -56,7 +56,7 @@ class Motor():
         self.Write(0x0C, spi_id)
         # モータ減速中の電圧設定(8bit) 初期値は 0x8A
         self.Write(0x40, spi_id)
-        
+
         # OCD_TH設定。
         # レジスタアドレス。
         self.Write(0x13, spi_id)
@@ -65,17 +65,17 @@ class Motor():
         # STALL_TH設定。
         # レジスタアドレス。
         self.Write(0x14, spi_id)
-        
+
         # ストール電流スレッショルド設定(4bit)
         self.Write(0x7F, spi_id)
-        
+
     #start slopeデフォルト
         #   /// レジスタアドレス。
         self.Write(0x0e, spi_id)
         self.Write(0x00, spi_id)
         self.Write(0x10, spi_id)
         self.Write(0x29, spi_id)
-        
+
 
     def Run_setting(self,tmpspd,spi_id):
         #print('runboth {}'.format(tmpspd))
@@ -120,7 +120,7 @@ class Motor():
         if self.id==0:
             self.Run_setting(self.speed, 0)
         else:
-            self.Run_setting(0, 1)    
+            self.Run_setting(0, 1)
 
     def Turn_left(self):
         print('runboth {}'.format(self.speed))
@@ -143,4 +143,3 @@ class Motor():
         # コマンド（レジスタアドレス）送信。
         self.Write(dir, spi_id)
         time.sleep(1)
-    

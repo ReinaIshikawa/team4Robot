@@ -2,6 +2,8 @@ import cv2
 import sys
 import time
 import face_detection as fd
+
+
 def get_image():
     camera_id=1
     delay=1
@@ -21,5 +23,5 @@ def get_image():
 
     cv2.destroyWindow(window_name)
 
+#とりあえず実行
 get_image()
-
