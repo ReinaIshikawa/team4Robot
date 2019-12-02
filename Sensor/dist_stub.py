@@ -14,7 +14,7 @@ for line in file:
 	try:
 		response = {'dist': line.replace('\n','')}
 		request = json.loads(input())
-		print(request)
+		#print(request)
 		#例えば, request = {'module': 'sensor','cmd': 'check_dist'}
 		if(request['cmd'] == 'check_dist'):
 			print(json.dumps({'response': response, 'request': request}))

@@ -94,3 +94,10 @@ def motor_move(direction, callback):
 	}
 	print (json.dumps(request))
 	#callbacckはとりあえずなし
+
+def take_pics(callback):
+	request = {
+		'module': 'camera',
+		'cmd': 'image'
+	}
+	print (json.dumps(request))

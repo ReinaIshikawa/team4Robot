@@ -15,9 +15,9 @@ class CameraThread(threading.Thread):
 	def run(self):
 		#とりあえずcamera.pyと同じことをするだけ
 		Camera.get_image();
-		# cmd = self.request['command']
-		# if cmd == 'face_positions':
-		#     self.camera.stdin.write(cmd + '\n')
-		#     response = self.camera.stdout.readline()
-		# response = json.loads(response)
-		# self.app.stdin.write(json.dumps({"response":response, 'request':self.request}) + '\n')
+		cmd = self.request['cmd']
+		if cmd == 'image':
+		    self.camera.stdin.write(cmd + '\n')
+		    response = self.camera.stdout.readline()
+		response = json.loads(response)
+		self.app.stdin.write(json.dumps({"response":response, 'request':self.request}) + '\n')
