@@ -1,4 +1,4 @@
-# import pigpio
+import pigpio
 import time
 
 def srf02_read(pi,h):
@@ -61,4 +61,4 @@ while True:
 
 main()
 """
-main()
+

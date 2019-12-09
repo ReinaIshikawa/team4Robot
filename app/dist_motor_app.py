@@ -1,5 +1,6 @@
 import threading
 import client
+
 # import json
 # import sys
 # from signal import signal, SIGPIPE, SIG_DFL
@@ -15,7 +16,7 @@ def dist_listener(response):
     # メインモータースレッドに距離を渡す
     # 速度は向こうで制御してくれる
     dist = response['dist']
-    client.motor_move(dist)
+    client.motor_dist_check(dist)
     # 再帰的に(繰り返し)処理をするため
     # runの方にwhile文で書いてもいいかも
     client.get_dist(dist_listener)
