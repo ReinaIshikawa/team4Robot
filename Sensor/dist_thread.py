@@ -2,21 +2,24 @@ import json
 import sys
 import time
 import pigpio
-import dist
+from Sensor.dist import main as dm
 import threading
+from library import log
 
 class DistThread(threading.Thread):
-	def _init_(self, request, sensor, app):
-		super(MotorThread, self)._init_()
-		self.request = request
-		self.sensor = sensor
-		self.app = app
+    def __init__(self, app):
+        super(DistThread, self).__init__()
+        self.app = app
 
-	def run(self):
-		while True:
-			#コールバック
-			response = {"dist" : dist.main()}
-			# response = {"dist" :100}
-			self.app.stdin.write(json.dumps({
-				"response": response, "request": self.request
-			}) + '\n')
+    def run(self, request=None):
+        if not request:
+            return
+        if(request['cmd'] == 'check_dist'):
+            distance = dm()
+            response = {"dist" : distance}
+            log.communication('dist_thread:' + str(distance))
+            jsn = json.dumps({"response": response, 'request': request})
+            self.app.stdin.write((jsn + '\n').encode('utf-8'))
+            self.app.stdin.flush()
+            print('dist_thread->dist: {}:{}'.format(response, request))
+        #コールバック

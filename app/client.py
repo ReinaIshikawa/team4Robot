@@ -1,5 +1,6 @@
 import json
 import threading
+from  library import log
 
 # 全ての動作の上に君臨するスクリプト
 # applicationから呼び出され，pipe.stdinを通してsubprocessに命令をだす
@@ -8,6 +9,7 @@ import threading
 listeners = {
     'camera': [],
     'sensor': [],
+    'motor':[],
     'voice': []
 }
 
@@ -30,6 +32,7 @@ def startListener(thread):
         # (input()もstdinと同じこと _stubファイルはinputで適当な値を入力するようにしている)
         # sys.stdin.flush()
         data = json.loads(input())
+        log.communication('client_data:' + str(data)) 
         request = data['request']
         response = data['response']
         # 実行したやつのmodule名
@@ -73,7 +76,7 @@ def get_dist(callback):
 # main motorを動かす
 # 1. 障害物との距離を渡し，速度を変更させる(制御は向こう)
 # コールバックなし
-def motor_dist_check(dist, callback):
+def motor_dist_check(dist):
     request = {
         'module': 'motor',
         'cmd': 'check_dist',

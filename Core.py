@@ -4,6 +4,7 @@ import subprocess
 import time
 import json
 import sys
+from library import log
 # from Sensor import dist_stub
 # from Camera import camera_thread
 # from Motor import motor_thread
@@ -11,7 +12,7 @@ import sys
 # from Julius import voice_thread
 # from Sensor import dist_thread
 
-# コマンドライン入力で引数でtestと入力すると，testモードになってstubが自動実行される
+
 argv = sys.argv
 if len(argv) > 1:
     is_test = argv[1] == 'test'
@@ -20,7 +21,7 @@ if len(argv) > 1:
     print('Runing in test mode')
 else:
     is_test = False
-    from Sensor.sensor_thread import SensorThread
+    from Sensor.dist_thread import DistThread as SensorThread
     from Motor.motor_thread import MotorThread
 
 proc = {}
@@ -40,7 +41,7 @@ proc['app'] = subprocess.Popen(
     ['python3', '-u', './app/dist_motor_app.py'],
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
-    encoding='utf8'
+    # encoding='utf8'
 )
 
 
@@ -83,12 +84,14 @@ if is_test:
 else:
     # 音声入力に応じて実行させたりする
     motor = ['python3', '-u', './Motor/motor_thread.py']
+"""
 proc['motor'] = subprocess.Popen(
     motor,
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
-    encoding='utf8'
+    # encoding='utf8'
 )
+"""
 
 # #Servo Motor
 # if is_test:#自動でくるくる動く
@@ -108,13 +111,14 @@ if is_test:
 else:
     # motorとかと連動
     sensor = ['python3', '-u', './Sensor/dist_thread.py']
+"""
 proc['sensor'] = subprocess.Popen(
     sensor,
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
-    encoding='utf8'
+    # encoding='utf8'
 )
-
+"""
 # ---- END thread initialization ----
 
 
@@ -159,7 +163,7 @@ def func_sensor(request):
 cnt = 0
 while True:
     proc['app'].stdout.flush()
-    raw_request = proc['app'].stdout.readline()
+    raw_request = proc['app'].stdout.readline().decode("utf-8")
     try:
         request = json.loads(raw_request)
         print('[{}] REQUEST:{}'.format(cnt, request))

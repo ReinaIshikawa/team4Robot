@@ -1,0 +1,218 @@
+[COMMUNICATION][2019/11/14 17:48:30] dist_thread:21
+[COMMUNICATION][2019/11/14 17:48:30] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 21}}
+[COMMUNICATION][2019/11/14 17:55:55] dist_thread:21
+[COMMUNICATION][2019/11/14 17:55:55] client_data:{'response': {'dist': 21}, 'request': {'module': 'sensor', 'cmd': 'check_dist'}}
+[COMMUNICATION][2019/11/14 18:02:04] dist_thread:21
+[COMMUNICATION][2019/11/14 18:02:04] client_data:{'response': {'dist': 21}, 'request': {'module': 'sensor', 'cmd': 'check_dist'}}
+[COMMUNICATION][2019/11/14 18:03:08] dist_thread:21
+[COMMUNICATION][2019/11/14 18:03:08] client_data:{'request': {'module': 'sensor', 'cmd': 'check_dist'}, 'response': {'dist': 21}}
+[COMMUNICATION][2019/11/14 18:04:10] dist_thread:21
+[COMMUNICATION][2019/11/14 18:04:10] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 21}}
+[COMMUNICATION][2019/11/14 18:05:04] dist_thread:21
+[COMMUNICATION][2019/11/14 18:05:04] client_data:{'response': {'dist': 21}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 18:06:38] dist_thread:21
+[COMMUNICATION][2019/11/14 18:06:38] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 21}}
+[COMMUNICATION][2019/11/14 18:14:54] dist_thread:34
+[COMMUNICATION][2019/11/14 18:14:54] client_data:{'request': {'module': 'sensor', 'cmd': 'check_dist'}, 'response': {'dist': 34}}
+[COMMUNICATION][2019/11/14 18:16:27] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 46}}
+[COMMUNICATION][2019/11/14 18:16:28] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:28] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:29] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:30] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 46}}
+[COMMUNICATION][2019/11/14 18:16:31] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 46}}
+[COMMUNICATION][2019/11/14 18:16:32] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 46}}
+[COMMUNICATION][2019/11/14 18:16:33] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 46}}
+[COMMUNICATION][2019/11/14 18:16:33] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:34] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:35] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:36] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:37] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:37] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:38] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 44}}
+[COMMUNICATION][2019/11/14 18:16:39] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:40] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 45}}
+[COMMUNICATION][2019/11/14 18:16:41] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 32}}
+[COMMUNICATION][2019/11/14 18:16:42] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 32}}
+[COMMUNICATION][2019/11/14 18:16:42] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 32}}
+[COMMUNICATION][2019/11/14 18:16:43] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 31}}
+[COMMUNICATION][2019/11/14 18:16:44] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 32}}
+[COMMUNICATION][2019/11/14 18:16:45] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 32}}
+[COMMUNICATION][2019/11/14 18:16:46] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 31}}
+[COMMUNICATION][2019/11/14 18:16:46] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 31}}
+[COMMUNICATION][2019/11/14 18:16:47] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 31}}
+[COMMUNICATION][2019/11/14 18:16:48] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 31}}
+[COMMUNICATION][2019/11/14 18:16:49] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:50] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:50] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:51] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:52] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:53] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:54] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:55] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:55] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:56] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:57] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:58] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:59] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:16:59] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 22}}
+[COMMUNICATION][2019/11/14 18:17:00] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 22}}
+[COMMUNICATION][2019/11/14 18:17:01] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:02] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:03] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:04] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:04] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:05] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 22}}
+[COMMUNICATION][2019/11/14 18:17:06] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:07] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 22}}
+[COMMUNICATION][2019/11/14 18:17:08] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 22}}
+[COMMUNICATION][2019/11/14 18:17:08] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 24}}
+[COMMUNICATION][2019/11/14 18:17:09] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 19}}
+[COMMUNICATION][2019/11/14 18:17:10] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 21}}
+[COMMUNICATION][2019/11/14 18:17:11] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:12] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 19}}
+[COMMUNICATION][2019/11/14 18:17:12] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 18}}
+[COMMUNICATION][2019/11/14 18:17:13] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:14] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 19}}
+[COMMUNICATION][2019/11/14 18:17:15] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 50}}
+[COMMUNICATION][2019/11/14 18:17:16] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:17] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:17] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:18] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:19] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:20] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:21] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:22] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:22] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:23] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:24] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:25] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:26] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:26] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:27] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:28] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:29] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:30] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 0}}
+[COMMUNICATION][2019/11/14 18:17:30] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 51}}
+[COMMUNICATION][2019/11/14 18:17:31] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:32] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:33] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:34] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:35] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:35] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:36] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:37] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:38] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:39] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:39] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:40] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:41] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:17:42] client_data:{'request': {'cmd': 'check_dist', 'module': 'sensor'}, 'response': {'dist': 52}}
+[COMMUNICATION][2019/11/14 18:16:27] dist_thread:46
+[COMMUNICATION][2019/11/14 18:16:28] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:28] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:29] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:30] dist_thread:46
+[COMMUNICATION][2019/11/14 18:16:31] dist_thread:46
+[COMMUNICATION][2019/11/14 18:16:32] dist_thread:46
+[COMMUNICATION][2019/11/14 18:16:33] dist_thread:46
+[COMMUNICATION][2019/11/14 18:16:33] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:34] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:35] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:36] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:37] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:37] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:38] dist_thread:44
+[COMMUNICATION][2019/11/14 18:16:39] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:40] dist_thread:45
+[COMMUNICATION][2019/11/14 18:16:41] dist_thread:32
+[COMMUNICATION][2019/11/14 18:16:42] dist_thread:32
+[COMMUNICATION][2019/11/14 18:16:42] dist_thread:32
+[COMMUNICATION][2019/11/14 18:16:43] dist_thread:31
+[COMMUNICATION][2019/11/14 18:16:44] dist_thread:32
+[COMMUNICATION][2019/11/14 18:16:45] dist_thread:32
+[COMMUNICATION][2019/11/14 18:16:46] dist_thread:31
+[COMMUNICATION][2019/11/14 18:16:46] dist_thread:31
+[COMMUNICATION][2019/11/14 18:16:47] dist_thread:31
+[COMMUNICATION][2019/11/14 18:16:48] dist_thread:31
+[COMMUNICATION][2019/11/14 18:16:49] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:50] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:50] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:51] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:52] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:53] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:54] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:55] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:55] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:56] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:57] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:58] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:59] dist_thread:0
+[COMMUNICATION][2019/11/14 18:16:59] dist_thread:22
+[COMMUNICATION][2019/11/14 18:17:00] dist_thread:22
+[COMMUNICATION][2019/11/14 18:17:01] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:02] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:03] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:04] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:04] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:05] dist_thread:22
+[COMMUNICATION][2019/11/14 18:17:06] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:07] dist_thread:22
+[COMMUNICATION][2019/11/14 18:17:08] dist_thread:22
+[COMMUNICATION][2019/11/14 18:17:08] dist_thread:24
+[COMMUNICATION][2019/11/14 18:17:09] dist_thread:19
+[COMMUNICATION][2019/11/14 18:17:10] dist_thread:21
+[COMMUNICATION][2019/11/14 18:17:11] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:12] dist_thread:19
+[COMMUNICATION][2019/11/14 18:17:12] dist_thread:18
+[COMMUNICATION][2019/11/14 18:17:13] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:14] dist_thread:19
+[COMMUNICATION][2019/11/14 18:17:15] dist_thread:50
+[COMMUNICATION][2019/11/14 18:17:16] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:17] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:17] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:18] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:19] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:20] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:21] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:22] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:22] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:23] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:24] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:25] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:26] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:26] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:27] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:28] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:29] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:30] dist_thread:0
+[COMMUNICATION][2019/11/14 18:17:30] dist_thread:51
+[COMMUNICATION][2019/11/14 18:17:31] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:32] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:33] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:34] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:35] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:35] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:36] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:37] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:38] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:39] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:39] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:40] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:41] dist_thread:52
+[COMMUNICATION][2019/11/14 18:17:42] dist_thread:52
+[COMMUNICATION][2019/11/14 19:01:33] client_data:{'response': {'dist': 26}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:33] client_data:{'response': {'dist': 28}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:34] client_data:{'response': {'dist': 28}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:35] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:36] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:37] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:37] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:38] client_data:{'response': {'dist': 27}, 'request': {'cmd': 'check_dist', 'module': 'sensor'}}
+[COMMUNICATION][2019/11/14 19:01:33] dist_thread:26
+[COMMUNICATION][2019/11/14 19:01:33] dist_thread:28
+[COMMUNICATION][2019/11/14 19:01:34] dist_thread:28
+[COMMUNICATION][2019/11/14 19:01:35] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:36] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:37] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:37] dist_thread:27
+[COMMUNICATION][2019/11/14 19:01:38] dist_thread:27
