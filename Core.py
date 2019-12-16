@@ -19,7 +19,7 @@ if len(argv) > 1:
     from Sensor.dist_stub import SensorStub as SensorThread
     print("a")
     from Motor.motor_stub import MotorStub as MotorThread
-    from  Voice.voice_thread import VoiceThread as VoiceThread
+    from  Julius.voice_thread import VoiceThread as VoiceThread
     print('Runing in test mode')
 else:
     is_test = False
@@ -27,7 +27,7 @@ else:
     print("b")
     from Motor.motor_thread import MotorThread
     print("b")
-    from  Voice.voice_thread import VoiceThread as VoiceThread
+    from  Julius.voice_thread import VoiceThread as VoiceThread
 print("a")
 proc = {}
 
