@@ -13,7 +13,7 @@ class CameraThread(threading.Thread):
 
 	def run(self, request=None):
 		#  = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-		if(request["cmd"] == "pursue"):
+		if(request["cmd"] == "check_angle"):
 			camera_glid = self.camera.stdout.readline()
 			if not (camera_glid["x"]  == -1):
 				response = {"x":camera_glid["x"],"y":camera_glid["y"]}
