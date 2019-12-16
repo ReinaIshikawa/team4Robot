@@ -208,13 +208,14 @@ def MultiStick():
                 x2 = min(img_cp.shape[0], int(object_info[base_index + 5] * img_cp.shape[0]))
                 y2 = min(img_cp.shape[1], int(object_info[base_index + 6] * img_cp.shape[1]))
 
-                x1_ = str(x1)
-                y1_ = str(y1)
-                x2_ = str(x2)
-                y2_ = str(y2)
                 if (object_info[base_index + 2])>flag:
                     flag=int(object_info[base_index + 2])
-                    sumbox=[(int(x1_)+int(x2_))//2,(int(y1_)+int(y2_))//2]
+                    #request={
+                    #    'x': (x1+x2)//2,
+                    #    'y': (y1+y2)//2
+                    #}
+                    #print(json.dumps(request), flush=True)
+                    sumbox=[(x1+x2)//2,(y1+y2)//2]
                # print('box at index: ' + str(box_index) + ' : ClassID: ' + LABELS[int(object_info[base_index + 1])] + '  '
                   #   'Confidence: ' + str(object_info[base_index + 2]*100) + '%  ' +
                  #     'Top Left: (' + x1_ + ', ' + y1_ + ')  Bottom Right: (' + x2_ + ', ' + y2_ + ')')
@@ -254,9 +255,10 @@ def MultiStick():
                 cv2.rectangle(img_cp, (label_left - 1, label_top - 1), (label_right + 1, label_bottom + 1), label_background_color, -1)
                 cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)
         if sumbox==[0,0]:
-            return 0,img_cp
+            #return 0,img_cp
+            return [0,0]
         else:
-            return 1,sumbox
+            return sumbox
 
     glutInitWindowPosition(0, 0)
     glutInitWindowSize(1280,640) 
@@ -275,10 +277,8 @@ def MultiStick():
     threads = []
 
     for devnum in range(len(devices)):
-     t = Thread(target=inferencer, args=(results, lock, frameBuffer, graphHandle[devnum]))
-     t.start()
-     threads.append(t)
+        t = Thread(target=inferencer, args=(results, lock, frameBuffer, graphHandle[devnum]))
+        t.start()
+        threads.append(t)
 
     glutMainLoop()
-    
-#MultiStick()

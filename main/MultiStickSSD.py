@@ -23,8 +23,9 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
 def MultiStick():
+    __init__(self,):
+    
     mvnc.SetGlobalOption(mvnc.GlobalOption.LOG_LEVEL, 2)
-
     devices = mvnc.EnumerateDevices()
     if len(devices) == 0:
         print("No devices found")
@@ -47,7 +48,6 @@ def MultiStick():
     print("\nLoaded Graphs!!!")
 
     cam = cv2.VideoCapture(0)
-    #cam = cv2.VideoCapture('/home/pi/SSD_MobileNet/xxxx.mp4')
 
     if cam.isOpened() != True:
         print("Camera/Movie Open Error!!!")
@@ -94,10 +94,8 @@ def MultiStick():
             print("\n\nFinished\n\n")
             sys.exit()
 
-
     def camThread():
         lastresults=None
-
         s, img = cam.read()
 
         if not s:
@@ -123,7 +121,6 @@ def MultiStick():
             h, w = img.shape[:2]
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
             lastresults = res
-
         else:
             imdraw = overlay_on_image(img, lastresults)
             imdraw = cv2.cvtColor(imdraw, cv2.COLOR_BGR2RGB)
@@ -168,7 +165,7 @@ def MultiStick():
             im = preprocess_image(img)
             handle.LoadTensor(im.astype(np.float16), None)
             out, userobj = handle.GetResult()
-    
+
             results.put(out)
             #print("elapsedtime = ", time.time() - now)
 

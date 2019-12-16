@@ -106,3 +106,10 @@ def motor_move(direction):
     }
     print(json.dumps(request), flush=True)
     # callbacckはとりあえずなし
+
+def camera_SSD():
+    request = {
+        'module' : "camera",
+        "cmd" : "detect"
+    }
+    print(json.dumps(request), flush=True)

@@ -5,8 +5,12 @@ import time
 import struct
 from .Motor import Motor
 import math
+<<<<<<< HEAD
+from Camera import MultiStickSSD as ms
+=======
 from Camera import MultiStickSSD 
 
+>>>>>>> df79f3f879ab2a19b5c6a9cdb69e2cb2bd1ce6b0
 
 class Motor_move(Motor):
     #PID制御
@@ -58,5 +62,10 @@ class Motor_move(Motor):
             else:
                 return - 1 * ans
 
-
-#self.Angle()
+right= Motor_move(0,20000)
+left= Motor_move(1,20000)
+while True:
+    tmpl=ms.Multistick()
+    if tmpl[0]!=0:
+        right.Angle(tmpl[0],tmpl[1])
+        left.Angle(tmpl[0],tmpl[1])
