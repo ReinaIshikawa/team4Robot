@@ -14,28 +14,41 @@ class ServoThread(threading.Thread):
 		self.app = app
 		
 
-	def run(self):
+	def run(self, request=None):
 		servo0 = servo.servo_Class(Channel=0, ZeroOffset=-5)
 		servo1 = servo.servo_Class(Channel=1, ZeroOffset=-5)
 		# servo2 = servo.servo_Class(Channel=2, ZeroOffset=-5)
 
-		while True:
+#追加コード　始まり（あべかず）
+
+	#	while True: 　無限ループ消去
 			#縦に動かす
-			if self.request['cmd'] == 'clean':
-				servo0.rotate(45, 90)
-				time.sleep(1)
+		if self.request['cmd'] == 'clean':
+			servo0.rotate(45, 90)
+			time.sleep(1)
 
 			#横に動かす
-			if self.request['cmd'] == 'attack':
-				servo1.rotate(45, 90)
-				time.sleep(1)
+		if self.request['cmd'] == 'attack':
+			servo1.rotate(45, 90)
+			time.sleep(1)
 				
 			#止める
-			if self.request['cmd'] == 'quit':
-				servo0.rotate(-1, -1)
-				servo1.rotate(-1, -1)
-				time.sleep(1)
-				
+		if self.request['cmd'] == 'quit':
+			servo0.rotate(-1, -1)
+			servo1.rotate(-1, -1)
+			time.sleep(1)
+
+			#無限ループここまで
+		
+		#attack.pyからの処理
+		if(request['cmd'] == 'swing')
+			servo0.rotate(request['s_angle'], request['g_angle'])
+			#time.sleep(1)
+
+#追加コード　終わり
+		 
+
+
 
 
 
