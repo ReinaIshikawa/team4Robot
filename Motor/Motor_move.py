@@ -62,11 +62,3 @@ class Motor_move(Motor):
             else:
                 spd=- 1 * ans
         self.Run_setting(spd,self.id)
-
-right= Motor_move(0,20000)
-left= Motor_move(1,20000)
-while True:
-    tmpl=ms.Multistick()
-    if tmpl[0]!=0:
-        right.Angle(tmpl[0],tmpl[1])
-        left.Angle(tmpl[0],tmpl[1])

@@ -1,6 +1,11 @@
 import threading
 import json
+import time
+import socket
 
+#change host and port number
+host=1
+port=1
 class VoiceThread(threading.Thread):
 
     def __init__(self, app, exitCore):
@@ -32,7 +37,7 @@ class VoiceThread(threading.Thread):
                         if index != -1:
                             line = line[index+6:line.find('"',index+6)]
                             strTemp += str(line)
-
+                        response={}
                         if strTemp == 'カメラ':
                             if killword != 'カメラ':
                                 print ("Result: " + strTemp)
@@ -50,9 +55,9 @@ class VoiceThread(threading.Thread):
 
                         elif strTemp == '前':
                             if killword != "前":
-                                print("Result: " + strTemp
+                                print("Result: " + strTemp)
                                 #request['module'] = 'motor'
-                                respose['motor_cmd'] = 'front'
+                                response['motor_cmd'] = 'front'
                                 print ("<<<please speak>>>")
                                 killword = "前"
 
