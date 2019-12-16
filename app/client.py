@@ -73,6 +73,14 @@ def get_dist(callback):
     listeners['sensor'].append(callback)
 
 
+def get_angle(callback):
+    request = {
+        'module': 'camera',
+        'cmd': 'check_angle'
+    }
+    print(json.dumps(request), flush=True)
+    listeners['camera'].append(callback)
+
 # main motorを動かす
 # 1. 障害物との距離を渡し，速度を変更させる(制御は向こう)
 # コールバックなし
@@ -121,3 +129,4 @@ def get_voice(callback):
     }
     print(json.dumps(request), flush=True)
     listeners['voice'].append(callback)
+
