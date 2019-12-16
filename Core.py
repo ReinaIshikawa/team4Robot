@@ -18,11 +18,13 @@ if len(argv) > 1:
     is_test = argv[1] == 'test'
     from Sensor.dist_stub import SensorStub as SensorThread
     from Motor.motor_stub import MotorStub as MotorThread
+    from  Voice.voice_thread import VoiceThread as VoiceThread
     print('Runing in test mode')
 else:
     is_test = False
     from Sensor.dist_thread import DistThread as SensorThread
     from Motor.motor_thread import MotorThread
+    from  Voice.voice_thread import VoiceThread as VoiceThread
 
 proc = {}
 
@@ -44,6 +46,9 @@ proc['app'] = subprocess.Popen(
     # encoding='utf8'
 )
 
+def changeApp():
+    print("changeApp")
+
 
 def exitCore():  # voice_threadで使用
     app = proc.pop('app')
@@ -52,18 +57,17 @@ def exitCore():  # voice_threadで使用
     app.terminate()
     sys.exit()
 
-# if not is_test:
+if not is_test:
     # proc['julius'] = subprocess.Popen(
-    # 	#julius -C ~/work/julius-4.4.2/julius-kit/dictation-kit-v4.3.1-linux/word.jconf -module > /dev/null &
     # 	['~/work/julius/julius-4.4.2/julius/julius', '-C', '~/work/julius-4.4.2/julius-kit/dictation-kit-v4.4.2-linux/word.jconf', '-module'],
     # 	stdout=nullFile
     # )
 
-    # proc['voice'] = subprocess.Popen(
-    # 	["./Julius/julius_start.sh"],
-    # 	stdout=subprocess.PIPE,
-    # 	shell=True
-    # )
+    proc['voice'] = subprocess.Popen(
+    	["./Julius/julius_start.sh"],
+    	stdout=subprocess.PIPE,
+    	shell=True
+    )
 
 # #Camera
 # if is_test:#単純にカメラを立ち上げる
@@ -123,24 +127,19 @@ proc['sensor'] = subprocess.Popen(
 
 
 # ---- BEGIN request handler definition ----
-# 他のファイルからの呼び出し?
+
 threads = {}
 threads['sensor'] = SensorThread(proc['app'])
 threads['motor'] = MotorThread(proc['app'])
+threads['voice'] = VoiceThread(proc['app'], exitCore)
 
 # Initialize
 __result = [t.start() for t in threads.values()]
 print(__result)
 
-# とりあえず
 
-# def func_voice():
-# 	threads['voice'] = voice_thread.VoiceThread(
-# 		request,
-# 		proc['voice'],
-# 		exitCore#終了時
-# 	)
-# 	threads['voice'].start()
+def func_voice(request):
+    threads['voice'].run(request=request)
 
 # def func_camera(request):
 # 	threads['camera'] = camera_thread.CameraThread(
@@ -190,8 +189,7 @@ while True:
         continue
         # func_camera(request)
     elif request['module'] == 'voice':
-        continue
-        # func_voice(request)
+        func_voice(request)
     elif request['module'] == 'motor':
         func_motor(request)
     elif request['module'] == 'sensor':
