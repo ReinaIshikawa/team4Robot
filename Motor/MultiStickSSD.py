@@ -96,7 +96,7 @@ def MultiStick():
 
 
     def camThread():
-        global lastresults
+        lastresults=None
 
         s, img = cam.read()
 
@@ -116,7 +116,7 @@ def MultiStick():
             res = results.get(False)
             flag,img = overlay_on_image(img, res)
             if flag!=0:
-                glutLeaveMainLoop()
+                #glutLeaveMainLoop()
                 print(img)
                 return img
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -280,5 +280,3 @@ def MultiStick():
      threads.append(t)
 
     glutMainLoop()
-    
-MultiStick()
