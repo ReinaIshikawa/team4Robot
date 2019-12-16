@@ -24,11 +24,15 @@ class Motor_move(Motor):
         i=KI*self.integrald
         d=KD*(self.diffnew-self.diffold)/self.delta
         if p+i+d>30000:
-            return 30000
+            spd=30000
         elif p+i+d<-30000:
-            return -30000
+            spd=-30000
         else:
-            return p+i+d
+            if self.id==0:
+                spd=p+i+d
+            else:
+                spd=-(p+i+d)
+        self.Run_setting(spd,self.id)
 
     def Angle(self):
         ox=640
@@ -49,14 +53,15 @@ class Motor_move(Motor):
         d=KD*sinx
         ans=20*(-p-i+d)
         if p+i+d>30000:
-            return 30000
+            spd=30000
         elif p+i+d<-30000:
-            return -30000
+            spd=-30000
         else:
             if self.id==0:
-                return ans
+                spd=ans
             else:
-                return - 1 * ans
+                spd=- 1 * ans
+        self.Run_setting(spd,self.id)
 
 right= Motor_move(0,20000)
 left= Motor_move(1,20000)
