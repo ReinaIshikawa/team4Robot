@@ -106,3 +106,11 @@ def motor_move(direction):
     }
     print(json.dumps(request), flush=True)
     # callbacckはとりあえずなし
+
+def get_voice(callback):
+    request = {
+        'module': 'voice',
+        'cmd':'check_voice'
+    }
+    print(json.dumps(request), flush=True)
+    listeners['voice'].append(callback)
