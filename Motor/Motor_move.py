@@ -5,12 +5,8 @@ import time
 import struct
 from .Motor import Motor
 import math
-<<<<<<< HEAD
 from Camera import MultiStickSSD as ms
-=======
 from Camera import MultiStickSSD 
-
->>>>>>> df79f3f879ab2a19b5c6a9cdb69e2cb2bd1ce6b0
 
 class Motor_move(Motor):
     #PID制御
