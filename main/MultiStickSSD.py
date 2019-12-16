@@ -96,7 +96,7 @@ def MultiStick():
 
 
     def camThread():
-        global lastresults
+        lastresults=None
 
         s, img = cam.read()
 
@@ -123,6 +123,7 @@ def MultiStick():
             h, w = img.shape[:2]
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
             lastresults = res
+
         else:
             imdraw = overlay_on_image(img, lastresults)
             imdraw = cv2.cvtColor(imdraw, cv2.COLOR_BGR2RGB)
@@ -167,22 +168,18 @@ def MultiStick():
             im = preprocess_image(img)
             handle.LoadTensor(im.astype(np.float16), None)
             out, userobj = handle.GetResult()
-            
+    
             results.put(out)
             #print("elapsedtime = ", time.time() - now)
 
 
     def preprocess_image(src):
-
         img = cv2.resize(src, (300, 300))
         img = img - 127.5
         img = img * 0.007843
-
         return img
 
-
     def overlay_on_image(display_image, object_info):
-
         sumbox=[0,0]
         flag=0
         if isinstance(object_info, type(None)):
@@ -263,7 +260,6 @@ def MultiStick():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE )
     glutCreateWindow("DEMO")
-    #glutFullScreen()
     glutDisplayFunc(camThread)
     glutReshapeFunc(resizeview)
     glutKeyboardFunc(keyboard)
@@ -280,5 +276,6 @@ def MultiStick():
      threads.append(t)
 
     glutMainLoop()
+    print("finish")
     
 MultiStick()
