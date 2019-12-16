@@ -33,7 +33,7 @@ def startListener(thread):
         # (input()もstdinと同じこと _stubファイルはinputで適当な値を入力するようにしている)
         # sys.stdin.flush()
         data = json.loads(input())
-        log.communication('client_data:' + str(data)) 
+        log.communication('client_data:' + str(data))
         request = data['request']
         response = data['response']
         # 実行したやつのmodule名
@@ -120,3 +120,18 @@ def motor_move(direction):
     }
     print(json.dumps(request), flush=True)
     # callbacckはとりあえずなし
+
+
+def voice_use():
+    request = {
+        'module': 'voice'
+    }
+    print(json.dumps(request), flush=True)
+
+def get_voice(callback):
+    request = {
+        'module': 'voice',
+        'cmd':'check_voice'
+    }
+    print(json.dumps(request), flush=True)
+    listeners['voice'].append(callback)

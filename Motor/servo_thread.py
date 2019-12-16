@@ -4,7 +4,7 @@ import  Adafruit_PCA9685
 import time
 import sys
 import json
-import servo
+from . import servo
 
 class ServoThread(threading.Thread):
 	def __init__(self, request, servo, app):
