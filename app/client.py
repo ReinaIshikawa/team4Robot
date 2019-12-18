@@ -115,14 +115,12 @@ def motor_move(direction):
     print(json.dumps(request), flush=True)
     # callbacckはとりあえずなし
 
-<<<<<<< HEAD
 def camera_SSD():
     request = {
         'module' : "camera",
         "cmd" : "detect"
     }
     print(json.dumps(request), flush=True)
-=======
 
 def voice_use():
     request = {
@@ -138,4 +136,3 @@ def get_voice(callback):
     print(json.dumps(request), flush=True)
     listeners['voice'].append(callback)
 
->>>>>>> 58aaa74eb3e8cd8d2e937ce0e0cd5e9ce4facce3
