@@ -15,20 +15,23 @@ def pursuit_listener1(response):
     # メインモータースレッドに距離を渡す
     # 速度は向こうで制御してくれる
     dist = response['dist']
-    client.motor_dist_check(dist)
+    if dist!=0:
+        client.motor_dist_check(dist)
     # 再帰的に(繰り返し)処理をするため
     # runの方にwhile文で書いてもいいかも
-    client.get_dist(pursuit_listener1)
+        client.get_dist(pursuit_listener1)
 
 def pursuit_listener2(response):
     # メインモータースレッドに距離を渡す
     # 速度は向こうで制御してくれる
     x = response['x']
-    y= response['y']
-    client.motor_angle_check(dist)
+    y = response['y']
+    if x>0:
+        client.motor_angle_check(dist)
     # 再帰的に(繰り返し)処理をするため
     # runの方にwhile文で書いてもいいかも
-    client.get_angle(pursuit_listener2)
+        client.get_angle(pursuit_listener2)
+
 
 
 class MainThread(threading.Thread):
@@ -44,10 +47,4 @@ class MainThread(threading.Thread):
 thread = MainThread()
 client.startListener(thread)
 
-# 1. applicationのMainthreadのインスタンスが生成，
-# client.pyのstartListener関数の引数として渡される
-# 2. Mainthreadのrun()が実行される
-# 3. run()ではまずget_distが実行され
-# 4. callback関数としてdist_lisnerがセットされる
-# 5. distからresponseがくると，client.pyのLisnerの'sensor'リストにcallbackが入る
-# 6. リストに入ってきた順にcallbackを実行していく
+
