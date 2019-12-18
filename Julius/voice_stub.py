@@ -12,7 +12,7 @@ class VoiceStub(threading.Thread):
     def run(self, request=None):
         if not request:
             return
-        print('voice_thread->voice: {}:{}'.format(self.lst[num], request))
+        print('voice_thread->voice: {}'.format(self.lst[num]))
         self.num += 1
         if self.num == 9:
             self.num = 0

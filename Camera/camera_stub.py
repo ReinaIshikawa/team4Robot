@@ -8,5 +8,6 @@ while True:
 	request = json.loads(input())
 	cmd = request['cmd']
 	if (cmd == 'imag'):
+		pass
 		#do something
 	time.sleep(1)
