@@ -41,13 +41,12 @@ class ServoThread(threading.Thread):
 			#無限ループここまで
 		
 		#attack.pyからの処理
-		if(request['cmd'] == 'swing')
+		if request['cmd'] == 'swing':
 			servo0.rotate(request['s_angle'], request['g_angle'])
 			#time.sleep(1)
 
 #追加コード　終わり
 		 
-
 
 
 
