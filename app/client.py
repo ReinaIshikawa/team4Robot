@@ -2,6 +2,7 @@ import json
 import threading
 from  library import log
 
+
 # 全ての動作の上に君臨するスクリプト
 # applicationから呼び出され，pipe.stdinを通してsubprocessに命令をだす
 
@@ -73,6 +74,19 @@ def get_dist(callback):
     # lisnersの'sensor'のリストにcallback関数(アプリケーションファイルに書かれている)を追加する
     listeners['sensor'].append(callback)
 
+# 追加コード　始まり(あべかず)
+# 11.サーボモーターに角度を渡しその角度まで動かす
+# コールバックなし
+def get_attack(s_angle,g_angle):
+    request = {
+        'module': 'servo',
+        's_angle': s_angle,
+        'g_angle': g_angle,
+        'cmd': "swing"
+    }
+    print(json.dumps(request), flush=True) #おまじない
+
+# 追加コード　終わり
 
 def get_angle(callback):
     request = {
