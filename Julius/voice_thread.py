@@ -121,7 +121,7 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.init()
                             pygame.mixer.music.load("zankoku.mp3")
                             pygame.mixer.music.play(1)
-                            time.sleep(60)
+                            time.sleep(15)
                             pygame.mixer.music.stop()
                             break
 
@@ -132,9 +132,9 @@ class VoiceThread(threading.Thread):
                             self.send_response(response, request)
                             
                             pygame.mixer.init()
-                            pygame.mixer.music.load(".mp3")
+                            pygame.mixer.music.load("zankoku.mp3")
                             pygame.mixer.music.play(1)
-                            time.sleep(60)
+                            time.sleep(15)
                             pygame.mixer.music.stop()
                             break
 
@@ -145,9 +145,9 @@ class VoiceThread(threading.Thread):
                             self.send_response(response, request)
 
                             pygame.mixer.init()
-                            pygame.mixer.music.load(".mp3")
+                            pygame.mixer.music.load("zankoku.mp3")
                             pygame.mixer.music.play(1)
-                            time.sleep(60)
+                            time.sleep(15)
                             pygame.mixer.music.stop()
                             break
 

@@ -4,13 +4,16 @@ import pygame.mixer
 import time
 from library import log
 
-#1.request an artist name
-#2.play music which the artist sings
+#1.request a music jenre
+#2.play a music of the jenre 
 
 
 def voice_listener(response):
-    voice = response['voice']
-    client.voice_cmd(voice_listener, 'voice_to_music')
+    if not response['music']:
+        client.voice_cmd(voice_listener, 'voice_to_music')
+    else:
+        time.sleep(15.25)
+        client.voice_cmd(voice_listener, 'voice_to_music')
     
     """
     if '嵐' in voice:
