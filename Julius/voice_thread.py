@@ -2,6 +2,7 @@ import threading
 import json
 import time
 import socket
+import pygame.mixer
 from library import log
 
 #change host and port number
@@ -118,6 +119,11 @@ class VoiceThread(threading.Thread):
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'anime'
                             self.send_response(response, request)
+                            pygame.mixer.init()
+                            pygame.mixer.music.load("zankoku.mp3")
+                            pygame.mixer.music.play(1)
+                            time.sleep(60)
+                            pygame.mixer.music.stop()
                             break
 
                     elif strTemp == '洋楽':

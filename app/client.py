@@ -134,7 +134,7 @@ def voice_cmd(callback, cmd):
     log.communication("client.py->app" + str(request))
     listeners['voice'].append(callback)
 
-
+"""
 def get_voice(callback):
     request = {
         'module': 'voice',
@@ -142,3 +142,4 @@ def get_voice(callback):
     }
     print(json.dumps(request), flush=True)
     listeners['voice'].append(callback)
+"""

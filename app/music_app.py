@@ -10,6 +10,9 @@ from library import log
 
 def voice_listener(response):
     voice = response['voice']
+    client.voice_cmd(voice_listener, 'voice_to_music')
+    
+    """
     if '嵐' in voice:
         pygame.mixer.init()
         pygame.mixer.music.load(".mp3")
@@ -30,8 +33,9 @@ def voice_listener(response):
         pygame.mixer.music.play(1)
         time.sleep(60)
         pygame.mixer.music.stop()
+    """
 
-    client.get_voice(voice_listener)
+
 
 
 class MainThread(threading.Thread):
