@@ -43,117 +43,121 @@ class VoiceThread(threading.Thread):
         sock.connect((host, port))
         print('voice_thread bind socket')
         data =""
-        if '</RECOGOUT>\n.' in data:
-            #data = data + sock.recv(1024)
-            strTemp = ""
-            for line in data.split('\n'):
-                index = line.find('WORD="')
-                if index != -1:
-                    line = line[index+6:line.find('"',index+6)]
-                    strTemp += str(line)
+        # killword = ""
+        while(1):
+            if '</RECOGOUT>\n.' in data:
+                #data = data + sock.recv(1024)
+                strTemp = ""
+                for line in data.split('\n'):
+                    index = line.find('WORD="')
+                    if index != -1:
+                        line = line[index+6:line.find('"',index+6)]
+                        strTemp += str(line)
 
-                response={}
-                if strTemp == u'カメラ':
-                    # pass
-                    log.communication("voice_result: " + strTemp)
-                    continue
-
-
-                elif strTemp == u'進め':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'front'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == u'前':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'front'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == u'後ろ':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'back'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == u'右':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'right'
-
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == u'左':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'left'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == u'とまれ':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'stop'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == 'ストップ':
-                    if cmd == "voice_to_motor":
-                        log.communication("voice_result: " + strTemp)
-                        response['direction'] = 'stop'
-                        self.send_response(response, request)
-                        break
-
-
-                elif strTemp == 'アニソン':
-                    if cmd == "voice_to_music":
-                        log.communication("voice_result: " + strTemp)
-                        response['music'] = 'anime'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == '洋楽':
-                    if cmd == "voice_to_music":
-                        log.communication("voice_result: " + strTemp)
-                        response['music'] = 'west'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == '嵐':
-                    if cmd == "voice_to_music":
-                        log.communication("voice_result: " + strTemp)
-                        response['music'] = 'arashi'
-                        self.send_response(response, request)
-                        break
-
-                elif strTemp == '友達':
-                    if cmd == "talk":
+                    response={}
+                    if strTemp == u'カメラ':
+                        # pass
                         log.communication("voice_result: " + strTemp)
                         continue
 
-                elif strTemp == 'ついて来て':
-                    if cmd == "talk":
+
+                    elif strTemp == u'進め':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'front'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == u'前':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'front'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == u'後ろ':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'back'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == u'右':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'right'
+
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == u'左':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'left'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == u'とまれ':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'stop'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == 'ストップ':
+                        if cmd == "voice_to_motor":
+                            log.communication("voice_result: " + strTemp)
+                            response['direction'] = 'stop'
+                            self.send_response(response, request)
+                            break
+
+
+                    elif strTemp == 'アニソン':
+                        if cmd == "voice_to_music":
+                            log.communication("voice_result: " + strTemp)
+                            response['music'] = 'anime'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == '洋楽':
+                        if cmd == "voice_to_music":
+                            log.communication("voice_result: " + strTemp)
+                            response['music'] = 'west'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == '嵐':
+                        if cmd == "voice_to_music":
+                            log.communication("voice_result: " + strTemp)
+                            response['music'] = 'arashi'
+                            self.send_response(response, request)
+                            break
+
+                    elif strTemp == '友達':
+                        if cmd == "talk":
+                            log.communication("voice_result: " + strTemp)
+                            continue
+
+                    elif strTemp == 'ついて来て':
+                        if cmd == "talk":
+                            continue
+
+                    elif strTemp == 'チェンジ':
                         continue
 
-                elif strTemp == 'チェンジ':
-                    continue
 
+                    elif strTemp == '終了':
+                        log.communication("voice_result: " + strTemp)
+                        self.exitCore()
+                        break
 
-                elif strTemp == '終了':
-                    log.communication("voice_result: " + strTemp)
-                    self.exitCore()
-                    break
+                    else:
+                        print("skip!")
 
-                else:
-                    print("skip!")
+                    data = ""
 
-                data = ""
+            else:
+                data += str(sock.recv(1024).decode('utf-8'))
+                log.communication("voice_thread: " + "Not found.")
 
-        else:
-            data += str(sock.recv(1024).decode('utf-8'))
-            log.communication("voice_thread: " + "Not found.")
+            time.sleep(3)
