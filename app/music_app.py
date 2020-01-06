@@ -1,7 +1,8 @@
-from . import client
+import client
 import threading
 import pygame.mixer
 import time
+from library import log
 
 #1.request an artist name
 #2.play music which the artist sings
