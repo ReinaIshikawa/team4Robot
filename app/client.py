@@ -147,7 +147,12 @@ def voice_cmd(callback, cmd):
     print(json.dumps(request), flush=True)
     log.communication("client.py->app" + str(request))
     listeners['voice'].append(callback)
-
+def app_yamada():
+     request = {
+        'module': 'camera',
+        'cmd':'taking_picture'
+    }
+    print(json.dumps(request), flush=True)
 """
 def get_voice(callback):
     request = {

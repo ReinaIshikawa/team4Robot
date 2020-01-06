@@ -46,6 +46,7 @@ class CameraThread(threading.Thread):
             cv2.imwrite("example.jpg",np.array(msg["img"]))
             if not (msg["x"]  == -1):
                 response = {"x":msg["x"],"y":msg["y"]}
+            
             jsn = json.dumps({"response": response, "request": request})
             self.log.communication('recieved')
             self.app.stdin.write((jsn + '\n').encode('utf-8'))
