@@ -1,12 +1,12 @@
 import threading
 import client
-import move_to_target as mtt#対象まで移動するアプリ
+import move_to_target as mtt# 対象まで移動するアプリ
 # import json
 # import sys
 # from signal import signal, SIGPIPE, SIG_DFL
 # signal(SIGPIPE,SIG_DFL)
-#対象の物体まで進むmoveアプリを呼び出す
-#その後剣（サーボモーター）を振る
+# 対象の物体まで進むmoveアプリを呼び出す
+# その後剣（サーボモーター）を振る
 
 
 class MainThread(threading.Thread):
@@ -18,6 +18,6 @@ class MainThread(threading.Thread):
         client.get_attack(0,180)
 
 
-#実行
+# 実行
 thread = MainThread()
 client.startListener(thread)
