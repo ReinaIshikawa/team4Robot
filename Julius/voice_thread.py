@@ -131,6 +131,12 @@ class VoiceThread(threading.Thread):
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'west'
                             self.send_response(response, request)
+                            
+                            pygame.mixer.init()
+                            pygame.mixer.music.load(".mp3")
+                            pygame.mixer.music.play(1)
+                            time.sleep(60)
+                            pygame.mixer.music.stop()
                             break
 
                     elif strTemp == '嵐':
@@ -138,6 +144,12 @@ class VoiceThread(threading.Thread):
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'arashi'
                             self.send_response(response, request)
+
+                            pygame.mixer.init()
+                            pygame.mixer.music.load(".mp3")
+                            pygame.mixer.music.play(1)
+                            time.sleep(60)
+                            pygame.mixer.music.stop()
                             break
 
                     elif strTemp == '友達':
