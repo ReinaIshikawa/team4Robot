@@ -115,6 +115,7 @@ def motor_move(direction):
         'direction': direction
     }
     print(json.dumps(request), flush=True)
+    log.communication("client.py->app" + str(request))
     # callbackはとりあえずなし
 
 def camera_SSD():
