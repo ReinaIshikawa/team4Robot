@@ -5,8 +5,6 @@ import time
 import struct
 from .Motor import Motor
 import math
-from Camera import MultiStickSSD as ms
-from Camera import MultiStickSSD 
 
 class Motor_move(Motor):
     #PID制御
@@ -34,12 +32,9 @@ class Motor_move(Motor):
                 spd=-(p+i+d)
         self.Run_setting(spd,self.id)
 
-    def Angle(self):
+    def Angle(self, x, y):
         ox=640
         oy=320
-        dis=MultiStickSSD()
-        x=dis(1)
-        y=dis(2)
         KP=500
         KI=10
         KD=10
@@ -52,21 +47,16 @@ class Motor_move(Motor):
         i=KI*self.integrald
         d=KD*sinx
         ans=20*(-p-i+d)
-        if p+i+d>30000:
-            spd=30000
-        elif p+i+d<-30000:
-            spd=-30000
+        if x>ox+50:
+            spd=2000
+            self.Run_setting(spd,self.id)
+            time.sleep(1)
+            self.Softstop()
+        elif x<ox-50:
+            spd=-2000
+            self.Run_setting(spd,self.id)
+            time.sleep(1)
+            self.Softstop()
         else:
-            if self.id==0:
-                spd=ans
-            else:
-                spd=- 1 * ans
-        self.Run_setting(spd,self.id)
-
-right= Motor_move(0,20000)
-left= Motor_move(1,20000)
-while True:
-    tmpl=ms.Multistick()
-    if tmpl[0]!=0:
-        right.Angle(tmpl[0],tmpl[1])
-        left.Angle(tmpl[0],tmpl[1])
+            self.Softstop()
+        time.sleep(1)

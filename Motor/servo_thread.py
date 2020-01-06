@@ -14,7 +14,7 @@ class ServoThread(threading.Thread):
 
     def run(self, request=None):
         servo0 = servo.servo_Class(Channel=0, ZeroOffset=-5)
-        servo1 = servo.servo_Class(Channel=1, ZeroOffset=-5)
+        # servo1 = servo.servo_Class(Channel=1, ZeroOffset=-5)
         # servo2 = servo.servo_Class(Channel=2, ZeroOffset=-5)
 
     # 追加コード　始まり（あべかず）

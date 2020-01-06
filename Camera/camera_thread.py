@@ -1,23 +1,35 @@
-#Core.pyから呼び出し
-
 import pigpio
 import sys
 import time
 import Camera
 import json
+import subprocess
+import threading
+
 
 class CameraThread(threading.Thread):
-	def _init_(self, request, camera):
-		super(CameraThread, self).__init__()
-		self.request = request
-		self.camera = camera
+    def __init__(self, app, camera, log):
+        super(CameraThread, self).__init__()
+        self.app = app
+        self.camera = camera
+        self.log = log
 
-	def run(self):
-		#とりあえずcamera.pyと同じことをするだけ
-		Camera.get_image();
-		# cmd = self.request['command']
-		# if cmd == 'face_positions':
-		#     self.camera.stdin.write(cmd + '\n')
-		#     response = self.camera.stdout.readline()
-		# response = json.loads(response)
-		# self.app.stdin.write(json.dumps({"response":response, 'request':self.request}) + '\n')
+    def run(self, request=None):
+        if not request:
+            return
+        response={}
+        if(request["cmd"] == "check_angle"):
+            self.log.communication('[CameraThread] cmd recv {}'.format(request['cmd']))
+            jsn_msg = self.camera.stdout.readline().decode('utf-8')
+            self.log.communication('[CameraThread] jsn {}'.format(jsn_msg))
+            msg = json.loads(jsn_msg)
+            self.log.communication('[CameraThread] dump {}'.format(msg))
+            # print(msg)
+            msg=msg['response']
+            self.log.communication("msg.{}".format(msg))
+            if not (msg["x"]  == -1):
+                response = {"x":msg["x"],"y":msg["y"]}
+            jsn = json.dumps({"response": response, "request": request})
+            self.log.communication('recieved')
+            self.app.stdin.write((jsn + '\n').encode('utf-8'))
+            self.app.stdin.flush()

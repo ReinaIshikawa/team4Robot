@@ -14,8 +14,8 @@ class MainThread(threading.Thread):
         super(MainThread, self).__init__()
 
     def run(self):
-        client.get_move_to_target(mtt.move_to_target_listener)
-        client.get_attack(0,180)
+        # client.get_move_to_target(mtt.move_to_target_listener)
+        client.get_attack(20,160)
 
 
 # 実行

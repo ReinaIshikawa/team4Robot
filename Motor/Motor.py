@@ -85,6 +85,7 @@ class Motor():
         else:
             dir = 0x51
             setspd = tmpspd
+        setspd=round(setspd)
 
         # 送信バイトデータ生成。
         spd_h   =  (0x0F0000 & setspd) >> 16
@@ -105,6 +106,7 @@ class Motor():
         else:
             tmpspd=(-1)*self.speed
             self.Run_setting(tmpspd, 1)
+        print("Run_forward!")
 
     def Run_back(self):
         print('runboth {}'.format(self.speed))
@@ -113,6 +115,7 @@ class Motor():
             self.Run_setting(tmpspd, 0)
         else:
             self.Run_setting(self.speed, 1)
+        print("Back!")
 
     def Turn_right(self):
         print('runboth {}'.format(self.speed))
@@ -133,12 +136,12 @@ class Motor():
         print("***** SoftStop. *****")
         dir = 0xB0
         # コマンド（レジスタアドレス）送信。
-        self.Write(dir, spi_id)
+        self.Write(dir, self.id)
         time.sleep(1)
 
     def Softhiz(self):
         print("***** Softhiz. *****")
         dir = 0xA8
         # コマンド（レジスタアドレス）送信。
-        self.Write(dir, spi_id)
+        self.Write(dir, self.id)
         time.sleep(1)

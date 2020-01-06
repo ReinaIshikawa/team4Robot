@@ -23,8 +23,9 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
 def MultiStick():
+    __init__(self,):
+    
     mvnc.SetGlobalOption(mvnc.GlobalOption.LOG_LEVEL, 2)
-
     devices = mvnc.EnumerateDevices()
     if len(devices) == 0:
         print("No devices found")
@@ -47,7 +48,6 @@ def MultiStick():
     print("\nLoaded Graphs!!!")
 
     cam = cv2.VideoCapture(0)
-    #cam = cv2.VideoCapture('/home/pi/SSD_MobileNet/xxxx.mp4')
 
     if cam.isOpened() != True:
         print("Camera/Movie Open Error!!!")
@@ -94,10 +94,8 @@ def MultiStick():
             print("\n\nFinished\n\n")
             sys.exit()
 
-
     def camThread():
-        global lastresults
-
+        lastresults=None
         s, img = cam.read()
 
         if not s:
@@ -167,22 +165,18 @@ def MultiStick():
             im = preprocess_image(img)
             handle.LoadTensor(im.astype(np.float16), None)
             out, userobj = handle.GetResult()
-            
+
             results.put(out)
             #print("elapsedtime = ", time.time() - now)
 
 
     def preprocess_image(src):
-
         img = cv2.resize(src, (300, 300))
         img = img - 127.5
         img = img * 0.007843
-
         return img
 
-
     def overlay_on_image(display_image, object_info):
-
         sumbox=[0,0]
         flag=0
         if isinstance(object_info, type(None)):
@@ -263,7 +257,6 @@ def MultiStick():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE )
     glutCreateWindow("DEMO")
-    #glutFullScreen()
     glutDisplayFunc(camThread)
     glutReshapeFunc(resizeview)
     glutKeyboardFunc(keyboard)
@@ -280,5 +273,6 @@ def MultiStick():
      threads.append(t)
 
     glutMainLoop()
+    print("finish")
     
 MultiStick()

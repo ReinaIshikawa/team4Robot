@@ -68,6 +68,7 @@ def get_dist(callback):
         'module': 'sensor',
         'cmd': 'check_dist'
     }
+    log.communication('client_req abgle check:' + str(request))
     # json.dumpsはpipeにstdin.writeしているのと同じこと．
     print(json.dumps(request), flush=True)
     # lisnersの'sensor'のリストにcallback関数(アプリケーションファイルに書かれている)を追加する
@@ -87,6 +88,15 @@ def get_attack(s_angle,g_angle):
 
 # 追加コード　終わり
 
+def get_angle(callback):
+    request = {
+        'module': 'camera',
+        'cmd': 'check_angle'
+    }
+    print(json.dumps(request), flush=True)
+    listeners['camera'].append(callback)
+    log.communication('client_req angle check:' + str(request))
+
 # main motorを動かす
 # 1. 障害物との距離を渡し，速度を変更させる(制御は向こう)
 # コールバックなし
@@ -100,7 +110,7 @@ def motor_dist_check(dist):
 
 
 # 2. 座標を渡し，角度を変更させる
-def motor_angle_check(x, y, callback):
+def motor_angle_check(x, y):
     request = {
         'module': 'motor',
         'cmd': 'check_angle',
@@ -108,7 +118,7 @@ def motor_angle_check(x, y, callback):
         'y': y
     }
     print(json.dumps(request), flush=True)
-    # callbacckはとりあえずなし
+    # callbackはとりあえずなし
 
 
 # 3. コマンドとして前後左右を指定し愚直に移動させる
@@ -119,15 +129,26 @@ def motor_move(direction):
         'direction': direction
     }
     print(json.dumps(request), flush=True)
-    # callbacckはとりあえずなし
+    log.communication("client.py->app" + str(request))
+    # callbackはとりあえずなし
 
-
-def voice_use():
+def camera_SSD():
     request = {
-        'module': 'voice'
+        'module' : "camera",
+        'cmd' : 'detect'
     }
     print(json.dumps(request), flush=True)
 
+def voice_cmd(callback, cmd):
+    request = {
+        'module': 'voice',
+        'cmd': cmd
+    }
+    print(json.dumps(request), flush=True)
+    log.communication("client.py->app" + str(request))
+    listeners['voice'].append(callback)
+
+"""
 def get_voice(callback):
     request = {
         'module': 'voice',
@@ -135,3 +156,4 @@ def get_voice(callback):
     }
     print(json.dumps(request), flush=True)
     listeners['voice'].append(callback)
+"""
