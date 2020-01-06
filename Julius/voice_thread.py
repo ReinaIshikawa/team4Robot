@@ -18,7 +18,7 @@ class VoiceThread(threading.Thread):
         self.cnt = 0
 
         
-    def send_response(response, request):
+    def send_response(self, response, request):
         jsn = json.dumps({"response":response, "request":request})
         log.communication('voice_thread:' + str(response))
         print('voice_thread:' + str(response))
@@ -66,49 +66,50 @@ class VoiceThread(threading.Thread):
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'front'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
                         
                     elif strTemp == u'前':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'front'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
 
                     elif strTemp == u'後ろ':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'back'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
                        
                     elif strTemp == u'右':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'right'
-                            send_response(response, request)
+
+                            self.send_response(response, request)
                             break
 
                     elif strTemp == u'左':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'left'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
 
                     elif strTemp == u'とまれ':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'stop'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
                         
                     elif strTemp == 'ストップ':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'stop'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
 
                     
@@ -116,21 +117,21 @@ class VoiceThread(threading.Thread):
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'anime'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
 
                     elif strTemp == '洋楽':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'west'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
 
                     elif strTemp == '嵐':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'arashi'
-                            send_response(response, request)
+                            self.send_response(response, request)
                             break
 
                     elif strTemp == '友達':
