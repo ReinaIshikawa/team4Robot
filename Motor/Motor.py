@@ -106,6 +106,7 @@ class Motor():
         else:
             tmpspd=(-1)*self.speed
             self.Run_setting(tmpspd, 1)
+        print("Run_forward!")
 
     def Run_back(self):
         print('runboth {}'.format(self.speed))
@@ -114,6 +115,7 @@ class Motor():
             self.Run_setting(tmpspd, 0)
         else:
             self.Run_setting(self.speed, 1)
+        print("Back!")
 
     def Turn_right(self):
         print('runboth {}'.format(self.speed))
