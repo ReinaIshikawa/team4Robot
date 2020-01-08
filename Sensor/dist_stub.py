@@ -16,6 +16,6 @@ class SensorStub(threading.Thread):
         self.cnt += 1
         if(request['cmd'] == 'check_dist'):
             jsn = json.dumps({"response": response, 'request': request})
-            self.app.stdin.write(jsn + '\n')
+            self.app.stdin.write((jsn + '\n').encode('utf-8'))
             self.app.stdin.flush()
             print('sensor_thread->app: {}'.format(jsn))

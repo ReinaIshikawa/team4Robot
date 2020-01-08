@@ -27,5 +27,5 @@ class ServoStub(threading.Thread):
             print("[ServoStub] cmd:", self.request['cmd'])
 
         # attack.pyからの処理
-        if(self.request['cmd'] == 'swing')
+        if(self.request['cmd'] == 'swing'):
             print("[ServoStub] cmd:", self.request['cmd'])

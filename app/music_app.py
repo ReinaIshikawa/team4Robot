@@ -1,20 +1,24 @@
 import client
 import threading
-import pygame.mixer
+# import pygame.mixer
 import time
-from library import log
+# from library import log
 
 #1.request a music jenre
-#2.play a music of the jenre 
+#2.play a music of the jenre
 
 
 def voice_listener(response):
-    if not response['music']:
+    # Nothing can be printed here... But it maybe works
+    # print('hey music!')
+    if not ('music' in response):
         client.voice_cmd(voice_listener, 'voice_to_music')
+        # print('no music')
     else:
+        # print('music app receive ', response['music'])
         time.sleep(15.25)
         client.voice_cmd(voice_listener, 'voice_to_music')
-    
+
     """
     if '嵐' in voice:
         pygame.mixer.init()
@@ -29,7 +33,7 @@ def voice_listener(response):
         pygame.mixer.music.play(1)
         time.sleep(60)
         pygame.mixer.music.stop()
-      
+
     if '洋楽' in voice:
         pygame.mixer.init()
         pygame.mixer.music.load(".mp3")
@@ -44,7 +48,7 @@ def voice_listener(response):
 class MainThread(threading.Thread):
     def __init__(self):
         super(MainThread, self).__init__()
-        
+
     def run(self):
         client.voice_cmd(voice_listener,'voice_to_music')
 

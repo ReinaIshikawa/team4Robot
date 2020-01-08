@@ -116,8 +116,8 @@ class VoiceThread(threading.Thread):
                     elif strTemp == 'アニソン':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
-                            # response['music'] = 'anime'
-                            # self.send_response(response, request)
+                            response['music'] = 'anime'
+                            self.send_response(response, request)
                             pygame.mixer.init()
                             pygame.mixer.music.load("zankoku.mp3")
                             pygame.mixer.music.play(1)
@@ -128,8 +128,8 @@ class VoiceThread(threading.Thread):
                     elif strTemp == '洋楽':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
-                            # response['music'] = 'west'
-                            # self.send_response(response, request)
+                            response['music'] = 'west'
+                            self.send_response(response, request)
 
                             pygame.mixer.init()
                             pygame.mixer.music.load("zankoku.mp3")
@@ -141,8 +141,8 @@ class VoiceThread(threading.Thread):
                     elif strTemp == '嵐':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
-                            # response['music'] = 'arashi'
-                            # self.send_response(response, request)
+                            response['music'] = 'arashi'
+                            self.send_response(response, request)
 
                             pygame.mixer.init()
                             pygame.mixer.music.load("zankoku.mp3")

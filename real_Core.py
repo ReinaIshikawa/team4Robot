@@ -26,22 +26,40 @@ else:
     from Camera.camera_thread import CameraThread as CameraThread
 proc = {}
 
-# open app prpcess
-nullFile = open('/dev/null', 'w')
+app_num = 0
+if len(argv) > 2:
+    app_num = int(argv[2])
+    print("app_num", app_num)
+app_cmd= [['python3', '-u', './app/dist_motor_app.py'],# 0
+['python3', '-u', './app/voice_motor_app.py'],# 1
+['python3', '-u', './app/Pursuit.py'],# 2
+['python3', '-u', './app/music_app.py'],# 3
+['python3', '-u', './app/attack.py']]# 4
+
 print("1")
-proc['app'] = subprocess.Popen(
-    ['python3', '-u', './app/dist_motor_app.py'],
-    #['python3', '-u', './app/voice_cmd_app.py'],
-    #['python3', '-u', './app/Pursuit.py'],
-    # ['python3', '-u', './app/music_app.py'],
-    #['python3', '-u', './app/voice_motor_app.py'],
-    stdin=subprocess.PIPE,
-    stdout=subprocess.PIPE,
-    # encoding='utf8'
-)
+
+# open app prpcess
+def startApp():
+    nullFile = open('/dev/null', 'w')
+    proc['app'] = subprocess.Popen(
+        app_cmd[app_num],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        # encoding='utf8'
+    )
+
+startApp()
 
 def changeApp():
-    print("changeApp")
+    global app_num
+    app = proc.pop('app')
+    for process in proc.values():
+        process.terminate()
+    app.terminate()
+    app_num = app_num + 1
+    if(app_num < len(app_cmd)):
+        startApp()
+        print("changeApp")
 
 
 # quit to change apps
@@ -54,13 +72,16 @@ def exitCore():  # voice_thread
 
 
 # voice
+if is_test:
+    voice_cmd = ['python3', '-u', './Julius/Voice_empty.py']
 if not is_test:
-    proc['voice'] = subprocess.Popen(
-        #["./Julius/julius_start.sh"],
-        ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-module'],
-        stdout = subprocess.PIPE,
-        stdin = subprocess.PIPE,
-        shell=True
+    voice_cmd = ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-module']
+proc['voice'] = subprocess.Popen(
+    #["./Julius/julius_start.sh"],
+    voice_cmd,
+    stdout = subprocess.PIPE,
+    stdin = subprocess.PIPE,
+    # shell=True
     )
 
 # Camera
@@ -69,11 +90,11 @@ if is_test:
     camera_cmd = ['python3', '-u', './Camera/Camera_empty.py']
 else:
     camera_cmd = ['python3', '-u', './Camera/Camera.py']
-    proc['camera'] = subprocess.Popen(
-        camera_cmd,
-        stdin = subprocess.PIPE,
-        stdout = subprocess.PIPE
-    )
+proc['camera'] = subprocess.Popen(
+    camera_cmd,
+    stdin = subprocess.PIPE,
+    stdout = subprocess.PIPE
+)
 
 
 time.sleep(5)
@@ -83,7 +104,7 @@ time.sleep(5)
 # ---- BEGIN request handler definition ----
 
 threads = {}
-threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore)
+threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore, changeApp)
 threads['camera'] = CameraThread(proc['app'], proc['camera'], log)
 threads['motor'] = MotorThread(proc['app'])
 threads['servo'] = ServoThread(proc['app'])
@@ -120,16 +141,16 @@ def func_sensor(request):
 cnt = 0
 log.communication('Init complete')
 while True:
-    log.communication('While')
+    # log.communication('While')
     proc['app'].stdout.flush()
-    log.communication('pre req:')
+    # log.communication('pre req:')
     raw_request = proc['app'].stdout.readline().decode("utf-8")
     try:
         request = json.loads(raw_request)
         log.communication('[{}] REQUEST:{}'.format(cnt, request))
         cnt += 1
     except ValueError:
-        log.communication('[{}] VALUE ERROR')
+        # log.communication('[{}] VALUE ERROR')
         continue
 
     print("5")
@@ -140,11 +161,11 @@ while True:
         func_voice(request)
     elif request['module'] == 'motor':
         func_motor(request)
-    elif request['servo'] == 'servo':
+    elif request['module'] == 'servo':
         func_servo(request)
     elif request['module'] == 'sensor':
         func_sensor(request)
     elif request['module'] == 'quit':
         # TODO: call destructor
-        time.sleep(3)
+        time.sleep(2)
         exitCore()

@@ -1,4 +1,4 @@
-import pigpio
+# import pigpio
 import sys
 import time
 # import Camera
@@ -6,7 +6,7 @@ import json
 # import subprocess
 import threading
 # import cv2
-import numpy as np
+# import numpy as np
 
 class CameraStub(threading.Thread):
     def __init__(self, app, camera, log):
