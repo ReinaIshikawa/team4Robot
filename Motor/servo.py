@@ -15,7 +15,7 @@ class servo_Class:
         self.pwm = Adafruit_PCA9685.PCA9685(address=0x40)
         self.pwm.set_pwm_freq(60)
 
-        
+
     """角度を設定する関数です"""
     def SetPos(self,pos):
         # pulse = 150～650 : 0 ～ 180度
@@ -29,7 +29,7 @@ class servo_Class:
         print("in set pos ", pos)
         self.pwm.set_pwm(self.Channel,0,pulse)
 
-        
+
 """制御を行うメインの部分です"""
 if __name__ == '__main__':
 #今回はサーボモーターが3つあります
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         while True:
             print('45')
             Servo0.SetPos(45)
-            time.sleep(2)          
+            time.sleep(2)
             print('90')
             Servo0.SetPos(90)
             time.sleep(2)
@@ -50,12 +50,14 @@ if __name__ == '__main__':
 
 
 def rotate(start, end):
-    Servo0 = servo_Class(Channel=0, ZeroOffset=-5)    
+    Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
     try:
         if start > 0:
             while True:
                 Servo0.SetPos(start)
+                time.sleep(2)
                 Servo0.SetPos(end)
+                time.sleep(2)
     except KeyboardInterrupt:
         print("\nCtl+C")
     except Exception as e:

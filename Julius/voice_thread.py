@@ -130,7 +130,7 @@ class VoiceThread(threading.Thread):
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'west'
                             self.send_response(response, request)
-                            
+
                             pygame.mixer.init()
                             pygame.mixer.music.load("zankoku.mp3")
                             pygame.mixer.music.play(1)

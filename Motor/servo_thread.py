@@ -17,17 +17,17 @@ class ServoThread(threading.Thread):
         # servo1 = servo.servo_Class(Channel=1, ZeroOffset=-5)
         # servo2 = servo.servo_Class(Channel=2, ZeroOffset=-5)
 
-    # 追加コード　始まり（あべかず）
-    if not request:
-        return
-    self.request = request    
-    # while True: 　無限ループ消去
+        # 追加コード　始まり（あべかず）
+        if not request:
+            return
+        self.request = request
+        # while True: 　無限ループ消去
         # 縦に動かす
         if self.request['cmd'] == 'clean':
             servo0.rotate(45, 90)
             time.sleep(1)
 
-        # 横に動かす 
+        # 横に動かす
         if self.request['cmd'] == 'attack':
             servo1.rotate(45, 90)
             time.sleep(1)
@@ -46,9 +46,3 @@ class ServoThread(threading.Thread):
             #time.sleep(1)
 
 # 追加コード　終わり
-        
-
-
-
-
-

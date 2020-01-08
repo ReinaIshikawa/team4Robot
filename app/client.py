@@ -1,6 +1,6 @@
 import json
 import threading
-from  library import log
+# from library import log
 
 
 # 全ての動作の上に君臨するスクリプト
@@ -10,7 +10,8 @@ from  library import log
 listeners = {
     'camera': [],
     'sensor': [],
-    'motor':[],
+    'motor': [],
+    'servo': [],
     'voice': []
 }
 
@@ -33,7 +34,8 @@ def startListener(thread):
         # (input()もstdinと同じこと _stubファイルはinputで適当な値を入力するようにしている)
         # sys.stdin.flush()
         data = json.loads(input())
-        log.communication('client_data:' + str(data))
+        print('client_data:' + str(data))
+        # log.communication('client_data:' + str(data))
         request = data['request']
         response = data['response']
         # 実行したやつのmodule名
@@ -68,7 +70,7 @@ def get_dist(callback):
         'module': 'sensor',
         'cmd': 'check_dist'
     }
-    log.communication('client_req abgle check:' + str(request))
+    # log.communication('client_req abgle check:' + str(request))
     # json.dumpsはpipeにstdin.writeしているのと同じこと．
     print(json.dumps(request), flush=True)
     # lisnersの'sensor'のリストにcallback関数(アプリケーションファイルに書かれている)を追加する
@@ -95,7 +97,7 @@ def get_angle(callback):
     }
     print(json.dumps(request), flush=True)
     listeners['camera'].append(callback)
-    log.communication('client_req angle check:' + str(request))
+    # log.communication('client_req angle check:' + str(request))
 
 # main motorを動かす
 # 1. 障害物との距離を渡し，速度を変更させる(制御は向こう)
@@ -129,8 +131,9 @@ def motor_move(direction):
         'direction': direction
     }
     print(json.dumps(request), flush=True)
-    log.communication("client.py->app" + str(request))
+    # log.communication("client.py->app" + str(request))
     # callbackはとりあえずなし
+
 
 def camera_SSD():
     request = {
@@ -139,20 +142,24 @@ def camera_SSD():
     }
     print(json.dumps(request), flush=True)
 
+
 def voice_cmd(callback, cmd):
     request = {
         'module': 'voice',
         'cmd': cmd
     }
     print(json.dumps(request), flush=True)
-    log.communication("client.py->app" + str(request))
+    # log.communication("client.py->app" + str(request))
     listeners['voice'].append(callback)
+
+
 def app_yamada():
-     request = {
+    request = {
         'module': 'camera',
         'cmd':'taking_picture'
     }
     print(json.dumps(request), flush=True)
+
 """
 def get_voice(callback):
     request = {
