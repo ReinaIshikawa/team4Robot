@@ -37,7 +37,7 @@ class Motor_move(Motor):
 
         
     def Angle(self,x,y):
-        ox=640
+        ox=500
         oy=320
         KP=500
         KI=10
@@ -51,7 +51,9 @@ class Motor_move(Motor):
         i=KI*self.integrald
         d=KD*sinx
         ans=20*(-p-i+d)
-        if x>ox+50:
+        if x<0:
+            self.Softstop()
+        elif x>ox+50:
             spd=2000
             self.Run_setting(spd,self.id)
             time.sleep(1)
