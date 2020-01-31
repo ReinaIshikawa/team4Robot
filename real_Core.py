@@ -7,7 +7,7 @@ import sys
 from library import log
 
 
-log.communication('Start')
+# log.communication('Start')
 argv = sys.argv
 app_num = 0
 if len(argv) > 1 and argv[1]=='test':
@@ -144,7 +144,7 @@ def func_sensor(request):
 
 # ---- read app orders ----
 cnt = 0
-log.communication('Init complete')
+# log.communication('Init complete')
 while True:
     # log.communication('While')
     proc['app'].stdout.flush()

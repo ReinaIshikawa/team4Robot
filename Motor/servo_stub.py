@@ -1,5 +1,5 @@
 import threading
-from library import log
+# from library import log
 
 class ServoStub(threading.Thread):
     def __init__(self, app):

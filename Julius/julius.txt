@@ -1,0 +1,102 @@
+/julius/ディレクトリ
+
+mkdir dict
+cd dict/
+
+word.yomi
+
+カメラ  かめら
+進め    すすめ
+前  まえ
+後ろ    うしろ
+右  みぎ
+左  ひだり
+とまれ  とまれ
+ストップ    すとっぷ
+アニソン    あにそん
+嵐  あらし
+友達    ともだち
+ついて  ついて
+来て    きて
+チェンジ    ちぇんじ
+終了    しゅうりょう
+
+word.phoneの作成
+iconv -f utf8 -t eucjp ~/julius/dict/hello.yomi | ~/julius/julius-4.4.2.1/gramtools/yomi2voca/yomi2voca.pl | iconv -f eucjp -t utf8 > ~/julius/dict/hello.phone
+
+word.grammer の作成
+S : NS_B WORD NS_E
+WORD:KAMERA
+WORD:SUSUME
+WORD:MAE
+WORD:USHIRO
+WORD:MIGI
+WORD:HIDARI
+WORD:TOMARE
+WORD:SUTOPPU
+WORD:ANISONN
+WORD:ARASHI
+WORD:TOMODACHI
+WORD:TUITE
+WORD:KITE
+WORD:TYENNJI
+WORD:SYUURYOU
+
+sudo cp word.phone word.voca
+
+
+word.voca　の編集
+
+% KAMERA
+かめら k a m e r a
+% SUSUME
+進め s u s u m e
+% MAE
+前 m a e
+% USHIRO
+後ろ u sh i r o
+% MIGI
+右 m i g i
+% HIDARI
+左 h i d a r i
+% TOMARE
+とまれ t o m a r e
+% SUTOP
+ストップ s u t o pp u
+% ANISON
+アニソン
+% ARASHI a n i s o n n
+嵐 a r a sh i
+% TOMODACHI
+友達 t o m o d a ch i
+% TUITE
+ついて ts u i t e
+% KITE
+来て k i t e
+% TYENNJI
+チェンジ ty e nn j i
+% SYUURYOU
+終了 sy u u ry o u
+
+
+% NS_B
+[s] silB
+% NS_E
+[/s] silE
+
+word.jconf
+
+iconv -f utf8 -t eucjp ~/julius-4.4.2/julius-kit/word.yomi | yomi2voca.pl > ~/julius-4.4.2/julius-kit/dictation-kit-v4.3.1-linux/word.dic
+
+
+-w word.dic       #単語辞書ファイル
+-v model/lang_m/bccwj.60k.htkdic  #N-gram、または文法用の単語辞書ファイルを指定$
+-h model/phone_m/jnas-tri-3k16-gid.binhmm #使用するHMM定義ファイル
+-hlist model/phone_m/logicalTri   #HMMlistファイルを指定する
+-n 5        #n個の文仮説数が見つかるまで検索を行う
+-output 1     #見つかったN-best候補のうち、結果として出力する個数
+-input mic      #マイク使用
+-input oss      #オープンサウンドシステム使用
+-rejectshort 600  #検出された入力が閾値以下なら棄却
+-charconv euc-jp utf8 #入出力エンコード指定(内部euc-jp, 出力utf-8)
+-lv 1000    #入力の振幅レベルの閾値(0~32767)
