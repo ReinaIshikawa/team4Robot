@@ -2,10 +2,10 @@ import json
 import sys
 import time
 import pigpio
-from Sensor.dist import main as dm
+#from Sensor.dist import main as dm
 import threading
 from mvnc import mvncapi as mvnc
-from library import log
+# from library import log
 import os
 import cv2
 import queue
@@ -14,10 +14,12 @@ from OpenGL.GL import *
 import numpy as np
 
 
+#log.communication("start Camera.py")
+print("start")
 mvnc.SetGlobalOption(mvnc.GlobalOption.LOG_LEVEL, 2)
 devices = mvnc.EnumerateDevices()
 if len(devices) == 0:
-    log.communication("No devices found")
+    #log.communication("No devices found")
     quit()
 
 devHandle   = []
@@ -32,19 +34,19 @@ for devnum in range(len(devices)):
     graphHandle.append(devHandle[devnum].AllocateGraph(graph))
     graphHandle[devnum].SetGraphOption(mvnc.GraphOption.ITERATIONS, 1)
     iterations = graphHandle[devnum].GetGraphOption(mvnc.GraphOption.ITERATIONS)
-log.communication("\nLoaded Graphs!!!")
+#log.communication("\nLoaded Graphs!!!")
 
 for i in range(10):
     cam = cv2.VideoCapture(i)
 
     if cam.isOpened() != True:
-        log.communication("Camera Open Error!!!")
+        #log.communication("Camera Open Error!!!")
         continue
     else:
         break
     
-windowWidth = 1280
-windowHeight = 640
+windowWidth = 320
+windowHeight = 240
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, windowWidth)
 cam.set(cv2.CAP_PROP_FRAME_HEIGHT, windowHeight)
 
@@ -60,6 +62,7 @@ LABELS = ('background',
         'motorbike', 'person', 'pottedplant',
         'sheep', 'sofa', 'train', 'tvmonitor')
 
+
 def init():
     glClearColor(0.7, 0.7, 0.7, 0.7)
 
@@ -69,7 +72,7 @@ def idle():
 def resizeview(w, h):
     glViewport(0, 0, w, h)
     glLoadIdentity()
-    glOrtho(-w / 1024, w / 1024, -h / 768, h / 768, -1.0, 1.0)
+    glOrtho(-w / 640, w / 640, -h / 480, h / 480, -1.0, 1.0)
 
 def keyboard(key, x, y):
     key = key.decode('utf-8')
@@ -81,16 +84,15 @@ def keyboard(key, x, y):
         for devnum in range(len(devices)):
             graphHandle[devnum].DeallocateGraph()
             devHandle[devnum].CloseDevice()
-        log.communication("\n\nFinished\n\n")
+        #log.communication("\n\nFinished\n\n")
         sys.exit()
 
 def camThread():
-    lastresults=None
+    global lastresults
     s, img = cam.read()
-    
-
     if not s:
-        log.communication("Could not get frame")
+        print("cam thread empty")
+        #log.communication("Could not get frame")
         return 0
 
     lock.acquire()
@@ -103,17 +105,24 @@ def camThread():
     if not results.empty():
         res = results.get(False)
         flag,img,sumbox = overlay_on_image(img, res)
-        time.sleep(1)
+        print(flag,sumbox)
+        #log.communication("in cam thread results") 
         if flag!=0:
-            response = {"x":sumbox[0],"y":sumbox[1],"img":img.tolist()}
-            jsn = json.dumps({"response": response})
+            response = {"x":sumbox[0],"y":sumbox[1],"img":[1]}
+            #response = {"x":1,"y":1,"img":[1]}
+            #log.communication("human"+str(response))
+            #log.communication("o"+str(response))
+            jsn = json.dumps({"response": response}).encode("utf-8")
+            print("if jsn: ", jsn)
             print(jsn,flush=True)
-            log.communication('Human found!')
+            #log.communication('Human found!')
         else:
-            response = {"x":-1,"y":-1,"img":img.tolist()}
-            jsn = json.dumps({"response": response})
+            response = {"x":-1,"y":-1,"img":[1]}
+            #log.communication("no"+str(response))
+            jsn = json.dumps({"response": response}).encode("utf-8")
+            print("else jsn :", jsn)
             print(jsn,flush=True)
-            log.communication('Human not found!')
+            #log.communication('Human not found!')
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         h, w = img.shape[:2]
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
@@ -145,13 +154,15 @@ def camThread():
 
 def inferencer(results, lock,frameBuffer, handle):
     failure =0
+    time.sleep(1)
     while failure < 1000:
         time.sleep(1)
-        log.communication("Inference")
+        #log.communication("Inference")
         lock.acquire()
         if len(frameBuffer) == 0:
             lock.release()
             failure += 1
+            print(failure)
             continue
         img = frameBuffer[-1].copy()
         del frameBuffer[-1]
@@ -164,6 +175,7 @@ def inferencer(results, lock,frameBuffer, handle):
         out, userobj = handle.GetResult()
 
         results.put(out)
+    quit()
 
 
 def preprocess_image(src):
@@ -177,9 +189,9 @@ def overlay_on_image(display_image, object_info):
     flag=0
     if isinstance(object_info, type(None)):
         return display_image
-    
     num_valid_boxes = int(object_info[0])
     img_cp = display_image.copy()
+    min_score_percent =40
 
     if num_valid_boxes > 0:
         for box_index in range(num_valid_boxes):
@@ -193,22 +205,26 @@ def overlay_on_image(display_image, object_info):
                 not np.isfinite(object_info[base_index + 6])):
                 continue
             object_info_overlay = object_info[base_index:base_index + 7]
+            #print("object_info",object_info_overlay,"base_index",base_index)
+            base_index=0
             class_id = object_info_overlay[base_index + 1]
-            source_image_width = 1
-            source_image_height = 1
+            source_image_width = img_cp.shape[1]
+            source_image_height = img_cp.shape[0]
+            percentage =int( object_info_overlay[base_index + 2]*100)
+            
             box_left = int(object_info_overlay[base_index + 3] * source_image_width)
             box_top = int(object_info_overlay[base_index + 4] * source_image_height)
             box_right = int(object_info_overlay[base_index + 5] * source_image_width)
             box_bottom = int(object_info_overlay[base_index + 6] * source_image_height)
-            if (object_info[base_index + 2])>flag and LABELS[int(class_id)]== "person" and (percentage <= min_score_percent):
-                flag=int(object_info[base_index + 2])
+            print(LABELS[int(class_id)],(object_info[base_index + 2]*100),str("%"))
+            if LABELS[int(class_id)]== 'person':
+                flag=object_info[base_index + 2]*100
                 sumbox=[(box_left+box_right)//2,(box_top+box_bottom)//2]
-        # log.communication('box at index: ' + str(box_index) + ' : ClassID: ' + LABELS[int(object_info[base_index + 1])] + '  '
-            #   'Confidence: ' + str(object_info[base_index + 2]*100) + '%  ' +
-            #     'Top Left: (' + x1_ + ', ' + y1_ + ')  Bottom Right: (' + x2_ + ', ' + y2_ + ')')
-            
-    if sumbox==[0,0]:
-        return 0,img_cp,sumbox
+                #print("aaaaa",flag,sumbox)
+    time.sleep(1)
+    print(flag,sumbox)
+    if flag==0:
+        return flag,img_cp,sumbox
     else:
         return 1,img_cp,sumbox
 
