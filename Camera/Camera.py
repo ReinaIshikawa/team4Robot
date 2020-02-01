@@ -193,13 +193,13 @@ def overlay_on_image(display_image, object_info):
                 not np.isfinite(object_info[base_index + 6])):
                 continue
             object_info_overlay = object_info[base_index:base_index + 7]
+            class_id = object_info_overlay[base_index + 1]
             source_image_width = 1
             source_image_height = 1
             box_left = int(object_info_overlay[base_index + 3] * source_image_width)
             box_top = int(object_info_overlay[base_index + 4] * source_image_height)
             box_right = int(object_info_overlay[base_index + 5] * source_image_width)
             box_bottom = int(object_info_overlay[base_index + 6] * source_image_height)
-            LABELS[int(class_id)]
             if (object_info[base_index + 2])>flag and LABELS[int(class_id)]== "person" and (percentage <= min_score_percent):
                 flag=int(object_info[base_index + 2])
                 sumbox=[(box_left+box_right)//2,(box_top+box_bottom)//2]
