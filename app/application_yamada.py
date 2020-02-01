@@ -22,7 +22,7 @@ def pursuit_listener2(response):
     y = response['y']
     log.communication("[test_yamada] pursuit listener2")
     log.communication(str(x)+":"+str(y))
-    if not(x>450 and x<540):
+    if not(x>0.6 and x<0.4):
         client.motor_angle_check(x,y)
         client.get_angle(pursuit_listener2)
         #client.get_angle(pursuit_listener2)
@@ -60,8 +60,8 @@ class MainThread(threading.Thread):
     def run(self):
         client.get_angle(pursuit_listener2)
         #print("-----")
-        log.communication("finishgetangle")
-        #client.get_dist(dist_listener1)
+        #log.communication("finishgetangle")
+        client.motor_move("back")
         picture()
         """client.app_yamada()
         picture()"""

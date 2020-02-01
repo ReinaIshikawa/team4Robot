@@ -659,3 +659,251 @@ Loaded Graphs!!!
 [COMMUNICATION][2019/11/14 17:42:06] Inference
 [COMMUNICATION][2019/11/14 17:42:08] Inference
 [COMMUNICATION][2019/11/14 17:42:09] Inference
+[COMMUNICATION][2020/01/31 23:15:04] Start
+[COMMUNICATION][2020/01/31 23:15:09] Init complete
+[COMMUNICATION][2020/01/31 23:15:09] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [1] REQUEST:{'module': 'motor', 'x': 10, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [2] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [3] REQUEST:{'module': 'motor', 'x': 15, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [4] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [5] REQUEST:{'module': 'motor', 'x': 20, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [6] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [7] REQUEST:{'module': 'motor', 'x': 25, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [8] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [9] REQUEST:{'module': 'motor', 'x': 30, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [10] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [11] REQUEST:{'module': 'motor', 'x': 35, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [12] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:09] [13] REQUEST:{'module': 'motor', 'x': 40, 'cmd': 'check_angle', 'y': 20}
+[COMMUNICATION][2020/01/31 23:15:09] [14] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/01/31 23:15:09] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/01/31 23:15:09] recieved
+[COMMUNICATION][2020/01/31 23:15:27] Start
+[COMMUNICATION][2020/01/31 23:15:32] Init complete
+[COMMUNICATION][2020/01/31 23:15:32] [0] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:15:34] [1] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:15:36] [2] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:15:38] [3] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:15:40] [4] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:15:42] [5] REQUEST:{'module': 'motor', 'cmd': 'move', 'direction': 'front'}
+[COMMUNICATION][2020/01/31 23:15:45] [6] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:16:00] Start
+[COMMUNICATION][2020/01/31 23:18:06] Start
+[COMMUNICATION][2020/01/31 23:18:11] Init complete
+[COMMUNICATION][2020/01/31 23:18:11] [0] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/01/31 23:18:16] Start
+[COMMUNICATION][2020/01/31 23:21:08] Start
+[COMMUNICATION][2020/01/31 23:21:13] Init complete
+[COMMUNICATION][2020/01/31 23:21:13] [0] REQUEST:{'module': 'voice', 'cmd': 'voice_to_music'}
+[COMMUNICATION][2020/01/31 23:21:15] [1] REQUEST:{'module': 'voice', 'cmd': 'voice_to_music'}
+[COMMUNICATION][2020/01/31 23:21:30] [2] REQUEST:{'module': 'voice', 'cmd': 'voice_to_music'}
+[COMMUNICATION][2020/01/31 23:21:48] Start
+[COMMUNICATION][2020/01/31 23:21:53] Init complete
+[COMMUNICATION][2020/01/31 23:21:53] [0] REQUEST:{'module': 'servo', 's_angle': 20, 'g_angle': 160, 'cmd': 'swing'}
+[COMMUNICATION][2020/01/31 23:21:53] [1] REQUEST:{'module': 'servo', 's_angle': 20, 'g_angle': 160, 'cmd': 'swing'}
+[COMMUNICATION][2020/01/31 23:21:53] [2] REQUEST:{'module': 'servo', 's_angle': 20, 'g_angle': 160, 'cmd': 'swing'}
+[COMMUNICATION][2020/01/31 23:21:54] [3] REQUEST:{'module': 'servo', 's_angle': 20, 'g_angle': 160, 'cmd': 'swing'}
+[COMMUNICATION][2020/01/31 23:21:56] [4] REQUEST:{'module': 'servo', 's_angle': 20, 'g_angle': 160, 'cmd': 'swing'}
+[COMMUNICATION][2020/01/31 23:21:58] [5] REQUEST:{'module': 'servo', 's_angle': 20, 'g_angle': 160, 'cmd': 'swing'}
+[COMMUNICATION][2020/01/31 23:25:22] Start
+[COMMUNICATION][2020/01/31 23:25:27] Init complete
+[COMMUNICATION][2020/01/31 23:25:52] Start
+[COMMUNICATION][2020/01/31 23:25:57] Init complete
+[COMMUNICATION][2020/01/31 23:25:57] [0] REQUEST:{'cmd': 'swing', 's_angle': 20, 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/01/31 23:25:57] [1] REQUEST:{'cmd': 'swing', 's_angle': 20, 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/01/31 23:25:57] [2] REQUEST:{'cmd': 'swing', 's_angle': 20, 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/01/31 23:25:59] [3] REQUEST:{'cmd': 'swing', 's_angle': 20, 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/01/31 23:26:01] [4] REQUEST:{'cmd': 'swing', 's_angle': 20, 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/01/31 23:26:12] Start
+[COMMUNICATION][2020/02/01 11:49:18] Start
+[COMMUNICATION][2020/02/01 11:49:23] Init complete
+[COMMUNICATION][2020/02/01 11:58:12] Start
+[COMMUNICATION][2020/02/01 11:58:17] Init complete
+[COMMUNICATION][2020/02/01 11:58:51] Start
+[COMMUNICATION][2020/02/01 12:51:42] Start
+[COMMUNICATION][2020/02/01 12:51:47] Init complete
+[COMMUNICATION][2020/02/01 13:02:10] Start
+[COMMUNICATION][2020/02/01 13:02:29] Start
+[COMMUNICATION][2020/02/01 13:02:34] Init complete
+[COMMUNICATION][2020/02/01 13:08:19] Start
+[COMMUNICATION][2020/02/01 13:08:24] Init complete
+[COMMUNICATION][2020/02/01 13:08:54] Start
+[COMMUNICATION][2020/02/01 13:17:38] Start
+[COMMUNICATION][2020/02/01 13:17:43] Init complete
+[COMMUNICATION][2020/02/01 13:17:56] Start
+[COMMUNICATION][2020/02/01 13:18:01] Init complete
+[COMMUNICATION][2020/02/01 13:18:01] [0] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/02/01 13:18:03] [1] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/02/01 13:18:05] [2] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/02/01 13:18:07] [3] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/02/01 13:18:09] [4] REQUEST:{'module': 'voice', 'cmd': 'voice_to_motor'}
+[COMMUNICATION][2020/02/01 13:18:11] [5] REQUEST:{'direction': 'front', 'module': 'motor', 'cmd': 'move'}
+[COMMUNICATION][2020/02/01 13:18:16] Start
+[COMMUNICATION][2020/02/01 13:18:21] Init complete
+[COMMUNICATION][2020/02/01 13:18:21] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:21] recieved
+[COMMUNICATION][2020/02/01 13:18:21] [1] REQUEST:{'module': 'motor', 'x': 10, 'y': 20, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [2] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:21] recieved
+[COMMUNICATION][2020/02/01 13:18:21] [3] REQUEST:{'module': 'motor', 'x': 15, 'y': 20, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [4] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:21] recieved
+[COMMUNICATION][2020/02/01 13:18:21] [5] REQUEST:{'module': 'motor', 'x': 20, 'y': 20, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [6] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:21] recieved
+[COMMUNICATION][2020/02/01 13:18:21] [7] REQUEST:{'module': 'motor', 'x': 25, 'y': 20, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [8] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:21] recieved
+[COMMUNICATION][2020/02/01 13:18:21] [9] REQUEST:{'module': 'motor', 'x': 30, 'y': 20, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [10] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:21] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:21] recieved
+[COMMUNICATION][2020/02/01 13:18:46] Start
+[COMMUNICATION][2020/02/01 13:18:51] Init complete
+[COMMUNICATION][2020/02/01 13:18:51] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:51] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:51] recieved
+[COMMUNICATION][2020/02/01 13:18:51] [1] REQUEST:{'x': 10, 'module': 'motor', 'y': 20, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:51] [2] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:18:51] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:18:51] recieved
+[COMMUNICATION][2020/02/01 13:19:13] Start
+[COMMUNICATION][2020/02/01 13:19:18] Init complete
+[COMMUNICATION][2020/02/01 13:19:18] [0] REQUEST:{'cmd': 'voice_to_music', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:19:20] [1] REQUEST:{'cmd': 'voice_to_music', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:20:07] Start
+[COMMUNICATION][2020/02/01 13:20:12] Init complete
+[COMMUNICATION][2020/02/01 13:20:12] [0] REQUEST:{'cmd': 'voice_to_music', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:20:14] [1] REQUEST:{'cmd': 'voice_to_music', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:20:26] Start
+[COMMUNICATION][2020/02/01 13:20:31] Init complete
+[COMMUNICATION][2020/02/01 13:20:31] [0] REQUEST:{'g_angle': 160, 'cmd': 'swing', 'module': 'servo', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:31] [1] REQUEST:{'g_angle': 160, 'cmd': 'swing', 'module': 'servo', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:31] [2] REQUEST:{'g_angle': 160, 'cmd': 'swing', 'module': 'servo', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:33] [3] REQUEST:{'g_angle': 160, 'cmd': 'swing', 'module': 'servo', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:34] Start
+[COMMUNICATION][2020/02/01 13:20:40] Init complete
+[COMMUNICATION][2020/02/01 13:20:40] [0] REQUEST:{'module': 'servo', 'g_angle': 160, 'cmd': 'swing', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:40] [1] REQUEST:{'module': 'servo', 'g_angle': 160, 'cmd': 'swing', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:40] [2] REQUEST:{'module': 'servo', 'g_angle': 160, 'cmd': 'swing', 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:42] Start
+[COMMUNICATION][2020/02/01 13:20:47] Init complete
+[COMMUNICATION][2020/02/01 13:20:47] [0] REQUEST:{'cmd': 'swing', 'module': 'servo', 'g_angle': 160, 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:47] [1] REQUEST:{'cmd': 'swing', 'module': 'servo', 'g_angle': 160, 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:47] [2] REQUEST:{'cmd': 'swing', 'module': 'servo', 'g_angle': 160, 's_angle': 20}
+[COMMUNICATION][2020/02/01 13:20:53] Start
+[COMMUNICATION][2020/02/01 13:20:58] Init complete
+[COMMUNICATION][2020/02/01 13:20:58] [0] REQUEST:{'cmd': 'swing', 'module': 'servo', 's_angle': 20, 'g_angle': 160}
+[COMMUNICATION][2020/02/01 13:20:58] [1] REQUEST:{'cmd': 'swing', 'module': 'servo', 's_angle': 20, 'g_angle': 160}
+[COMMUNICATION][2020/02/01 13:20:58] [2] REQUEST:{'cmd': 'swing', 'module': 'servo', 's_angle': 20, 'g_angle': 160}
+[COMMUNICATION][2020/02/01 13:20:59] [3] REQUEST:{'cmd': 'swing', 'module': 'servo', 's_angle': 20, 'g_angle': 160}
+[COMMUNICATION][2020/02/01 13:21:01] [4] REQUEST:{'cmd': 'swing', 'module': 'servo', 's_angle': 20, 'g_angle': 160}
+[COMMUNICATION][2020/02/01 13:24:36] Start
+[COMMUNICATION][2020/02/01 13:31:19] Start
+[COMMUNICATION][2020/02/01 13:31:24] Init complete
+[COMMUNICATION][2020/02/01 13:31:58] Start
+[COMMUNICATION][2020/02/01 13:33:37] Start
+[COMMUNICATION][2020/02/01 13:33:41] Start
+[COMMUNICATION][2020/02/01 13:33:46] Init complete
+[COMMUNICATION][2020/02/01 13:33:46] [0] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:33:48] [1] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:33:50] [2] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:33:52] [3] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:33:54] [4] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/01 13:33:56] [5] REQUEST:{'cmd': 'move', 'direction': 'front', 'module': 'motor'}
+[COMMUNICATION][2020/02/01 13:33:59] Start
+[COMMUNICATION][2020/02/01 13:34:02] Start
+[COMMUNICATION][2020/02/01 13:34:07] Init complete
+[COMMUNICATION][2020/02/01 13:34:07] [0] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [1] REQUEST:{'y': 20, 'x': 10, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [2] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [3] REQUEST:{'y': 20, 'x': 15, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [4] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [5] REQUEST:{'y': 20, 'x': 20, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [6] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [7] REQUEST:{'y': 20, 'x': 25, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [8] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [9] REQUEST:{'y': 20, 'x': 30, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [10] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [11] REQUEST:{'y': 20, 'x': 35, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [12] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [13] REQUEST:{'y': 20, 'x': 40, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [14] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [15] REQUEST:{'y': 20, 'x': 45, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [16] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [17] REQUEST:{'y': 20, 'x': 50, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [18] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:07] [19] REQUEST:{'y': 20, 'x': 55, 'module': 'motor', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/01 13:34:07] [20] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/01 13:34:07] [CameraThread] cmd recv check_angle
+[COMMUNICATION][2020/02/01 13:34:07] recieved
+[COMMUNICATION][2020/02/01 13:34:21] Start
+[COMMUNICATION][2020/02/01 13:34:26] Init complete
+[COMMUNICATION][2020/02/01 13:34:26] [0] REQUEST:{'module': 'voice', 'cmd': 'voice_to_music'}
+[COMMUNICATION][2020/02/01 13:34:28] [1] REQUEST:{'module': 'voice', 'cmd': 'voice_to_music'}
+[COMMUNICATION][2020/02/01 13:34:44] [2] REQUEST:{'module': 'voice', 'cmd': 'voice_to_music'}
+[COMMUNICATION][2020/02/01 13:34:56] Start
+[COMMUNICATION][2020/02/01 13:35:01] Init complete
+[COMMUNICATION][2020/02/01 13:35:01] [0] REQUEST:{'g_angle': 160, 'cmd': 'swing', 's_angle': 20, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:01] [1] REQUEST:{'g_angle': 160, 'cmd': 'swing', 's_angle': 20, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:01] [2] REQUEST:{'g_angle': 160, 'cmd': 'swing', 's_angle': 20, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:05] Start
+[COMMUNICATION][2020/02/01 13:35:10] Init complete
+[COMMUNICATION][2020/02/01 13:35:10] [0] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:10] [1] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:10] [2] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:11] [3] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:13] [4] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:15] [5] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:17] [6] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:19] [7] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:21] [8] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:23] [9] REQUEST:{'s_angle': 20, 'cmd': 'swing', 'g_angle': 160, 'module': 'servo'}
+[COMMUNICATION][2020/02/01 13:35:28] Start
+[COMMUNICATION][2020/02/01 13:35:33] Init complete
+[COMMUNICATION][2020/02/01 13:36:19] Start
+[COMMUNICATION][2020/02/01 13:36:24] Init complete
+[COMMUNICATION][2020/02/01 13:37:18] Start
+[COMMUNICATION][2020/02/01 13:40:09] Start
+[COMMUNICATION][2020/02/01 13:46:08] Start
+[COMMUNICATION][2020/02/01 14:09:57] Start
+[COMMUNICATION][2020/02/01 14:10:02] Init complete
