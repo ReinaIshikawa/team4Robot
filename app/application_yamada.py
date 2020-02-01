@@ -1,9 +1,31 @@
-import argparse
-import requests
+import threading
+import client
+from library import log
 import cv2
-import sys
-#sys.path.append("./Motor")
-from Motor import Motor
+import requests
+
+def pursuit_listener1(response):
+    # メインモータースレッドに距離を渡す
+    # 速度は向こうで制御してくれる
+    dist = response['dist']
+    client.motor_dist_check(30)
+    # if dist!=0:
+    #     client.motor_dist_check(dist)
+    # # 再帰的に(繰り返し)処理をするため
+    # # runの方にwhile文で書いてもいいかも
+    #     client.get_dist(pursuit_listener1)
+
+def pursuit_listener2(response):
+    # メインモータースレッドに距離を渡す
+    # 速度は向こうで制御してくれ
+    x = response['x']
+    y = response['y']
+    log.communication("[test_yamada] pursuit listener2")
+    log.communication(str(x)+":"+str(y))
+    if not(x>450 and x<540):
+        client.motor_angle_check(x,y)
+        client.get_angle(pursuit_listener2)
+        #client.get_angle(pursuit_listener2)
 
 def PythonNotify(message, *args):
     # 諸々の設定
@@ -17,17 +39,34 @@ def PythonNotify(message, *args):
         requests.post(line_notify_api, data=payload, headers=headers)
     else:
         # 画像
-        files = {"imageFile": open(args[0], "rb")}
+        files = {"imageFile": open("example.jpg", "rb")}
+        #files=arg
         requests.post(line_notify_api, data=payload, headers=headers, files=files)
 
 def picture():
-    movement()
+    log.communication("picture_get")
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
-    #cv2.imwrite("LennaG.png",img)
+    cv2.imwrite("example.jpg",frame)
+    cv2.destroyAllWindows()
+    #frame=cv2.imread('example.jpg')
+    message="ok"
     PythonNotify(message, frame)
 
-def movement():
-    device=Motor.Motor()
-    deveice.Run_back()
-picture()
+
+class MainThread(threading.Thread):
+    def __init__(self):
+        super(MainThread, self).__init__()
+    def run(self):
+        client.get_angle(pursuit_listener2)
+        #print("-----")
+        log.communication("finishgetangle")
+        #client.get_dist(dist_listener1)
+        picture()
+        """client.app_yamada()
+        picture()"""
+
+
+# 実行
+thread = MainThread()
+client.startListener(thread)

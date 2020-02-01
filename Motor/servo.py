@@ -30,6 +30,21 @@ class servo_Class:
         self.pwm.set_pwm(self.Channel,0,pulse)
 
 
+    def rotate(self, start, end):
+        # Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
+        try:
+            if start > 0:
+                while True:
+                    print("in rotate")
+                    self.SetPos(start)
+                    time.sleep(2)
+                    self.SetPos(end)
+                    time.sleep(2)
+        except KeyboardInterrupt:
+            print("\nCtl+C")
+        except Exception as e:
+            print(str(e))
+            
 """制御を行うメインの部分です"""
 if __name__ == '__main__':
 #今回はサーボモーターが3つあります
@@ -44,21 +59,6 @@ if __name__ == '__main__':
             Servo0.SetPos(90)
             time.sleep(2)
     except KeyboardInterrupt :         #Ctl+Cが押されたらループを終了
-        print("\nCtl+C")
-    except Exception as e:
-        print(str(e))
-
-
-def rotate(start, end):
-    Servo0 = servo_Class(Channel=0, ZeroOffset=-5)
-    try:
-        if start > 0:
-            while True:
-                Servo0.SetPos(start)
-                time.sleep(2)
-                Servo0.SetPos(end)
-                time.sleep(2)
-    except KeyboardInterrupt:
         print("\nCtl+C")
     except Exception as e:
         print(str(e))

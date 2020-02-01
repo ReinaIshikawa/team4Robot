@@ -30,7 +30,9 @@ def pursuit_listener2(response):
     y = response['y']
     # log.communication("pursuit angle"+str(x)+", "+str(y))
     print("pursuit angle"+str(x)+", "+str(y))
-    if x>0:
+    if x<0:
+        client.get_dist(pursuit_listener1)
+    elif (x<450 or x>500):
         client.motor_angle_check(x,y)
     # 再帰的に(繰り返し)処理をするため
     # runの方にwhile文で書いてもいいかも

@@ -1,8 +1,8 @@
 import wiringpi as wp
 import time
 import struct
-from Motor import Motor
-from Motor_move import Motor_move
+import Motor
+import Motor_move
 #import ex
 
 if __name__=="__main__":

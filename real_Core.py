@@ -9,8 +9,9 @@ from library import log
 
 log.communication('Start')
 argv = sys.argv
-if len(argv) > 1:
-    is_test = argv[1] == 'test'
+app_num = 0
+if len(argv) > 1 and argv[1]=='test':
+    is_test = True
     from Sensor.dist_stub import SensorStub as SensorThread
     from Motor.motor_stub import MotorStub as MotorThread
     from Motor.servo_stub import ServoStub as ServoThread
@@ -19,6 +20,7 @@ if len(argv) > 1:
     print('-------- Runing in test mode --------')
 else:
     is_test = False
+    app_num = int(argv[1])
     from Sensor.dist_thread import DistThread as SensorThread
     from Motor.motor_thread import MotorThread
     from Motor.servo_thread import ServoThread as ServoThread
@@ -26,7 +28,6 @@ else:
     from Camera.camera_thread import CameraThread as CameraThread
 proc = {}
 
-app_num = 0
 if len(argv) > 2:
     app_num = int(argv[2])
     print("app_num", app_num)
@@ -34,7 +35,8 @@ app_cmd= [['python3', '-u', './app/dist_motor_app.py'],# 0
 ['python3', '-u', './app/voice_motor_app.py'],# 1
 ['python3', '-u', './app/Pursuit.py'],# 2
 ['python3', '-u', './app/music_app.py'],# 3
-['python3', '-u', './app/attack.py']]# 4
+['python3', '-u', './app/attack.py'],#4
+['python3', '-u', './app/application_yamada.py']]# 5
 
 print("1")
 
@@ -74,15 +76,17 @@ def exitCore():  # voice_thread
 # voice
 if is_test:
     voice_cmd = ['python3', '-u', './Julius/Voice_empty.py']
-if not is_test:
-    voice_cmd = ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-module']
-proc['voice'] = subprocess.Popen(
-    #["./Julius/julius_start.sh"],
-    voice_cmd,
-    stdout = subprocess.PIPE,
-    stdin = subprocess.PIPE,
-    # shell=True
+    proc['voice'] = subprocess.Popen(
+        #["./Julius/julius_start.sh"],
+        voice_cmd,
+        stdout = subprocess.PIPE,
+        stdin = subprocess.PIPE,
+        # shell=True
     )
+if not is_test:
+    pass
+    # voice_cmd = ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-input mic', '-module']
+    # proc['voice'] = subprocess.Popen(voice_cmd)
 
 # Camera
 if is_test:
@@ -104,7 +108,7 @@ time.sleep(5)
 # ---- BEGIN request handler definition ----
 
 threads = {}
-threads['voice'] = VoiceThread(proc['app'], proc['voice'], exitCore, changeApp)
+threads['voice'] = VoiceThread(proc['app'], exitCore, changeApp)
 threads['camera'] = CameraThread(proc['app'], proc['camera'], log)
 threads['motor'] = MotorThread(proc['app'])
 threads['servo'] = ServoThread(proc['app'])
@@ -121,6 +125,7 @@ def func_voice(request):
 
 
 def func_camera(request):
+    print("------------",request,"-----------")
     threads['camera'].run(request=request)
 
 
@@ -152,9 +157,6 @@ while True:
     except ValueError:
         # log.communication('[{}] VALUE ERROR')
         continue
-
-    print("5")
-
     if request['module'] == 'camera':
         func_camera(request)
     elif request['module'] == 'voice':

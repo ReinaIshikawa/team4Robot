@@ -46,8 +46,8 @@ class MultiThread(threading.Thread):
             print("Camera/Movie Open Error!!!")
             quit()
 
-        windowWidth = 1280
-        windowHeight = 640
+        windowWidth = 160
+        windowHeight = 80
         cam.set(cv2.CAP_PROP_FRAME_WIDTH, windowWidth)
         cam.set(cv2.CAP_PROP_FRAME_HEIGHT, windowHeight)
 
@@ -118,14 +118,14 @@ class MultiThread(threading.Thread):
                     self.camera.stdin.flush()
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 h, w = img.shape[:2]
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
+                #glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
                 lastresults = res
             else:
                 imdraw = overlay_on_image(img, lastresults)
                 imdraw = cv2.cvtColor(imdraw, cv2.COLOR_BGR2RGB)
                 h, w = imdraw.shape[:2]
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, imdraw)
-
+                #glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, imdraw)
+            """
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
             glColor3f(1.0, 1.0, 1.0)
             glEnable(GL_TEXTURE_2D)
@@ -142,11 +142,10 @@ class MultiThread(threading.Thread):
             glVertex3d(-1.0,  1.0,  0.0)
             glEnd()
             glFlush()
-            glutSwapBuffers()
-
+            glutSwapBuffers()"""
         def inferencer(results, lock, frameBuffer, handle):
             failure = 0
-            time.sleep(5)
+            #time.sleep(5)
             while failure < 100:
 
                 lock.acquire()
@@ -182,7 +181,6 @@ class MultiThread(threading.Thread):
             
             num_valid_boxes = int(object_info[0])
             img_cp = display_image.copy()
-
             if num_valid_boxes > 0:
                 for box_index in range(num_valid_boxes):
                     base_index = 7+ box_index * 7
@@ -207,7 +205,7 @@ class MultiThread(threading.Thread):
                     if (object_info[base_index + 2])>flag:
                         flag=int(object_info[base_index + 2])
                         sumbox=[(int(x1_)+int(x2_))//2,(int(y1_)+int(y2_))//2]
-                # print('box at index: ' + str(box_index) + ' : ClassID: ' + LABELS[int(object_info[base_index + 1])] + '  '
+                    """ # print('box at index: ' + str(box_index) + ' : ClassID: ' + LABELS[int(object_info[base_index + 1])] + '  '
                     #   'Confidence: ' + str(object_info[base_index + 2]*100) + '%  ' +
                     #     'Top Left: (' + x1_ + ', ' + y1_ + ')  Bottom Right: (' + x2_ + ', ' + y2_ + ')')
 
@@ -245,6 +243,7 @@ class MultiThread(threading.Thread):
                     label_bottom = label_top + label_size[1]
                     cv2.rectangle(img_cp, (label_left - 1, label_top - 1), (label_right + 1, label_bottom + 1), label_background_color, -1)
                     cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)
+                    """
             if sumbox==[0,0]:
                 return 0,img_cp,sumbox
             else:

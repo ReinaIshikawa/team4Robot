@@ -5,10 +5,10 @@ import json
 
 
 class VoiceStub(threading.Thread):
-    def __init__(self, app, voice, exitCore, changeApp):
+    def __init__(self, app,exitCore, changeApp):
         super(VoiceStub, self).__init__()
         self.app = app
-        self.voice = voice
+        # self.voice = voice
         self.exitCore = exitCore
         self.changeApp = changeApp
         self.num = 0
@@ -60,4 +60,3 @@ class VoiceStub(threading.Thread):
         if self.num == 11:# 終了はとりあえずなし(動作は確認済み)
             self.num = 0
         time.sleep(2)
->>>>>>> 9359bc1e59c2077b635cbdb9d4ff25ac0baa0337

@@ -11,11 +11,12 @@ port = 10500   #julisuサーバーモードのポート
 
 class VoiceThread(threading.Thread):
 
-    def __init__(self, app, voice, exitCore):
+    def __init__(self, app, exitCore, changeApp):
         super(VoiceThread, self).__init__()
         self.app = app
-        self.voice = voice
+        # self.voice = voice
         self.exitCore = exitCore
+        self.changeApp = changeApp
         self.cnt = 0
 
 
@@ -38,8 +39,9 @@ class VoiceThread(threading.Thread):
         print('voice_thread check cmd:'+cmd)
 
         # get process ID
-        pid = str(self.voice.stdout.read().decode('utf-8'))
-        print('voice_thread get pid' + pid)
+        # pid = str(self.voice.stdout.read().decode('utf-8'))
+        # print('voice_thread get pid' + pid)
+
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((host, port))
         print('voice_thread bind socket')
@@ -124,7 +126,8 @@ class VoiceThread(threading.Thread):
                             time.sleep(15)
                             pygame.mixer.music.stop()
                             break
-
+                    
+                    """
                     elif strTemp == '洋楽':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
@@ -138,14 +141,15 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.music.stop()
                             break
 
+                    """
+
                     elif strTemp == '嵐':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'arashi'
                             self.send_response(response, request)
-
                             pygame.mixer.init()
-                            pygame.mixer.music.load("zankoku.mp3")
+                            pygame.mixer.music.load("arashi.mp3")
                             pygame.mixer.music.play(1)
                             time.sleep(15)
                             pygame.mixer.music.stop()

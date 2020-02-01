@@ -69,7 +69,7 @@ def idle():
 def resizeview(w, h):
     glViewport(0, 0, w, h)
     glLoadIdentity()
-    glOrtho(-w / 1920, w / 1920, -h / 1080, h / 1080, -1.0, 1.0)
+    glOrtho(-w / 1024, w / 1024, -h / 768, h / 768, -1.0, 1.0)
 
 def keyboard(key, x, y):
     key = key.decode('utf-8')
@@ -87,6 +87,7 @@ def keyboard(key, x, y):
 def camThread():
     lastresults=None
     s, img = cam.read()
+    
 
     if not s:
         log.communication("Could not get frame")
@@ -94,29 +95,31 @@ def camThread():
 
     lock.acquire()
     if len(frameBuffer)>10:
-        for i in range(10):
+        for i in range(len(frameBuffer)):
             del frameBuffer[0]
     frameBuffer.append(img)
+    #log.communication(str(frameBuffer))
     lock.release()
     res = None
-
+    #log.communication("eeeeeeeeeeeeeeee")
     if not results.empty():
+        #log.communication("aaaaaaaaaaaaaa")
         res = results.get(False)
         flag,img,sumbox = overlay_on_image(img, res)
+        #log.communication("bbbbbbbbbbbbbb")
+        time.sleep(1)
         if flag!=0:
+            #log.communication("cccccccccccc")
             response = {"x":sumbox[0],"y":sumbox[1],"img":img.tolist()}
             jsn = json.dumps({"response": response})
             print(jsn,flush=True)
             log.communication('Human found!')
-            # self.camera.stdin.write(jsn + '\n')
-            # self.camera.stdin.flush()
         else:
+            #log.communication("ddddddddddddddddddd")
             response = {"x":-1,"y":-1,"img":img.tolist()}
             # jsn = json.dumps({"response": response, 'request': request})
             jsn = json.dumps({"response": response})
             print(jsn,flush=True)
-            # self.camera.stdin.write(jsn + '\n')
-            # self.camera.stdin.flush()
             log.communication('Human not found!')
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         h, w = img.shape[:2]
@@ -124,6 +127,7 @@ def camThread():
         lastresults = res
         time.sleep(1)
     else:
+        #log.communication("ooooooooooooooooooooooooooooo")
         imdraw = overlay_on_image(img, lastresults)
         imdraw = cv2.cvtColor(imdraw, cv2.COLOR_BGR2RGB)
         h, w = imdraw.shape[:2]
@@ -147,16 +151,19 @@ def camThread():
     glFlush()
     glutSwapBuffers()
 
-def inferencer(results, lock, frameBuffer, handle):
-    failure = 0
-    time.sleep(5)
-    while failure < 100:
+def inferencer(results, lock,frameBuffer, handle):
+    failure =0
+    while failure < 1000:
+        time.sleep(1)
+        log.communication("Inference")
         lock.acquire()
+        #log.communication("check"+str(frameBuffer[-1]))
         if len(frameBuffer) == 0:
             lock.release()
             failure += 1
+            #log.communication("infrencer lock released" + str(failure))
             continue
-
+        #log.communication("zzzzzzzzzzzzzzz")
         img = frameBuffer[-1].copy()
         del frameBuffer[-1]
         failure = 0
@@ -212,8 +219,7 @@ def overlay_on_image(display_image, object_info):
         # log.communication('box at index: ' + str(box_index) + ' : ClassID: ' + LABELS[int(object_info[base_index + 1])] + '  '
             #   'Confidence: ' + str(object_info[base_index + 2]*100) + '%  ' +
             #     'Top Left: (' + x1_ + ', ' + y1_ + ')  Bottom Right: (' + x2_ + ', ' + y2_ + ')')
-
-            object_info_overlay = object_info[base_index:base_index + 7]
+            """object_info_overlay = object_info[base_index:base_index + 7]
 
             min_score_percent = 10
             source_image_width = img_cp.shape[1]
@@ -246,7 +252,7 @@ def overlay_on_image(display_image, object_info):
             label_right = label_left + label_size[0]
             label_bottom = label_top + label_size[1]
             cv2.rectangle(img_cp, (label_left - 1, label_top - 1), (label_right + 1, label_bottom + 1), label_background_color, -1)
-            cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)
+            cv2.putText(img_cp, label_text, (label_left, label_bottom), cv2.FONT_HERSHEY_SIMPLEX, 0.5, label_text_color, 1)"""
     if sumbox==[0,0]:
         return 0,img_cp,sumbox
     else:
@@ -266,7 +272,7 @@ glutIdleFunc(idle)
 threads = []
 
 for devnum in range(len(devices)):
-    t = threading.Thread(target=inferencer, args=(results, lock, frameBuffer, graphHandle[devnum]))
+    t = threading.Thread(target=inferencer, args=(results, lock, frameBuffer,graphHandle[devnum]))
     t.start()
     threads.append(t)
 

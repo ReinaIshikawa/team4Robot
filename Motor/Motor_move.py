@@ -4,9 +4,12 @@ import wiringpi as wp
 import time
 import struct
 from .Motor import Motor
+#import Motor
 import math
 
 class Motor_move(Motor):
+    def __init__(self,spi_id,spd):
+        super().__init__(spi_id,spd)
     #PID制御
     #目標までの距離を受け取り速度を出力す
     diffnew=0
@@ -48,7 +51,9 @@ class Motor_move(Motor):
         i=KI*self.integrald
         d=KD*sinx
         ans=20*(-p-i+d)
-        if x>ox+50:
+        if x<0:
+            self.Softstop()
+        elif x>ox+50:
             spd=2000
             self.Run_setting(spd,self.id)
             time.sleep(1)

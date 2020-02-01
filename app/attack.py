@@ -23,8 +23,6 @@ class MainThread(threading.Thread):
         # client.get_move_to_target(mtt.move_to_target_listener)
         for i in range(10):
             client.get_attack(self.start_dig, self.end_dig)
-            self.start_dig = self.end_dig + 5
-            self.end_dig = self.end_dig - 5
             time.sleep(2)
 
 
