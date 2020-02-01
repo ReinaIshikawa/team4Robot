@@ -34,8 +34,8 @@ class Motor_move(Motor):
 
         
     def Angle(self,x,y):
-        ox=640
-        oy=320
+        ox=0.5
+        oy=0.5
         KP=500
         KI=10
         KD=10
