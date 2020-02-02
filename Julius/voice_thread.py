@@ -10,7 +10,6 @@ host = '0.0.0.0' #localhost
 port = 10500   #julisuサーバーモードのポート
 
 class VoiceThread(threading.Thread):
-
     def __init__(self, app, exitCore, changeApp):
         super(VoiceThread, self).__init__()
         self.app = app
@@ -61,19 +60,16 @@ class VoiceThread(threading.Thread):
                         strTemp += str(line)
                     response={}
                     if strTemp == u'カメラ':
-                        # pass
-                        log.communication("voice_result: " + strTemp)
+                        
                         continue
                     elif strTemp == u'進め':
                         if cmd == "voice_to_motor":
-                            log.communication("voice_result: " + strTemp)
                             response['direction'] = 'front'
                             self.send_response(response, request)
                             break
 
                     elif strTemp == u'前':
                         if cmd == "voice_to_motor":
-                            log.communication("voice_result: " + strTemp)
                             response['direction'] = 'front'
                             self.send_response(response, request)
                             break

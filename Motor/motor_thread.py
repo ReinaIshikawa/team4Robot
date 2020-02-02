@@ -21,6 +21,7 @@ class MotorThread(threading.Thread):
 
 
     def SimpleMove(self,direction):
+        print("in simple move: ", direction)
         if direction == 'front':
             self.right.Run_forward()
             self.left.Run_forward()

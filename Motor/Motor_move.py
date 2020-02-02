@@ -24,19 +24,16 @@ class Motor_move(Motor):
         p=KP*self.diffnew
         i=KI*self.integrald
         d=KD*(self.diffnew-self.diffold)/self.delta
+        spd=p+i+d
         if p+i+d>30000:
-            spd=-30000
-            #spd=30000
-        elif p+i+d<-30000:
+            # spd=-30000
             spd=30000
-            #spd=-30000
-        else:
-            if self.id==0:
-                spd=-(p+i+d)
-                #spd=(p+i+d)
-            else:
-                spd=(p+i+d)
-                #pd=-(p+i+d)
+        elif p+i+d<-30000:
+            # spd=30000
+            spd=-30000
+        if self.id == 1:
+            spd = -spd
+
         self.Run_setting(spd,self.id)
 
         

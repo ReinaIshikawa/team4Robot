@@ -45,8 +45,8 @@ if cam.isOpened() != True:
     #print("Camera/Movie Open Error!!!")
     quit()
 
-windowWidth = 320*4
-windowHeight = 240*4
+windowWidth = 320*2
+windowHeight = 240*2
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, windowWidth)
 cam.set(cv2.CAP_PROP_FRAME_HEIGHT, windowHeight)
 
@@ -115,7 +115,8 @@ def camThread():
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, img)
         lastresults = res
         if flag !=0:
-            response={"x":sumbox[0],"y":sumbox[1],"img":[1]}
+            response={"x":sumbox[0],"y":sumbox[1],"img":[1]} 
+           #cv2.imwrite("img")
             jsn = json.dumps({"response":response})#.encode("utf-8")
             #jsn = json.dumps({"response":response}).encode()
             print(jsn, flush=True)
@@ -226,6 +227,7 @@ def overlay_on_image(display_image, object_info):
             min_score_percent = 75
             source_image_width = img_cp.shape[1]
             source_image_height = img_cp.shape[0]
+            #print( source_image_height)
 
             base_index = 0
             class_id = object_info_overlay[base_index + 1]

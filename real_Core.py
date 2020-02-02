@@ -22,7 +22,7 @@ else:
     app_num = int(argv[1])
     from Sensor.dist_thread import DistThread as SensorThread
     from Motor.motor_thread import MotorThread
-    from Motor.servo_stub import ServoStub as ServoThread
+    from Motor.servo_thread import ServoThread as ServoThread
     from Julius.voice_thread import VoiceThread as VoiceThread
     from Camera.camera_thread import CameraThread as CameraThread
 proc = {}
@@ -35,9 +35,10 @@ app_cmd= [['python3', '-u', './app/dist_motor_app.py'],# 0
 ['python3', '-u', './app/Pursuit.py'],# 2
 ['python3', '-u', './app/music_app.py'],# 3
 ['python3', '-u', './app/attack.py'],#4
-['python3', '-u', './app/application_yamada.py']]# 5
+['python3', '-u', './app/application_yamada.py'],# 5
+['python3', '-u', './app/maenarae.py']]# 6
 
-print("1")
+#print("1")
 
 # open app prpcess
 def startApp():

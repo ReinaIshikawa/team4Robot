@@ -1,6 +1,6 @@
 import threading
 import client
-#from library import log
+# from library import log
 import cv2
 import requests
 import time
@@ -41,11 +41,11 @@ def PythonNotify(message, *args):
 
 def picture():
     #log.communication("picture_get")
-    time.sleep(7)
+    time.sleep(1)
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cv2.imwrite("example.jpg",frame)
-    cv2.destroyAllWindows()
+    #cv2.destroyAllWindows()
     #frame=cv2.imread('example.jpg')
     message="ok"
     PythonNotify(message, frame)
@@ -60,7 +60,7 @@ class MainThread(threading.Thread):
         #log.communication("finishgetangle")
         time.sleep(20)
         client.motor_move("back")
-        time.sleep(8)
+        time.sleep(3)
         client.motor_move("stop")
         time.sleep(6)
         open_jtalk.jtalk("写真をとります。                                              さん                                                                            に                                                                             いち                                                                            かしゃ       。")

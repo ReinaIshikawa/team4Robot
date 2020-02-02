@@ -1,5 +1,6 @@
 import threading
 import client
+import time
 # from library import log
 
 # import json
@@ -11,31 +12,31 @@ import client
 
 # callback関数
 # responseはdistからのresponseが入る
-
+count=0
 def pursuit_listener1(response):
+    global count
     # メインモータースレッドに距離を渡す
     # 速度は向こうで制御してくれる
     dist = response['dist']
-    # log.communication("pursuit dist"+dist)
-    print("pursuit dist"+str(dist))
+    #print("pursuit dist"+str(dist))
     if dist!=0:
         client.motor_dist_check(dist)
-    # 再帰的に(繰り返し)処理をするため
-    # runの方にwhile文で書いてもいいかも
         client.get_dist(pursuit_listener1)
-
+    elif count <=10:
+        client.motor_move("stop")
+        time.sleep(1)
+        client.get_angle(pursuit_listener2)
+        count+=1
+        #print(count)
 
 def pursuit_listener2(response):
     x = response['x']
     y = response['y']
     # log.communication("pursuit angle"+str(x)+", "+str(y))
-    print("pursuit angle"+str(x)+", "+str(y))
+    #print("pursuit angle"+str(x)+", "+str(y))
     if x<0:
         client.get_dist(pursuit_listener1)
-    elif (x<450 or x>500):
-        client.motor_angle_check(x,y)
-    # 再帰的に(繰り返し)処理をするため
-    # runの方にwhile文で書いてもいいかも
+    elif (x<200 or x>400):
         client.get_angle(pursuit_listener2)
     else:
         client.get_dist(pursuit_listener1)
@@ -47,6 +48,7 @@ class MainThread(threading.Thread):
         super(MainThread, self).__init__()
 
     def run(self):
+        time.sleep(3)
         client.get_angle(pursuit_listener2)
 
 
