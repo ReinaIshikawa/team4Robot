@@ -15,8 +15,10 @@ def voice_listener(response):
         client.voice_cmd(voice_listener, 'voice_to_music')
         # print('no music')
     else:
-        # print('music app receive ', response['music'])
-        time.sleep(15.25)
+        # print('music app received ', response['music'])
+        # words of songs can be orders?
+        time.sleep(8.25)
+        #client.motor_move("rotate")
         client.voice_cmd(voice_listener, 'voice_to_music')
 
 class MainThread(threading.Thread):
