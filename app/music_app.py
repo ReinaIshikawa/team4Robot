@@ -18,7 +18,7 @@ def voice_listener(response):
         # print('music app received ', response['music'])
         # words of songs can be orders?
         time.sleep(8.25)
-        #client.motor_move("rotate")
+        client.motor_move("front")
         client.voice_cmd(voice_listener, 'voice_to_music')
 
 class MainThread(threading.Thread):
