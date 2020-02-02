@@ -3,17 +3,13 @@ import client
 #from library import log
 import cv2
 import requests
-
+import time
+import open_jtalk
 def pursuit_listener1(response):
     # メインモータースレッドに距離を渡す
     # 速度は向こうで制御してくれる
     dist = response['dist']
     client.motor_dist_check(30)
-    # if dist!=0:
-    #     client.motor_dist_check(dist)
-    # # 再帰的に(繰り返し)処理をするため
-    # # runの方にwhile文で書いてもいいかも
-    #     client.get_dist(pursuit_listener1)
 
 def pursuit_listener2(response):
     # メインモータースレッドに距離を渡す
@@ -45,6 +41,7 @@ def PythonNotify(message, *args):
 
 def picture():
     #log.communication("picture_get")
+    time.sleep(7)
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cv2.imwrite("example.jpg",frame)
@@ -61,7 +58,12 @@ class MainThread(threading.Thread):
         client.get_angle(pursuit_listener2)
         #print("-----")
         #log.communication("finishgetangle")
+        time.sleep(20)
         client.motor_move("back")
+        time.sleep(8)
+        client.motor_move("stop")
+        time.sleep(6)
+        open_jtalk.jtalk("写真をとります。                                              さん                                                                            に                                                                             いち                                                                            かしゃ       。")
         picture()
         """client.app_yamada()
         picture()"""

@@ -1,9 +1,9 @@
 
-wget https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Example-1.6/MMDAgent_Example-1.6.zip/download -O MMDAgent_Example-1.6.zip
+"""cd wget https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Example-1.6/MMDAgent_Example-1.6.zip/download -O MMDAgent_Example-1.6.zip
 
 unzip MMDAgent_Example-1.6.zip MMDAgent_Example-1.6/Voice/*
 sudo cp -r MMDAgent_Example-1.6/Voice/mei/ /usr/share/hts-voice
-
+"""
 #coding: utf-8
 import subprocess
 from datetime import datetime

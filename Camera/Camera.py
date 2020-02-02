@@ -45,8 +45,8 @@ if cam.isOpened() != True:
     #print("Camera/Movie Open Error!!!")
     quit()
 
-windowWidth = 320*2
-windowHeight = 240*2
+windowWidth = 320*4
+windowHeight = 240*4
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, windowWidth)
 cam.set(cv2.CAP_PROP_FRAME_HEIGHT, windowHeight)
 

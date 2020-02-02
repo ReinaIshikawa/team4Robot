@@ -1344,3 +1344,151 @@
 [COMMUNICATION][2020/02/02 16:40:14] voice_thread:{'direction': 'front'}
 [COMMUNICATION][2020/02/02 16:40:22] voice_thread: Not found.
 [COMMUNICATION][2020/02/02 16:40:25] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:45:22] Start
+[COMMUNICATION][2020/02/02 16:45:29] Init complete
+[COMMUNICATION][2020/02/02 16:45:29] [0] REQUEST:{'cmd': 'voice_to_music', 'module': 'voice'}
+[COMMUNICATION][2020/02/02 16:45:31] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:45:34] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:45:37] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:45:40] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:45:43] voice_result: 嵐
+[COMMUNICATION][2020/02/02 16:45:43] voice_thread:{'music': 'arashi'}
+[COMMUNICATION][2020/02/02 16:46:01] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:46:19] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:46:22] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:46:28] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:46:31] voice_result: アニソン
+[COMMUNICATION][2020/02/02 16:46:31] voice_thread:{'music': 'anime'}
+[COMMUNICATION][2020/02/02 16:46:49] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:49:47] Start
+[COMMUNICATION][2020/02/02 16:49:53] Init complete
+[COMMUNICATION][2020/02/02 16:49:53] [0] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/02 16:49:55] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:49:58] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:50:01] voice_result: 前
+[COMMUNICATION][2020/02/02 16:50:01] voice_thread:{'direction': 'front'}
+[COMMUNICATION][2020/02/02 16:50:04] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:50:07] voice_result: 前
+[COMMUNICATION][2020/02/02 16:50:07] voice_thread:{'direction': 'front'}
+[COMMUNICATION][2020/02/02 16:50:10] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:50:13] voice_result: 進め
+[COMMUNICATION][2020/02/02 16:50:13] voice_thread:{'direction': 'front'}
+[COMMUNICATION][2020/02/02 16:50:16] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:50:19] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:50:22] voice_result: 後ろ
+[COMMUNICATION][2020/02/02 16:50:22] voice_thread:{'direction': 'back'}
+[COMMUNICATION][2020/02/02 16:50:25] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:50:28] voice_result: とまれ
+[COMMUNICATION][2020/02/02 16:50:28] voice_thread:{'direction': 'stop'}
+[COMMUNICATION][2020/02/02 16:50:31] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:51:01] Start
+[COMMUNICATION][2020/02/02 16:51:07] Init complete
+[COMMUNICATION][2020/02/02 16:51:07] [0] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:09] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:09] [1] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:09] [2] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:11] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:11] [3] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:11] [4] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:13] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:13] [5] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:13] [6] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:15] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:15] [7] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:15] [8] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:16] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:16] [9] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:16] [10] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:18] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:18] [11] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:18] [12] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:20] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:20] [13] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:20] [14] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:22] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:22] [15] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:22] [16] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:24] dist_thread:95
+[COMMUNICATION][2020/02/02 16:51:24] [17] REQUEST:{'dist': 95, 'module': 'motor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:24] [18] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 16:51:57] Start
+[COMMUNICATION][2020/02/02 16:52:03] Init complete
+[COMMUNICATION][2020/02/02 16:52:03] [0] REQUEST:{'cmd': 'voice_to_motor', 'module': 'voice'}
+[COMMUNICATION][2020/02/02 16:52:05] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:08] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:11] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:14] voice_result: 前
+[COMMUNICATION][2020/02/02 16:52:14] voice_thread:{'direction': 'front'}
+[COMMUNICATION][2020/02/02 16:52:17] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:20] voice_result: 前
+[COMMUNICATION][2020/02/02 16:52:20] voice_thread:{'direction': 'front'}
+[COMMUNICATION][2020/02/02 16:52:25] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:28] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:31] voice_result: 前
+[COMMUNICATION][2020/02/02 16:52:31] voice_thread:{'direction': 'front'}
+[COMMUNICATION][2020/02/02 16:52:36] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:39] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:52:45] voice_thread: Not found.
+[COMMUNICATION][2020/02/02 16:53:52] Start
+[COMMUNICATION][2020/02/02 16:53:58] Init complete
+[COMMUNICATION][2020/02/02 16:53:58] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 16:54:02] recieved
+[COMMUNICATION][2020/02/02 16:54:02] [1] REQUEST:{'module': 'motor', 'direction': 'back', 'cmd': 'move'}
+[COMMUNICATION][2020/02/02 16:57:38] Start
+[COMMUNICATION][2020/02/02 16:57:44] Start
+[COMMUNICATION][2020/02/02 16:57:50] Init complete
+[COMMUNICATION][2020/02/02 16:57:50] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 16:57:54] recieved
+[COMMUNICATION][2020/02/02 16:57:54] [1] REQUEST:{'module': 'motor', 'direction': 'back', 'cmd': 'move'}
+[COMMUNICATION][2020/02/02 17:02:49] Start
+[COMMUNICATION][2020/02/02 17:02:54] Start
+[COMMUNICATION][2020/02/02 17:03:00] Init complete
+[COMMUNICATION][2020/02/02 17:03:00] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 17:03:28] Start
+[COMMUNICATION][2020/02/02 17:03:34] Init complete
+[COMMUNICATION][2020/02/02 17:03:34] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 17:03:38] recieved
+[COMMUNICATION][2020/02/02 17:03:40] [1] REQUEST:{'module': 'motor', 'direction': 'back', 'cmd': 'move'}
+[COMMUNICATION][2020/02/02 17:03:43] [2] REQUEST:{'module': 'motor', 'direction': 'stay', 'cmd': 'move'}
+[COMMUNICATION][2020/02/02 17:04:33] Start
+[COMMUNICATION][2020/02/02 17:04:39] Init complete
+[COMMUNICATION][2020/02/02 17:04:39] [0] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/02 17:04:56] Start
+[COMMUNICATION][2020/02/02 17:05:02] Init complete
+[COMMUNICATION][2020/02/02 17:05:02] [0] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 17:05:05] recieved
+[COMMUNICATION][2020/02/02 17:05:05] [1] REQUEST:{'module': 'motor', 'y': 327, 'x': 176, 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 17:05:11] [2] REQUEST:{'module': 'camera', 'cmd': 'check_angle'}
+[COMMUNICATION][2020/02/02 17:05:12] recieved
+[COMMUNICATION][2020/02/02 17:05:12] [3] REQUEST:{'module': 'motor', 'cmd': 'move', 'direction': 'back'}
+[COMMUNICATION][2020/02/02 17:05:12] [4] REQUEST:{'module': 'motor', 'cmd': 'move', 'direction': 'stop'}
+[COMMUNICATION][2020/02/02 17:39:39] Start
+[COMMUNICATION][2020/02/02 17:39:45] Init complete
+[COMMUNICATION][2020/02/02 17:39:45] [0] REQUEST:{'cmd': 'check_angle', 'module': 'camera'}
+[COMMUNICATION][2020/02/02 17:39:57] recieved
+[COMMUNICATION][2020/02/02 17:40:02] [1] REQUEST:{'direction': 'back', 'cmd': 'move', 'module': 'motor'}
+[COMMUNICATION][2020/02/02 17:40:10] [2] REQUEST:{'direction': 'stop', 'cmd': 'move', 'module': 'motor'}
+[COMMUNICATION][2020/02/02 17:44:05] Start
+[COMMUNICATION][2020/02/02 17:44:11] Init complete
+[COMMUNICATION][2020/02/02 17:44:11] [0] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:13] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:13] [1] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:13] [2] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:15] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:15] [3] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:15] [4] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:17] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:17] [5] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:17] [6] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:18] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:18] [7] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:18] [8] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:20] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:20] [9] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:20] [10] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:22] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:22] [11] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:22] [12] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:24] dist_thread:91
+[COMMUNICATION][2020/02/02 17:44:24] [13] REQUEST:{'module': 'motor', 'dist': 91, 'cmd': 'check_dist'}
+[COMMUNICATION][2020/02/02 17:44:24] [14] REQUEST:{'module': 'sensor', 'cmd': 'check_dist'}
