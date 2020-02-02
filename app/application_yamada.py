@@ -20,12 +20,11 @@ def pursuit_listener2(response):
     # 速度は向こうで制御してくれ
     x = response['x']
     y = response['y']
-    log.communication("test_yamada")
+    log.communication("[test_yamada] pursuit listener2")
     log.communication(str(x)+":"+str(y))
-    if x>0:
-        #print("--------")
-        log.communication("app_yamada_listener2")
+    if not(x>0.6 and x<0.4):
         client.motor_angle_check(x,y)
+        client.get_angle(pursuit_listener2)
         #client.get_angle(pursuit_listener2)
 
 def PythonNotify(message, *args):
@@ -45,7 +44,7 @@ def PythonNotify(message, *args):
         requests.post(line_notify_api, data=payload, headers=headers, files=files)
 
 def picture():
-    log.communication("picture")
+    log.communication("picture_get")
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cv2.imwrite("example.jpg",frame)
@@ -61,11 +60,11 @@ class MainThread(threading.Thread):
     def run(self):
         client.get_angle(pursuit_listener2)
         #print("-----")
-        log.communication("finishgetangle")
-        #client.get_dist(dist_listener1)
-        #picture()
-        client.app_yamada()
+        #log.communication("finishgetangle")
+        client.motor_move("back")
         picture()
+        """client.app_yamada()
+        picture()"""
 
 
 # 実行

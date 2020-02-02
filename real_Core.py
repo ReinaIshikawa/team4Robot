@@ -1,5 +1,4 @@
 # main file
-
 import subprocess
 import time
 import json
@@ -157,9 +156,6 @@ while True:
     except ValueError:
         # log.communication('[{}] VALUE ERROR')
         continue
-
-    print("5")
-
     if request['module'] == 'camera':
         func_camera(request)
     elif request['module'] == 'voice':
