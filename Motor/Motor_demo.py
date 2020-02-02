@@ -2,7 +2,7 @@ import wiringpi as wp
 import time
 import struct
 import Motor
-import Motor_move
+import Motor_move as mv
 #import ex
 
 if __name__=="__main__":
@@ -10,8 +10,8 @@ if __name__=="__main__":
 
     print("***** start demo program *****")
 
-    right=Motor_move(0,speed)
-    left=Motor_move(1,speed)
+    right=mv.Motor_move(0,speed)
+    left=mv.Motor_move(1,speed)
     print("Please select mode\n")
     print("Auto mode:a\n")
     print("Manual mode:m\n")

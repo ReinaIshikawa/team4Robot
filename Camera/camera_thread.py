@@ -22,17 +22,16 @@ class CameraThread(threading.Thread):
             return
         response={}
         if(request["cmd"] == "check_angle"):
-            jsn_msg = {}
+            jsn_msg = ""
             count = 0
-            while(not jsn_msg):
+            while(jsn_msg ==""):
                 count += 1
-                jsn_msg = self.camera.stdout.readline().decode('utf-8')
+                jsn_msg = self.camera.stdout.readline().decode("utf-8")
                 print("count:", count)
                 time.sleep(1)
             print('[CameraThread] jsn {}'.format(jsn_msg))
             msg = json.loads(jsn_msg)
             print('[CameraThread] load done:dump {}'.format(msg))
-            
             msg=msg['response']
             #print("msg.{}".format(msg))
             response = {"x":msg["x"],"y":msg["y"]}

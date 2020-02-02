@@ -8,10 +8,10 @@ import struct
 class Motor():
     def Write(self,data, spi_id):
         data = struct.pack("B", data)
-        print("b1")
-        print(data)
+        #print("b1")
+        #print(data)
         wp.wiringPiSPIDataRW(spi_id, data)
-        print("b2")
+        #print("b2")
 
 
     def __init__(self,spi_id,spd):
@@ -106,7 +106,7 @@ class Motor():
         else:
             tmpspd=(-1)*self.speed
             self.Run_setting(tmpspd, 1)
-        print("Run_forward!")
+        #print("Run_forward!")
 
     def Run_back(self):
         print('runboth {}'.format(self.speed))
@@ -115,7 +115,7 @@ class Motor():
             self.Run_setting(tmpspd, 0)
         else:
             self.Run_setting(self.speed, 1)
-        print("Back!")
+        #print("Back!")
 
     def Turn_right(self):
         print('runboth {}'.format(self.speed))
@@ -125,7 +125,7 @@ class Motor():
             self.Run_setting(0, 1)
 
     def Turn_left(self):
-        print('runboth {}'.format(self.speed))
+        #print('runboth {}'.format(self.speed))
         if self.id==0:
             self.Run_setting(0, 0)
         else:
@@ -133,14 +133,14 @@ class Motor():
             self.Run_setting(tmpspd, 1)
 
     def Softstop(self):
-        print("***** SoftStop. *****")
+        #print("***** SoftStop. *****")
         dir = 0xB0
         # コマンド（レジスタアドレス）送信。
         self.Write(dir, self.id)
         time.sleep(1)
 
     def Softhiz(self):
-        print("***** Softhiz. *****")
+        #print("***** Softhiz. *****")
         dir = 0xA8
         # コマンド（レジスタアドレス）送信。
         self.Write(dir, self.id)

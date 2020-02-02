@@ -12,6 +12,7 @@ class DistThread(threading.Thread):
         self.app = app
 
     def run(self, request=None):
+        time.sleep(1)
         if not request:
             return
         if(request['cmd'] == 'check_dist'):
