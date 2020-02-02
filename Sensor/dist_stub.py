@@ -1,6 +1,6 @@
 import json
 import threading
-
+import time
 
 class SensorStub(threading.Thread):
     def __init__(self, app):
@@ -14,6 +14,7 @@ class SensorStub(threading.Thread):
             return
         response = {'dist': str(self.cnt)}
         self.cnt += 1
+        time.sleep(1)
         if(request['cmd'] == 'check_dist'):
             jsn = json.dumps({"response": response, 'request': request})
             self.app.stdin.write((jsn + '\n').encode('utf-8'))

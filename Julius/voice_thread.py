@@ -6,7 +6,7 @@ import pygame.mixer
 from library import log
 
 #change host and port number
-host = '127.0.0.1' #localhost
+host = '0.0.0.0' #localhost
 port = 10500   #julisuサーバーモードのポート
 
 class VoiceThread(threading.Thread):
@@ -37,7 +37,7 @@ class VoiceThread(threading.Thread):
 
         cmd = request['cmd']
         print('voice_thread check cmd:'+cmd)
-
+        time.sleep(2)
         # get process ID
         # pid = str(self.voice.stdout.read().decode('utf-8'))
         # print('voice_thread get pid' + pid)
@@ -48,22 +48,22 @@ class VoiceThread(threading.Thread):
         data =""
         # killword = ""
         while(1):
+            # data = data + sock.recv(1024)
             if '</RECOGOUT>\n.' in data:
-                #data = data + sock.recv(1024)
                 strTemp = ""
+                print(data)
                 for line in data.split('\n'):
-                    index = line.find('WORD="')
+                    #index = line.find('WORD="')
+                    index = line.find('WORD=')
                     if index != -1:
-                        line = line[index+6:line.find('"',index+6)]
+                        #line = line[index+6:line.find('"',index+6)]
+                        line = line[index+6:line.find("CLASSID")-2]
                         strTemp += str(line)
-
                     response={}
                     if strTemp == u'カメラ':
                         # pass
                         log.communication("voice_result: " + strTemp)
                         continue
-
-
                     elif strTemp == u'進め':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
@@ -121,7 +121,7 @@ class VoiceThread(threading.Thread):
                             response['music'] = 'anime'
                             self.send_response(response, request)
                             pygame.mixer.init()
-                            pygame.mixer.music.load("zankoku.mp3")
+                            pygame.mixer.music.load("../team4Robot/Julius/zankoku.mp3")
                             pygame.mixer.music.play(1)
                             time.sleep(8)
                             pygame.mixer.music.stop()
@@ -133,7 +133,7 @@ class VoiceThread(threading.Thread):
                             response['music'] = 'arashi'
                             self.send_response(response, request)
                             pygame.mixer.init()
-                            pygame.mixer.music.load("arashi.mp3")
+                            pygame.mixer.music.load("../team4Robot/Julius/arashi.mp3")
                             pygame.mixer.music.play(1)
                             time.sleep(8)
                             pygame.mixer.music.stop()

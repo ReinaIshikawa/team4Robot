@@ -17,7 +17,7 @@ def pursuit_listener1(response):
     # 速度は向こうで制御してくれる
     dist = response['dist']
     # log.communication("pursuit dist"+dist)
-    print("pursuit dist"+dist)
+    print("pursuit dist"+str(dist))
     if dist!=0:
         client.motor_dist_check(dist)
     # 再帰的に(繰り返し)処理をするため

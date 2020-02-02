@@ -1,6 +1,6 @@
 import threading
 import client
-from library import log
+#from library import log
 import cv2
 import requests
 
@@ -20,9 +20,9 @@ def pursuit_listener2(response):
     # 速度は向こうで制御してくれ
     x = response['x']
     y = response['y']
-    log.communication("[test_yamada] pursuit listener2")
-    log.communication(str(x)+":"+str(y))
-    if not(x>0.6 and x<0.4):
+    #log.communication("[test_yamada] pursuit listener2")
+    #log.communication(str(x)+":"+str(y))
+    if not(x>250 or x<150):
         client.motor_angle_check(x,y)
         client.get_angle(pursuit_listener2)
         #client.get_angle(pursuit_listener2)
@@ -44,7 +44,7 @@ def PythonNotify(message, *args):
         requests.post(line_notify_api, data=payload, headers=headers, files=files)
 
 def picture():
-    log.communication("picture_get")
+    #log.communication("picture_get")
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cv2.imwrite("example.jpg",frame)

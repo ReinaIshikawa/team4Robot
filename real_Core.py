@@ -22,7 +22,7 @@ else:
     app_num = int(argv[1])
     from Sensor.dist_thread import DistThread as SensorThread
     from Motor.motor_thread import MotorThread
-    from Motor.servo_thread import ServoThread as ServoThread
+    from Motor.servo_stub import ServoStub as ServoThread
     from Julius.voice_thread import VoiceThread as VoiceThread
     from Camera.camera_thread import CameraThread as CameraThread
 proc = {}
@@ -82,11 +82,12 @@ if is_test:
         stdin = subprocess.PIPE,
         # shell=True
     )
-if not is_test:
-    pass
-    # voice_cmd = ['julius', '-C', '~/work/julius/dictation-kit-v4.4/word.jconf', '-input mic', '-module']
-    # proc['voice'] = subprocess.Popen(voice_cmd)
+#if not is_test:
+    #voice_cmd = ['julius', '-C', '~/gitspace/team4Robot/Julius/julius/gramtools/mkdfa/word.jconf', '-input mic', '-module']
+    #proc['voice'] = subprocess.Popen(voice_cmd)
+    
 
+    
 # Camera
 if is_test:
     # empty file
@@ -112,7 +113,6 @@ threads['camera'] = CameraThread(proc['app'], proc['camera'], log)
 threads['motor'] = MotorThread(proc['app'])
 threads['servo'] = ServoThread(proc['app'])
 threads['sensor'] = SensorThread(proc['app'])
-
 
 # Initialize
 __result = [t.start() for t in threads.values()]

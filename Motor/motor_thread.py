@@ -20,7 +20,7 @@ class MotorThread(threading.Thread):
         self.cnt = 0
 
 
-    def SimpleMove(direction):
+    def SimpleMove(self,direction):
         if direction == 'front':
             self.right.Run_forward()
             self.left.Run_forward()
@@ -53,4 +53,6 @@ class MotorThread(threading.Thread):
             self.right.Angle(request['x'], request['y'])
             self.left.Angle(request['x'], request['y'])
         elif (request['cmd'] == 'move'):
-            SimpleMove(request['direction'])
+            print("checknow:",request['direction'])
+            print("type:",type(request['direction']))
+            self.SimpleMove(request['direction'])
