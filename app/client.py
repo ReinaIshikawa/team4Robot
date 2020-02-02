@@ -34,7 +34,7 @@ def startListener(thread):
         # (input()もstdinと同じこと _stubファイルはinputで適当な値を入力するようにしている)
         # sys.stdin.flush()
         data = json.loads(input())
-        print('client_data:' + str(data))
+        # print('client_data:' + str(data))
         # log.communication('client_data:' + str(data))
         request = data['request']
         response = data['response']
@@ -151,6 +151,7 @@ def voice_cmd(callback, cmd):
     print(json.dumps(request), flush=True)
     # log.communication("client.py->app" + str(request))
     listeners['voice'].append(callback)
+    # listeners['motor'].append(callback)
 
 
 def app_yamada():
