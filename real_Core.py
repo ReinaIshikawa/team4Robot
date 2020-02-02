@@ -90,7 +90,7 @@ if is_test:
 
     
 # Camera
-if is_test:
+if is_test or app_num == 1:
     # empty file
     camera_cmd = ['python3', '-u', './Camera/Camera_empty.py']
 else:
@@ -150,12 +150,13 @@ while True:
     proc['app'].stdout.flush()
     # log.communication('pre req:')
     raw_request = proc['app'].stdout.readline().decode("utf-8")
+    print('[Core: {}]: '.format(cnt), raw_request)
     try:
         request = json.loads(raw_request)
         log.communication('[{}] REQUEST:{}'.format(cnt, request))
         cnt += 1
     except ValueError:
-        # log.communication('[{}] VALUE ERROR')
+        log.communication('[{}] VALUE ERROR')
         continue
     if request['module'] == 'camera':
         func_camera(request)
