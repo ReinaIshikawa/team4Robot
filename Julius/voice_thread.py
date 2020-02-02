@@ -119,7 +119,7 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.init()
                             pygame.mixer.music.load("../team4Robot/Julius/zankoku.mp3")
                             pygame.mixer.music.play(1)
-                            time.sleep(15)
+                            time.sleep(8)
                             pygame.mixer.music.stop()
                             break
 
@@ -131,7 +131,7 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.init()
                             pygame.mixer.music.load("../team4Robot/Julius/arashi.mp3")
                             pygame.mixer.music.play(1)
-                            time.sleep(15)
+                            time.sleep(8)
                             pygame.mixer.music.stop()
                             break
 
