@@ -17,14 +17,19 @@ class VoiceThread(threading.Thread):
         self.exitCore = exitCore
         self.changeApp = changeApp
         self.cnt = 0
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.connect((host, port))
 
 
     def send_response(self, response, request):
+        # send responce to motor
         jsn = json.dumps({"response":response, "request":request})
         log.communication('voice_thread:' + str(response))
         print('voice_thread:' + str(response))
         self.app.stdin.write((jsn + '\n').encode('utf-8'))
         self.app.stdin.flush()
+        # response: {'direction': 'back'}
+        # request: {'module': 'voice', 'cmd': 'voice_to_motor'}
         print('voice_thread->app: {}:{}'.format(response, request))
 
 
@@ -41,8 +46,8 @@ class VoiceThread(threading.Thread):
         # pid = str(self.voice.stdout.read().decode('utf-8'))
         # print('voice_thread get pid' + pid)
 
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect((host, port))
+        sock = self.sock
+        # sock.connect((host, port))
         print('voice_thread bind socket')
         data =""
         # killword = ""
@@ -65,12 +70,14 @@ class VoiceThread(threading.Thread):
                     elif strTemp == u'進め':
                         if cmd == "voice_to_motor":
                             response['direction'] = 'front'
+                            # request['module'] = 'motor'
                             self.send_response(response, request)
                             break
 
                     elif strTemp == u'前':
                         if cmd == "voice_to_motor":
                             response['direction'] = 'front'
+                            # request['module'] = 'motor'
                             self.send_response(response, request)
                             break
 
@@ -78,6 +85,7 @@ class VoiceThread(threading.Thread):
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'back'
+                            # request['module'] = 'motor'
                             self.send_response(response, request)
                             break
 
@@ -85,13 +93,14 @@ class VoiceThread(threading.Thread):
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
                             response['direction'] = 'right'
-
+                            # request['module'] = 'motor'
                             self.send_response(response, request)
                             break
 
                     elif strTemp == u'左':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
+                            # request['module'] = 'motor'
                             response['direction'] = 'left'
                             self.send_response(response, request)
                             break
@@ -99,6 +108,7 @@ class VoiceThread(threading.Thread):
                     elif strTemp == u'とまれ':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
+                            # request['module'] = 'motor'
                             response['direction'] = 'stop'
                             self.send_response(response, request)
                             break
@@ -106,6 +116,7 @@ class VoiceThread(threading.Thread):
                     elif strTemp == 'ストップ':
                         if cmd == "voice_to_motor":
                             log.communication("voice_result: " + strTemp)
+                            # request['module'] = 'motor'
                             response['direction'] = 'stop'
                             self.send_response(response, request)
                             break
