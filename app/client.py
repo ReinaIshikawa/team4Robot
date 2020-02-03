@@ -134,7 +134,7 @@ def motor_move(direction):
     # log.communication("client.py->app" + str(request))
     # callbackはとりあえずなし
 
-
+    
 def camera_SSD():
     request = {
         'module' : "camera",
@@ -154,6 +154,14 @@ def voice_cmd(callback, cmd):
     # listeners['motor'].append(callback)
 
 
+def voice_cmd_2(callback, cmd):
+    request = {
+        'module': 'voice',
+        'cmd':cmd
+    }
+    listeners['motor'].append(callback)
+    
+    
 def app_yamada():
     request = {
         'module': 'camera',
@@ -161,12 +169,3 @@ def app_yamada():
     }
     print(json.dumps(request), flush=True)
 
-"""
-def get_voice(callback):
-    request = {
-        'module': 'voice',
-        'cmd':'check_voice'
-    }
-    print(json.dumps(request), flush=True)
-    listeners['voice'].append(callback)
-"""

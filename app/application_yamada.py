@@ -42,7 +42,7 @@ def PythonNotify(message, *args):
 def picture():
     #log.communication("picture_get")
     time.sleep(1)
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     ret, frame = cap.read()
     cv2.imwrite("example.jpg",frame)
     #cv2.destroyAllWindows()

@@ -55,12 +55,12 @@ class Motor_move(Motor):
         if x<0:
             self.Softstop()
         elif x>200:
-            spd=2000
+            spd=-2000
             self.Run_setting(spd,self.id)
             time.sleep(1)
             self.Softstop()
         elif x<400:
-            spd=-2000
+            spd=2000
             self.Run_setting(spd,self.id)
             time.sleep(1)
             self.Softstop()
