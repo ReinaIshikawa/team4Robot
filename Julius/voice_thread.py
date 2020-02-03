@@ -5,9 +5,10 @@ import socket
 import pygame.mixer
 from library import log
 
-#change host and port number
-host = '0.0.0.0' #localhost
-port = 10500   #julisuサーバーモードのポート
+# change host and port number
+host = '0.0.0.0'  # localhost
+port = 10500  # julisuサーバーモードのポート
+
 
 class VoiceThread(threading.Thread):
     def __init__(self, app, exitCore, changeApp):
@@ -20,10 +21,9 @@ class VoiceThread(threading.Thread):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((host, port))
 
-
     def send_response(self, response, request):
         # send responce to motor
-        jsn = json.dumps({"response":response, "request":request})
+        jsn = json.dumps({"response": response, "request": request})
         log.communication('voice_thread:' + str(response))
         print('voice_thread:' + str(response))
         self.app.stdin.write((jsn + '\n').encode('utf-8'))
@@ -32,7 +32,6 @@ class VoiceThread(threading.Thread):
         # request: {'module': 'voice', 'cmd': 'voice_to_motor'}
         print('voice_thread->app: {}:{}'.format(response, request))
 
-
     def run(self, request=None):
         if not request:
             return
@@ -40,7 +39,7 @@ class VoiceThread(threading.Thread):
         self.cnt += 1
 
         cmd = request['cmd']
-        print('voice_thread check cmd:'+cmd)
+        print('voice_thread check cmd:' + cmd)
         time.sleep(2)
         # get process ID
         # pid = str(self.voice.stdout.read().decode('utf-8'))
@@ -49,7 +48,7 @@ class VoiceThread(threading.Thread):
         sock = self.sock
         # sock.connect((host, port))
         print('voice_thread bind socket')
-        data =""
+        data = ""
         # killword = ""
         while(1):
             # data = data + sock.recv(1024)
@@ -61,11 +60,11 @@ class VoiceThread(threading.Thread):
                     index = line.find('WORD=')
                     if index != -1:
                         #line = line[index+6:line.find('"',index+6)]
-                        line = line[index+6:line.find("CLASSID")-2]
+                        line = line[index + 6:line.find("CLASSID") - 2]
                         strTemp += str(line)
-                    response={}
+                    response = {}
                     if strTemp == u'カメラ':
-                        
+
                         continue
                     elif strTemp == u'進め':
                         if cmd == "voice_to_motor":
@@ -121,14 +120,14 @@ class VoiceThread(threading.Thread):
                             self.send_response(response, request)
                             break
 
-
                     elif strTemp == 'アニソン':
                         if cmd == "voice_to_music":
                             log.communication("voice_result: " + strTemp)
                             response['music'] = 'anime'
                             self.send_response(response, request)
                             pygame.mixer.init()
-                            pygame.mixer.music.load("../team4Robot/Julius/zankoku.mp3")
+                            pygame.mixer.music.load(
+                                "../team4Robot/Julius/zankoku.mp3")
                             pygame.mixer.music.play(1)
                             time.sleep(8)
                             pygame.mixer.music.stop()
@@ -140,7 +139,8 @@ class VoiceThread(threading.Thread):
                             response['music'] = 'arashi'
                             self.send_response(response, request)
                             pygame.mixer.init()
-                            pygame.mixer.music.load("../team4Robot/Julius/arashi.mp3")
+                            pygame.mixer.music.load(
+                                "../team4Robot/Julius/arashi.mp3")
                             pygame.mixer.music.play(1)
                             time.sleep(8)
                             pygame.mixer.music.stop()
@@ -157,7 +157,6 @@ class VoiceThread(threading.Thread):
 
                     elif strTemp == 'チェンジ':
                         continue
-
 
                     elif strTemp == '終了':
                         log.communication("voice_result: " + strTemp)
