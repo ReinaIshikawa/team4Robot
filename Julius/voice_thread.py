@@ -71,14 +71,14 @@ class VoiceThread(threading.Thread):
                             response['direction'] = 'front'
                             # request['module'] = 'motor'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == u'前':
                         if cmd == "voice_to_motor":
                             response['direction'] = 'front'
                             # request['module'] = 'motor'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == u'後ろ':
                         if cmd == "voice_to_motor":
@@ -86,7 +86,7 @@ class VoiceThread(threading.Thread):
                             response['direction'] = 'back'
                             # request['module'] = 'motor'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == u'右':
                         if cmd == "voice_to_motor":
@@ -94,7 +94,7 @@ class VoiceThread(threading.Thread):
                             response['direction'] = 'right'
                             # request['module'] = 'motor'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == u'左':
                         if cmd == "voice_to_motor":
@@ -102,7 +102,7 @@ class VoiceThread(threading.Thread):
                             # request['module'] = 'motor'
                             response['direction'] = 'left'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == u'とまれ':
                         if cmd == "voice_to_motor":
@@ -110,7 +110,7 @@ class VoiceThread(threading.Thread):
                             # request['module'] = 'motor'
                             response['direction'] = 'stop'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == 'ストップ':
                         if cmd == "voice_to_motor":
@@ -118,7 +118,7 @@ class VoiceThread(threading.Thread):
                             # request['module'] = 'motor'
                             response['direction'] = 'stop'
                             self.send_response(response, request)
-                            break
+                            return
 
                     elif strTemp == 'アニソン':
                         if cmd == "voice_to_music":
@@ -131,7 +131,7 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.music.play(1)
                             time.sleep(8)
                             pygame.mixer.music.stop()
-                            break
+                            return
 
                     elif strTemp == '嵐':
                         if cmd == "voice_to_music":
@@ -144,7 +144,7 @@ class VoiceThread(threading.Thread):
                             pygame.mixer.music.play(1)
                             time.sleep(8)
                             pygame.mixer.music.stop()
-                            break
+                            return
 
                     elif strTemp == '友達':
                         if cmd == "talk":
@@ -161,15 +161,14 @@ class VoiceThread(threading.Thread):
                     elif strTemp == '終了':
                         log.communication("voice_result: " + strTemp)
                         self.exitCore()
-                        break
+                        return
 
                     else:
                         print("skip!")
 
                     data = ""
-
+                # return
             else:
                 data += str(sock.recv(1024).decode('utf-8'))
                 log.communication("voice_thread: " + "Not found.")
-
             time.sleep(3)
