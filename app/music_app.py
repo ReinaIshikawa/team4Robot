@@ -20,6 +20,7 @@ def voice_listener(response):
         time.sleep(8.25)
         #client.motor_move("front")
         client.voice_cmd(voice_listener, 'voice_to_music')
+        client.motor_move('front')
 
 class MainThread(threading.Thread):
     def __init__(self):
@@ -27,10 +28,7 @@ class MainThread(threading.Thread):
 
     def run(self):
         client.voice_cmd(voice_listener,'voice_to_music')
-        time.sleep(11)
         client.motor_move('front')
-        time.sleep(8)
-        client.motor_move('stop')
 
 thread = MainThread()
 client.startListener(thread)
